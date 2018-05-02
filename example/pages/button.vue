@@ -1,5 +1,7 @@
 <template>
-  <div class="calf-button"></div>
+  <div class="calf-button">
+    <calf-button>哈哈哈</calf-button>
+  </div>
 </template>
 
 <script>

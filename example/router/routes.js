@@ -4,6 +4,10 @@ const routes = [
   {
     path: '/button',
     component: Button
+  },
+  {
+    path: '*',
+    redirect: '/button'
   }
 ]
 

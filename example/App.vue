@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    <header class="calf-bar">
-      <h1>calf-ui</h1>
-    </header>
-    <section class="calf-content">
-      123
-    </section>
+    <router-view/>
   </div>
 </template>
 
