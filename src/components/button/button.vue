@@ -73,6 +73,24 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
+@import '../../common/style/mixin.css';
 
+.calf-btn {
+  display: block;
+  margin: 0;
+  padding: 17px 16px;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  background: #4a4c5b;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
 </style>

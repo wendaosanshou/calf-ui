@@ -8,7 +8,7 @@ import router from './router'
 
 /* eslint-disable no-unused-vars */
 // import vConsole from 'vconsole'
-
+console.log(Cube)
 Vue.use(Cube)
 Vue.use(VueRouter)
 
