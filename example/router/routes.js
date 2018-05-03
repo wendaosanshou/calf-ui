@@ -1,5 +1,6 @@
 import Button from '../pages/button.vue'
 import Popup from '../pages/popup.vue'
+import Dialog from '../pages/dialog.vue'
 import Index from '../pages/index.vue'
 
 const routes = [
@@ -10,6 +11,10 @@ const routes = [
   {
     path: '/popup',
     component: Popup
+  },
+  {
+    path: '/dialog',
+    component: Dialog
   },
   {
     path: '/',

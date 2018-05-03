@@ -11,17 +11,23 @@
 
 <script>
 const COMPONENT_NAME = 'calf-popup'
+const EVENT_MASK_CLICK = 'mask-click'
+
 export default {
   name: COMPONENT_NAME,
   props: {
+    type: {
+      type: String,
+      default: 'popup'
+    },
     value: {
       type: Boolean,
       default: false
     }
   },
   methods: {
-    handleMask() {
-      this.$emit('input', false)
+    handleMask(e) {
+      this.$emit(EVENT_MASK_CLICK, e)
     }
   }
 }
