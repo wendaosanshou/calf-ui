@@ -1,4 +1,5 @@
 import Button from '../pages/button.vue'
+import Index from '../pages/index.vue'
 
 const routes = [
   {
@@ -6,8 +7,12 @@ const routes = [
     component: Button
   },
   {
+    path: '/',
+    component: Index
+  },
+  {
     path: '*',
-    redirect: '/button'
+    redirect: '/'
   }
 ]
 
