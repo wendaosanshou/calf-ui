@@ -17,7 +17,10 @@
 export default {
   data() {
     return {
-      routes: [{ name: 'Button', path: '/button' }]
+      routes: [
+        { name: 'Button', path: '/button' },
+        { name: 'Popup', path: '/popup' }
+      ]
     }
   },
   methods: {

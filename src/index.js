@@ -1,11 +1,11 @@
-import { Button } from './module'
+import { Button, Popup } from './module'
 
 function install(Vue) {
   if (install.installed) {
     return
   }
   install.installed = true
-  const components = [Button]
+  const components = [Button, Popup]
   components.forEach(Component => {
     Component.install(Vue)
   })
