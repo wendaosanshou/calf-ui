@@ -20,7 +20,8 @@ export default {
       routes: [
         { name: 'Button', path: '/button' },
         { name: 'Popup', path: '/popup' },
-        { name: 'Dialog', path: '/dialog' }
+        { name: 'Dialog', path: '/dialog' },
+        { name: 'Loading', path: '/loading' }
       ]
     }
   },

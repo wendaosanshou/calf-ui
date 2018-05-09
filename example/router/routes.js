@@ -1,6 +1,7 @@
 import Button from '../pages/button.vue'
 import Popup from '../pages/popup.vue'
 import Dialog from '../pages/dialog.vue'
+import Loading from '../pages/loading.vue'
 import Index from '../pages/index.vue'
 
 const routes = [
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/dialog',
     component: Dialog
+  },
+  {
+    path: '/loading',
+    component: Loading
   },
   {
     path: '/',

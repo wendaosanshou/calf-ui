@@ -56,7 +56,7 @@ export default {
   height: auto;
   padding-bottom: 24px;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 4px;
   .calf-header {
     width: 100%;
     height: 48.5px;
@@ -64,6 +64,7 @@ export default {
     font-size: 16px;
     color: #333333;
     text-align: center;
+    border-radius: 4px 4px 0 0;
     border-bottom: 1px solid #f1f1f1;
   }
   .calf-content {
@@ -75,6 +76,7 @@ export default {
     color: #999999;
     text-align: center;
     padding: 16px 21px 24px 21px;
+    border-radius: 0 0 4px 4px;
   }
 }
 

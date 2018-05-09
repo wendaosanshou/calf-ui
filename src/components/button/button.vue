@@ -87,7 +87,7 @@ export default {
   font-size: 16px;
   line-height: 1;
   color: #fff;
-  background: #4a4c5b;
+  background: linear-gradient(-270deg, #ff9155 0%, #fe7336 100%);
   outline: none;
   border: none;
   border-radius: 2px;
