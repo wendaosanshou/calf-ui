@@ -1,6 +1,6 @@
 <template>
-  <div class="button-view">
-    <calf-button>哈哈哈</calf-button>
+  <div class="page-button">
+    <calf-button>按钮</calf-button>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {}
 </script>
 
 <style scoped>
-.button-view {
+.page-button {
   padding: 20px;
 }
 </style>

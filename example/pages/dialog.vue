@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog-view">
+  <div class="page-dialog">
     <calf-button @click="handleClick">触发</calf-button>
     <calf-dialog v-model="visible">123123</calf-dialog>
   </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.dialog-view {
+.page-dialog {
   padding: 20px;
 }
 </style>

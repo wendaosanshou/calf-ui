@@ -1,0 +1,14 @@
+.calf-square-select {
+  background: url('../img/calf-checkbox-select.png');
+  background-size: 100% 100%;
+}
+
+.calf-square-unselect {
+  background: url('../img/calf-checkbox-unselect.png');
+  background-size: 100% 100%;
+}
+
+.calf-close {
+  background: url('../img/calf-close.png');
+  background-size: 100% 100%;
+}

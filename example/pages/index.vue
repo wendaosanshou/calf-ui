@@ -5,7 +5,7 @@
     </header>
     <section class="calf-content">
       <ul class="calf-list">
-        <li class="calf-item" v-for="(item, index) in routes" :key="index" @click="handleRoute(item)">
+        <li class="calf-item" v-for="(item, index) in routesMenu" :key="index" @click="handleRoute(item)">
           {{item.name}}
         </li>
       </ul>
@@ -14,18 +14,37 @@
 </template>
 
 <script>
+import routes from '../router/routes'
 export default {
   data() {
-    return {
-      routes: [
-        { name: 'Button', path: '/button' },
-        { name: 'Popup', path: '/popup' },
-        { name: 'Dialog', path: '/dialog' },
-        { name: 'Loading', path: '/loading' }
-      ]
+    return {}
+  },
+  computed: {
+    routesMenu() {
+      let routesMenu = routes
+        .filter(item => {
+          let hasWord =
+            item.path.match(/[a-zA-Z]/) &&
+            item.path.match(/[a-zA-Z]/).length > 0
+          return hasWord
+        })
+        .map(item => {
+          let name = this.getFilterName(item.path)
+          return {
+            path: item.path,
+            name: name
+          }
+        })
+      return routesMenu
     }
   },
   methods: {
+    getFilterName(path) {
+      let name = path.replace(/([^\w])([\w])([\w]*)/g, function(word, a, b, c) {
+        return b.toUpperCase() + c
+      })
+      return name
+    },
     handleRoute(item) {
       this.$router.push(item.path)
     }

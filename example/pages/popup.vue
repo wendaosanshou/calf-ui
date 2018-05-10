@@ -1,5 +1,5 @@
 <template>
-  <div class="popup-view">
+  <div class="page-popup">
     <calf-button @click="handleClick">触发</calf-button>
     <calf-popup v-model="visible">123123</calf-popup>
   </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.popup-view {
+.page-popup {
   padding: 20px;
 }
 </style>
