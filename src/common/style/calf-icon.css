@@ -1,14 +1,29 @@
+i {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
 .calf-square-select {
+  display: block;
+  width: 14px;
+  height: 14px;
   background: url('../img/calf-checkbox-select.png');
   background-size: 100% 100%;
 }
 
 .calf-square-unselect {
+  display: block;
+  width: 14px;
+  height: 14px;
   background: url('../img/calf-checkbox-unselect.png');
   background-size: 100% 100%;
 }
 
 .calf-close {
+  display: block;
+  width: 14px;
+  height: 14px;
   background: url('../img/calf-close.png');
   background-size: 100% 100%;
 }

@@ -27,7 +27,7 @@ export default {
   height: 50px;
 }
 
-image {
-  fill: #fdc646;
+svg {
+  fill: #ffffff;
 }
 </style>

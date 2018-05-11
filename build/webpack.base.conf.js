@@ -52,6 +52,7 @@ module.exports = {
         loader: 'babel-loader',
         include: [
           resolve('example'),
+          resolve('src'),
           resolve('test'),
           resolve('node_modules/webpack-dev-server/client')
         ]

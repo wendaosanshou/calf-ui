@@ -1,15 +1,15 @@
 <template>
  <div class="calf-input">
-   <div class="calf-input-prepend" v-if="$slots.prepend">
-      <slot name="prepend"></slot>
+  <div class="calf-input-prepend" v-if="$slots.prepend">
+    <slot name="prepend"></slot>
+  </div>
+  <input class="calf-input-field" />
+  <div class="calf-input-append">
+    <div class="calf-input-clear">
+      <i class="calf-close"></i>
     </div>
-   <input class="calf-input-field" />
-    <div class="calf-input-append">
-      <div class="calf-input-clear">
-        <i class="calf-close"></i>
-      </div>
-      <slot name="append"></slot>
-    </div>
+    <slot name="append"></slot>
+  </div>
  </div>
 </template>
 

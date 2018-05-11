@@ -1,5 +1,5 @@
 <template>
-  <div class="calf-popup" :class="rootClass" v-show="value">
+  <div class="calf-popup" :style="{'z-index': zIndex}" :class="rootClass" v-show="isVisible">
     <div class="calf-popup-mask" @click="handleMask"></div>
     <div class="calf-popup-container">
       <div class="calf-popup-content">
@@ -9,20 +9,22 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
+import visibilityMixin from '../../common/mixins/visibility'
 const COMPONENT_NAME = 'calf-popup'
 const EVENT_MASK_CLICK = 'mask-click'
 
 export default {
   name: COMPONENT_NAME,
+  mixins: [visibilityMixin],
   props: {
     type: {
       type: String,
       default: 'popup'
     },
-    value: {
-      type: Boolean,
-      default: false
+    zIndex: {
+      type: Number,
+      default: 100
     }
   },
   computed: {
@@ -36,7 +38,6 @@ export default {
   },
   methods: {
     handleMask(e) {
-      this.$emit('input', false)
       this.$emit(EVENT_MASK_CLICK, e)
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <calf-popup type="dialog" v-show="value" @mask-click="close">
+  <calf-popup type="dialog" v-show="isVisible">
     <div class="calf-main">
       <h1 class="calf-header">{{title}}</h1>
       <div class="calf-content">{{content}}</div>
@@ -12,12 +12,16 @@
 </template>
 
 <script>
+import visibilityMixin from '../../common/mixins/visibility'
 import CalfPopup from '../popup/popup'
 import CalfButton from '../button/button'
 
 const COMPONENT_NAME = 'calf-dialog'
+const EVENT_CONFIRM = 'confirm'
+
 export default {
   name: COMPONENT_NAME,
+  mixins: [visibilityMixin],
   props: {
     title: {
       type: String,
@@ -26,18 +30,12 @@ export default {
     content: {
       type: String,
       default: '未知的系统错误'
-    },
-    value: {
-      type: Boolean,
-      default: false
     }
   },
   methods: {
-    close() {
-      this.$emit('input', false)
-    },
-    handleConfirm() {
-      this.close()
+    handleConfirm(e) {
+      this.hide()
+      this.$emit(EVENT_CONFIRM, e)
     }
   },
   components: {

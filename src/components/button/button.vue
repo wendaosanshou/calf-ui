@@ -4,7 +4,6 @@
     :type="type"
     :class="btnClass"
     @click="handleClick">
-    <i :class="icon" v-if="icon"></i>
     <slot></slot>
   </button>
 </template>
@@ -14,10 +13,6 @@ const COMPONENT_NAME = 'calf-button'
 export default {
   name: COMPONENT_NAME,
   props: {
-    icon: {
-      type: String,
-      default: ''
-    },
     active: {
       type: Boolean,
       default: false
@@ -74,11 +69,11 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import '../../common/style/mixin.css';
+@import '../../common/style/base.css';
 
 .calf-btn {
+  box-sizing: border-box;
   display: block;
-  margin: 0;
   padding: 17px 16px;
   width: 100%;
   text-align: center;
@@ -91,6 +86,21 @@ export default {
   outline: none;
   border: none;
   border-radius: 2px;
-  box-sizing: border-box;
+  &.calf-btn-disabled {
+    opacity: 0.5;
+    &:active {
+      opacity: 0.5;
+    }
+  }
+  &.calf-btn-inline {
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+  &:active {
+    opacity: 0.9;
+  }
 }
 </style>
