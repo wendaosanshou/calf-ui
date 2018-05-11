@@ -12,11 +12,10 @@
 export default {
   methods: {
     handleClick() {
-      // this.$createPopup({
-      //   onMaskClick: function() {
-      //     console.log('onMaskClick')
-      //   }
-      // }).show()
+      this.$createDialog({
+        content: '456',
+        onConfirm: () => {}
+      }).show()
     },
     handleBack() {
       history.go(-1)

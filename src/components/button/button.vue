@@ -1,6 +1,6 @@
 <template>
   <button
-    class="calf-btn"
+    class="calf-button"
     :type="type"
     :class="btnClass"
     @click="handleClick">
@@ -45,13 +45,13 @@ export default {
   computed: {
     btnClass() {
       return {
-        'calf-btn-active': this.active,
-        'calf-btn-disabled': this.disabled,
-        'calf-btn-inline': this.inline,
-        'calf-btn-primary': this.primary,
-        'calf-btn-outline': this.outline,
-        'calf-btn-outline-primary': this.outline && this.primary,
-        'calf-btn-light': this.light
+        'calf-button-active': this.active,
+        'calf-button-disabled': this.disabled,
+        'calf-button-inline': this.inline,
+        'calf-button-primary': this.primary,
+        'calf-button-outline': this.outline,
+        'calf-button-outline-primary': this.outline && this.primary,
+        'calf-button-light': this.light
       }
     }
   },
@@ -71,7 +71,7 @@ export default {
 <style lang="postcss" scoped>
 @import '../../common/style/base.css';
 
-.calf-btn {
+.calf-button {
   box-sizing: border-box;
   display: block;
   padding: 17px 16px;
@@ -86,13 +86,13 @@ export default {
   outline: none;
   border: none;
   border-radius: 2px;
-  &.calf-btn-disabled {
+  &.calf-button-disabled {
     opacity: 0.5;
     &:active {
       opacity: 0.5;
     }
   }
-  &.calf-btn-inline {
+  &.calf-button-inline {
     width: auto;
     display: inline-block;
     vertical-align: middle;

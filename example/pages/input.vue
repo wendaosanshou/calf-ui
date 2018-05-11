@@ -22,5 +22,11 @@ export default {
 <style lang="postcss" scoped>
 .page-input {
   padding: 20px 0;
+  .calf-input {
+    border-bottom: 0;
+    &:nth-last-child(1) {
+      border-bottom: 1px solid #cccccc;
+    }
+  }
 }
 </style>

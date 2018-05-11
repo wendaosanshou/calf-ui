@@ -4,6 +4,8 @@ import Popup from '../pages/popup.vue'
 import Dialog from '../pages/dialog.vue'
 import Loading from '../pages/loading.vue'
 import Input from '../pages/input.vue'
+import Textarea from '../pages/textarea.vue'
+import Switch from '../pages/switch.vue'
 import Index from '../pages/index.vue'
 
 const routes = [
@@ -30,6 +32,14 @@ const routes = [
   {
     path: '/input',
     component: Input
+  },
+  {
+    path: '/textarea',
+    component: Textarea
+  },
+  {
+    path: '/switch',
+    component: Switch
   },
   {
     path: '/',

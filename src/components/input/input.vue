@@ -57,6 +57,8 @@ export default {
     width: auto;
     height: 48px;
     padding-left: 16px;
+    font-size: 14px;
+    color: #666666;
     border: 0;
     flex-grow: 1;
     .calf-input-clear {
