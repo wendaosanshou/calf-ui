@@ -1,7 +1,6 @@
 <template>
   <button
     class="calf-button"
-    :type="type"
     :class="btnClass"
     @click="handleClick">
     <slot></slot>
@@ -13,27 +12,11 @@ const COMPONENT_NAME = 'calf-button'
 export default {
   name: COMPONENT_NAME,
   props: {
-    active: {
-      type: Boolean,
-      default: false
-    },
     disabled: {
       type: Boolean,
       default: false
     },
     inline: {
-      type: Boolean,
-      default: false
-    },
-    primary: {
-      type: Boolean,
-      default: false
-    },
-    outline: {
-      type: Boolean,
-      default: false
-    },
-    light: {
       type: Boolean,
       default: false
     },
@@ -45,13 +28,8 @@ export default {
   computed: {
     btnClass() {
       return {
-        'calf-button-active': this.active,
         'calf-button-disabled': this.disabled,
-        'calf-button-inline': this.inline,
-        'calf-button-primary': this.primary,
-        'calf-button-outline': this.outline,
-        'calf-button-outline-primary': this.outline && this.primary,
-        'calf-button-light': this.light
+        'calf-button-inline': this.inline
       }
     }
   },

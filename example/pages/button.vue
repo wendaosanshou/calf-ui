@@ -1,6 +1,6 @@
 <template>
   <div class="page-button">
-    <calf-button>按钮</calf-button>
+    <calf-button :active="true">按钮</calf-button>
     <calf-button :disabled="true">按钮</calf-button>
     <calf-button :inline="true">按钮</calf-button>
     <calf-button @click="handleClick">按钮</calf-button>
@@ -14,7 +14,9 @@ export default {
     handleClick() {
       this.$createDialog({
         content: '456',
-        onConfirm: () => {}
+        onConfirm: () => {
+          console.log('confirm')
+        }
       }).show()
     },
     handleBack() {
