@@ -27,7 +27,7 @@ export default {
 <style lang="postcss" scoped>
 .page-button {
   padding: 20px;
-  .calf-btn {
+  .calf-button {
     margin: 10px 0;
   }
 }

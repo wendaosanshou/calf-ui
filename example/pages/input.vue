@@ -1,8 +1,5 @@
 <template>
  <div class="page-input">
-   <calf-input>
-     <label slot="prepend" for="calf-input-field">测试</label>
-   </calf-input>
    <calf-input/>
  </div>
 </template>
