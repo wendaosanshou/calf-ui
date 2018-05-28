@@ -8,6 +8,13 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
+const allSource = [
+  resolve('src'),
+  resolve('example'),
+  resolve('test'),
+  resolve('document')
+]
+
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
@@ -21,17 +28,16 @@ const createLintingRule = () => ({
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    app: './example/main.js'
-  },
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath:
-      process.env.NODE_ENV === 'production'
-        ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath
-  },
+  entry: {},
+  output: {},
+  // output: {
+  //   path: config.build.assetsRoot,
+  //   filename: '[name].js',
+  //   publicPath:
+  //     process.env.NODE_ENV === 'production'
+  //       ? config.build.assetsPublicPath
+  //       : config.dev.assetsPublicPath
+  // },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
@@ -50,12 +56,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [
-          resolve('example'),
-          resolve('src'),
-          resolve('test'),
-          resolve('node_modules/webpack-dev-server/client')
-        ]
+        include: allSource
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

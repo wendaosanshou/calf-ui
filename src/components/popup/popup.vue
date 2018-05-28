@@ -2,10 +2,10 @@
   <div class="calf-popup" :style="{'z-index': zIndex}" :class="rootClass" v-show="isVisible">
     <div class="calf-popup-mask" @click="handleMask"></div>
     <div class="calf-popup-container">
-      <div class="cube-popup-content" v-if="$slots.default">
+      <div class="calf-popup-content" v-if="$slots.default">
         <slot></slot>
       </div>
-      <div class="cube-popup-content" v-else v-html="content">
+      <div class="calf-popup-content" v-else v-html="content">
       </div>
     </div>
   </div>

@@ -4,7 +4,6 @@
     <calf-loading type="bars"/>
     <calf-loading type="cylon"/>
     <calf-loading type="spokes"/>
-    <calf-loading type="cubes"/>
   </div>
 </template>
 

@@ -1,7 +1,12 @@
 import instantiateComponent from './instantiate-component'
 import parseRenderData from './parse-render-data'
 
-export default function createAPIComponent(Vue, Component, events = [], single = false) {
+export default function createAPIComponent(
+  Vue,
+  Component,
+  events = [],
+  single = false
+) {
   let singleComponent
   let singleInstance
   const beforeFns = []
@@ -20,7 +25,7 @@ export default function createAPIComponent(Vue, Component, events = [], single =
         delete options.single
       }
 
-      beforeFns.forEach((before) => {
+      beforeFns.forEach(before => {
         before(data, renderFn, instanceSingle)
       })
       if (instanceSingle === undefined) {
@@ -42,29 +47,35 @@ export default function createAPIComponent(Vue, Component, events = [], single =
         // singleComponent.show && singleComponent.show()
         return singleComponent
       }
-      const component = instantiateComponent(Vue, Component, data, renderFn, options)
+      const component = instantiateComponent(
+        Vue,
+        Component,
+        data,
+        renderFn,
+        options
+      )
       const instance = component.$parent
       const originRemove = component.remove
 
-      component.remove = function () {
-        if (instance.__cube__destroyed) {
+      component.remove = function() {
+        if (instance.__calf__destroyed) {
           return
         }
         originRemove && originRemove.call(this)
         instance.destroy()
-        instance.__cube__destroyed = true
+        instance.__calf__destroyed = true
         if (instanceSingle) {
           singleComponent = null
           singleInstance = null
         }
       }
       const originShow = component.show
-      component.show = function () {
+      component.show = function() {
         originShow && originShow.call(this)
         return this
       }
       const originHide = component.hide
-      component.hide = function () {
+      component.hide = function() {
         originHide && originHide.call(this)
         return this
       }
@@ -98,17 +109,18 @@ export default function createAPIComponent(Vue, Component, events = [], single =
       }
 
       const component = api.open(renderData, renderFn, options)
-      if (component.__cube__parent !== ownerInstance) {
-        component.__cube__parent = ownerInstance
-        const beforeDestroy = function () {
+      if (component.__calf__parent !== ownerInstance) {
+        component.__calf__parent = ownerInstance
+        const beforeDestroy = function() {
           cancelWatchProps()
-          if (component.__cube__parent === ownerInstance) {
+          if (component.__calf__parent === ownerInstance) {
             component.remove()
           }
           ownerInstance.$off('hook:beforeDestroy', beforeDestroy)
-          component.__cube__parent = null
+          component.__calf__parent = null
         }
-        isInVueInstance && ownerInstance.$on('hook:beforeDestroy', beforeDestroy)
+        isInVueInstance &&
+          ownerInstance.$on('hook:beforeDestroy', beforeDestroy)
       }
       return component
 
@@ -119,7 +131,7 @@ export default function createAPIComponent(Vue, Component, events = [], single =
 
           const watchKeys = []
           const watchPropKeys = []
-          Object.keys($props).forEach((key) => {
+          Object.keys($props).forEach(key => {
             const propKey = $props[key]
             if (typeof propKey === 'string' && propKey in ownerInstance) {
               // get instance value
@@ -131,15 +143,18 @@ export default function createAPIComponent(Vue, Component, events = [], single =
             }
           })
           if (isInVueInstance) {
-            ownerInstance.__createAPI_watcher = ownerInstance.$watch(function () {
-              const props = {}
-              watchKeys.forEach((key, i) => {
-                props[key] = ownerInstance[watchPropKeys[i]]
-              })
-              return props
-            }, function (newProps) {
-              component && component.$updateProps(newProps)
-            })
+            ownerInstance.__createAPI_watcher = ownerInstance.$watch(
+              function() {
+                const props = {}
+                watchKeys.forEach((key, i) => {
+                  props[key] = ownerInstance[watchPropKeys[i]]
+                })
+                return props
+              },
+              function(newProps) {
+                component && component.$updateProps(newProps)
+              }
+            )
           }
         }
       }
@@ -149,7 +164,7 @@ export default function createAPIComponent(Vue, Component, events = [], single =
         if ($events) {
           delete renderData.props.$events
 
-          Object.keys($events).forEach((event) => {
+          Object.keys($events).forEach(event => {
             let eventHandler = $events[event]
             if (typeof eventHandler === 'string') {
               eventHandler = ownerInstance[eventHandler]

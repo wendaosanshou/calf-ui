@@ -2,13 +2,19 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Cube from '../src/index'
 import App from './App.vue'
 import router from './router'
 
+// dev example
+// import Calf from '../src/index'
+
+// prod example
+import '../lib/calf.min.css'
+import Calf from '../lib/calf.min.js'
+
 /* eslint-disable no-unused-vars */
 // import vConsole from 'vconsole'
-Vue.use(Cube)
+Vue.use(Calf)
 Vue.use(VueRouter)
 
 /* eslint-disable no-new */

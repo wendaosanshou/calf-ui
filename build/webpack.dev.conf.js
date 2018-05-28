@@ -14,7 +14,16 @@ var version = require('../package.json').version
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+var entry = {
+  app: './example/main.js'
+}
+// add hot-reload related code to entry chunks
+// Object.keys(entry).forEach(function (name) {
+//   entry[name] = ['./build/dev-client'].concat(entry[name])
+// })
+
 const devWebpackConfig = merge(baseWebpackConfig, {
+  entry: entry,
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.dev.cssSourceMap,

@@ -1,3 +1,3 @@
-export const warn = function (msg) {
-  console.warn(`[cube-ui warn]: ${msg}`)
+export const warn = function(msg) {
+  console.warn(`[calf-ui warn]: ${msg}`)
 }
