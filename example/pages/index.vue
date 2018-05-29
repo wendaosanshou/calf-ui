@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .calf-header {
   width: 100%;
   height: 44px;

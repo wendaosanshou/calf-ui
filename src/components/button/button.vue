@@ -4,6 +4,14 @@
     :class="btnClass"
     @click="handleClick">
     <slot></slot>
+    <div v-if="$slots.content && $slots.desc">
+      <div class="calf-button-content">
+        <slot name="content"></slot>
+      </div>
+      <div class="calf-button-desc">
+        <slot name="desc"></slot>
+      </div>
+    </div>
   </button>
 </template>
 
@@ -16,7 +24,15 @@ export default {
       type: Boolean,
       default: false
     },
-    inline: {
+    inlineConfirm: {
+      type: Boolean,
+      default: false
+    },
+    inlineCancel: {
+      type: Boolean,
+      default: false
+    },
+    invalid: {
       type: Boolean,
       default: false
     },
@@ -29,13 +45,15 @@ export default {
     btnClass() {
       return {
         'calf-button-disabled': this.disabled,
-        'calf-button-inline': this.inline
+        'calf-button-invalid': this.invalid,
+        'calf-button-inline-confirm': this.inlineConfirm,
+        'calf-button-inline-cancel': this.inlineCancel
       }
     }
   },
   methods: {
     handleClick(event) {
-      if (this.disabled) {
+      if (this.disabled || this.invalid) {
         event.preventDefault()
         event.stopPropagation()
         return
@@ -49,36 +67,70 @@ export default {
 <style lang="postcss" scoped>
 @import '../../common/style/base.css';
 
+.calf-button-content {
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 24px;
+}
+.calf-button-desc {
+  font-size: 11px;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
 .calf-button {
   box-sizing: border-box;
   display: block;
-  padding: 17px 16px;
   width: 100%;
+  height: 44px;
+  line-height: 44px;
+  color: #ffffff;
+  font-size: 17px;
+  letter-spacing: 0;
   text-align: center;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  color: #fff;
   background: linear-gradient(-270deg, #ff9155 0%, #fe7336 100%);
+  box-shadow: 0 3px 10px 0 rgba(255, 146, 80, 0.5);
+  border-radius: 4px;
   outline: none;
   border: none;
-  border-radius: 2px;
+  border-radius: 4px;
+  &:active {
+    opacity: 0.8;
+  }
   &.calf-button-disabled {
     opacity: 0.5;
     &:active {
       opacity: 0.5;
     }
   }
-  &.calf-button-inline {
-    width: auto;
-    display: inline-block;
-    vertical-align: middle;
-    padding: 9px 10px;
-    font-size: 12px;
+  &.calf-button-invalid {
+    background: #cccccc;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+    &:active {
+      opacity: 1;
+      background: #cccccc;
+      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+    }
   }
-  &:active {
-    opacity: 0.9;
+  &.calf-button-inline-confirm {
+    display: inline-block;
+    width: 120px;
+    height: 32px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #ffffff;
+    vertical-align: middle;
+  }
+  &.calf-button-inline-cancel {
+    display: inline-block;
+    width: 120px;
+    height: 32px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #f95c06;
+    background: #ffffff;
+    border: 1px solid #f95c06;
+    box-shadow: 0 0 0 0 #fff;
+    vertical-align: middle;
   }
 }
 </style>

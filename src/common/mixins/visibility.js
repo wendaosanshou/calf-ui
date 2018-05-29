@@ -37,7 +37,7 @@ export default {
       (newVal, oldVal) => {
         if (newVal) {
           this.show()
-        } else if (oldVal && !this._createAPI_reuse) {
+        } else if (oldVal) {
           this.hide()
         }
       },
