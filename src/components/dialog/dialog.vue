@@ -1,27 +1,21 @@
 <template>
-  <calf-popup type="dialog" v-show="isVisible">
-    <div class="calf-main" :class="rootClass">
-      <h1 class="calf-header">{{title}}</h1>
-      <div class="calf-content">{{content}}</div>
-      <div class="calf-btns-default"
-        v-if="type === 'default'">
-        <button
-          class="calf-button-default-cancel"
-          @click="handleCancel">取消</button>
-        <button
-          class="calf-button-default-confirm"
-          @click="handleConfirm">确定</button>
+  <calf-popup type="dialog" @mask-click="handleMaskClick" v-show="isVisible">
+    <div class="calf-dialog" :class="rootClass">
+      <h1 class="calf-header">
+        {{title}}
+        <i class="icon-close" @click="handleCancel" v-if="showClose || !hasTitle"></i>
+      </h1>
+      <div class="calf-content" v-if="$slots.default">
+        <slot></slot>
       </div>
-      <div class="calf-btns-primary"
-        v-else-if="type === 'primary'">
-        <calf-button
-          :inlineCancel="true"
-          @click="handleCancel">取消</calf-button>
-        <calf-button
-          class="calf-btn-confirm"
-          :inlineConfirm="true"
-          @click="handleConfirm">确认</calf-button>
-      </div>
+      <div class="calf-content" v-else>{{content}}</div>
+      <the-btns
+        :type="type"
+        :confirmBtn="confirmBtn"
+        :cancelBtn="cancelBtn"
+        :onlyOneBtn="onlyOneBtn"
+        @on-cancle="handleCancel"
+        @on-confirm="handleConfirm"/>
     </div>
   </calf-popup>
 </template>
@@ -29,7 +23,7 @@
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
 import CalfPopup from '../popup/popup'
-import CalfButton from '../button/button'
+import TheBtns from './the-btns'
 
 const COMPONENT_NAME = 'calf-dialog'
 const EVENT_CONFIRM = 'confirm'
@@ -50,11 +44,38 @@ export default {
     type: {
       type: String,
       default: 'default'
+    },
+    showClose: {
+      type: Boolean,
+      default: false
+    },
+    maskCancle: {
+      type: Boolean,
+      default: false
+    },
+    confirmBtn: {
+      type: [Object, String],
+      default: '确定'
+    },
+    cancelBtn: {
+      type: [Object, String],
+      default: '取消'
+    },
+    onlyOneBtn: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
+    hasTitle() {
+      return this.title && this.title.length > 0
+    },
     rootClass() {
-      return `calf-dialog-${this.type}`
+      let allRootClass = [`calf-dialog-${this.type}`]
+      if (this.hasTitle) {
+        allRootClass.push('has-title')
+      }
+      return allRootClass.join(' ')
     }
   },
   methods: {
@@ -65,22 +86,36 @@ export default {
     handleConfirm(e) {
       this.hide()
       this.$emit(EVENT_CONFIRM, e)
+    },
+    handleMaskClick(e) {
+      if (this.maskCancle) {
+        this.hide()
+      }
     }
   },
   components: {
     CalfPopup,
-    CalfButton
+    TheBtns
   }
 }
 </script>
 
 <style lang="postcss" scoped>
-.calf-main {
+.calf-dialog {
   width: 295px;
   height: auto;
   background: #ffffff;
-  border-radius: 4px;
+  border-radius: 8px;
+  &.has-title {
+    .calf-header {
+      border-bottom: 1px solid #f1f1f1;
+    }
+    .calf-content {
+      padding: 20px 16px 28px 17px;
+    }
+  }
   .calf-header {
+    position: relative;
     width: 100%;
     height: 44px;
     line-height: 44px;
@@ -89,7 +124,26 @@ export default {
     text-align: center;
     background: #ffffff;
     border-radius: 8px 8px 0 0;
-    border-bottom: 1px solid #f1f1f1;
+
+    .icon-close {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      width: 44px;
+      height: 44px;
+      &:after {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 14px;
+        background: url('../../common/icon/calfic-close.png');
+        background-size: 100% 100%;
+      }
+    }
   }
   .calf-content {
     box-sizing: border-box;
@@ -101,71 +155,7 @@ export default {
     letter-spacing: 0;
     line-height: 20px;
     text-align: center;
-    padding: 20px 16px 28px 17px;
-  }
-  &.calf-dialog-default {
-  }
-}
-
-.calf-btns-default {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  width: 100%;
-  height: 48px;
-  line-height: 24px;
-  border-top: 1px solid #f1f1f1;
-  border-radius: 0 0 8px 8px;
-  .calf-button-default-cancel {
-    box-sizing: border-box;
-    display: block;
-    width: 50%;
-    height: 100%;
-    font-size: 16px;
-    color: #333333;
-    text-align: center;
-    background: #ffffff;
-    border: 0;
-    border-radius: 0 0 0 8px;
-  }
-  .calf-button-default-confirm {
-    box-sizing: border-box;
-    display: block;
-    flex-grow: 1;
-    width: auto;
-    height: 100%;
-    font-size: 16px;
-    color: #f95c06;
-    text-align: center;
-    background: #ffffff;
-    border: 0;
-    border-left: 1px solid #f1f1f1;
-    border-radius: 0 0 8px 0;
-  }
-}
-
-.calf-btns-primary {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
-  height: auto;
-  padding-bottom: 24px;
-  .calf-btn-confirm {
-    margin-left: 15px;
-  }
-  .calf-dialog-btn {
-    width: 124px;
-    height: 36px;
-    line-height: 16px;
-    font-size: 16px;
-    color: #ffffff;
-    background-image: linear-gradient(-270deg, #fe7336 0%, #ff9155 100%);
-    border-radius: 4px;
-    border: 0;
+    padding: 0 16px 28px 17px;
   }
 }
 </style>

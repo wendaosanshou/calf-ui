@@ -40,7 +40,12 @@ export default {
   },
   methods: {
     getFilterName(path) {
-      let name = path.replace(/([^\w])([\w])([\w]*)/g, function(word, a, b, c) {
+      let name = path.replace(/^([^\w])([\w])([\w]*)$/g, function(
+        word,
+        a,
+        b,
+        c
+      ) {
         return b.toUpperCase() + c
       })
       return name

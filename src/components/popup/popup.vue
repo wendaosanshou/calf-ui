@@ -35,11 +35,7 @@ export default {
   },
   computed: {
     rootClass() {
-      let rootClass = ''
-      if (this.type === 'dialog') {
-        rootClass = 'calf-popup-dialog'
-      }
-      return rootClass
+      return `calf-popup-${this.type}`
     }
   },
   methods: {
@@ -74,15 +70,20 @@ export default {
   .calf-popup-content {
     font-size: 14px;
     color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.8);
   }
 }
 
 .calf-popup-dialog {
   .calf-popup-content {
     padding: 0;
+    border-radius: 8px;
+  }
+}
+
+.calf-popup-toast {
+  .calf-popup-content {
+    padding: 0;
+    border-radius: 4px;
   }
 }
 </style>

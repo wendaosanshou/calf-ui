@@ -6,6 +6,7 @@ import {
   Checkbox,
   Input,
   Textarea,
+  Toast,
   Switch
 } from './module'
 
@@ -22,6 +23,7 @@ function install(Vue) {
     Checkbox,
     Input,
     Textarea,
+    Toast,
     Switch
   ]
   components.forEach(Component => {

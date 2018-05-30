@@ -5,6 +5,17 @@ import Loading from './modules/loading'
 import Checkbox from './modules/checkbox'
 import Input from './modules/input'
 import Textarea from './modules/textarea'
+import Toast from './modules/toast'
 import Switch from './modules/switch'
 
-export { Button, Popup, Dialog, Loading, Checkbox, Input, Textarea, Switch }
+export {
+  Button,
+  Popup,
+  Dialog,
+  Loading,
+  Checkbox,
+  Input,
+  Textarea,
+  Toast,
+  Switch
+}

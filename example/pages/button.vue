@@ -23,7 +23,7 @@ export default {
   methods: {
     handleClick() {
       this.$createDialog({
-        content: '456',
+        content: '银行预留手机号码用于银行卡进行快捷',
         onConfirm: () => {
           console.log('confirm')
         }

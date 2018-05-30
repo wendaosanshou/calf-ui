@@ -1,8 +1,8 @@
 import Button from '../pages/button.vue'
 import Checkbox from '../pages/checkbox.vue'
-import Popup from '../pages/popup.vue'
 import Dialog from '../pages/dialog.vue'
 import Loading from '../pages/loading.vue'
+import Toast from '../pages/toast.vue'
 import Input from '../pages/input.vue'
 import Textarea from '../pages/textarea.vue'
 import Switch from '../pages/switch.vue'
@@ -14,12 +14,12 @@ const routes = [
     component: Button
   },
   {
-    path: '/popup',
-    component: Popup
-  },
-  {
     path: '/dialog',
     component: Dialog
+  },
+  {
+    path: '/toast',
+    component: Toast
   },
   {
     path: '/loading',

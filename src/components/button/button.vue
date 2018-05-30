@@ -3,7 +3,6 @@
     class="calf-button"
     :class="btnClass"
     @click="handleClick">
-    <slot></slot>
     <div v-if="$slots.content && $slots.desc">
       <div class="calf-button-content">
         <slot name="content"></slot>
@@ -12,6 +11,7 @@
         <slot name="desc"></slot>
       </div>
     </div>
+    <slot v-else></slot>
   </button>
 </template>
 

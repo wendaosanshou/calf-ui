@@ -1,7 +1,9 @@
 <template>
   <div class="page-popup">
     <calf-button @click="handleClick">触发</calf-button>
-    <calf-popup v-model="visible">123123</calf-popup>
+    <calf-popup :maskCancle="true" v-model="visible">
+      借款金额不能超过100万
+    </calf-popup>
   </div>
 </template>
 
@@ -14,7 +16,6 @@ export default {
   },
   methods: {
     handleClick() {
-      console.log('click')
       this.visible = true
     }
   }
