@@ -140,7 +140,7 @@ export default {
         display: block;
         width: 14px;
         height: 14px;
-        background: url('../../common/icon/calfic-close.png');
+        background: resolve('calfic-close-gray.png');
         background-size: 100% 100%;
       }
     }

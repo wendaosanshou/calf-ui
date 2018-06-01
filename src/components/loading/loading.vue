@@ -1,8 +1,12 @@
 <template>
-  <img :src="target" class="loading-image" />
+  <div class="calf-loading">
+    <calf-icon name="loading" class="loading-image loading-rotation"/>
+  </div>
 </template>
 
 <script>
+import CalfIcon from '../icon/icon.vue'
+
 const COMPONENT_NAME = 'calf-loading'
 export default {
   name: COMPONENT_NAME,
@@ -12,22 +16,19 @@ export default {
       default: 'spinning-bubbles'
     }
   },
-  computed: {
-    target() {
-      return require(`./assets/loading-${this.type}.svg`)
-    }
+  computed: {},
+  components: {
+    CalfIcon
   }
 }
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/animation.css';
+
 .loading-image {
   display: block;
-  width: 50px;
-  height: 50px;
-}
-
-svg {
-  fill: #ffffff;
+  width: 18px;
+  height: 18px;
 }
 </style>

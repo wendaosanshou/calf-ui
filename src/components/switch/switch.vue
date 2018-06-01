@@ -50,27 +50,22 @@ $switch-distance: 20px;
   display: flex;
   position: relative;
   align-items: center;
-
   .calf-switch-input {
     position: absolute;
     z-index: 1;
     width: $switch-width;
     height: $switch-height;
     opacity: 0;
-
     &:checked + .calf-switch-ui {
       border-color: $switch-on-bgc;
       background-color: $switch-on-bgc;
-
       &::before {
         transform: scale(0);
       }
-
       &::after {
         transform: translateX($switch-distance);
       }
     }
-
     &:disabled + .calf-switch-ui {
       opacity: 0.3;
     }
@@ -84,7 +79,6 @@ $switch-distance: 20px;
     border: 1px solid $switch-off-border-color;
     border-radius: $switch-height;
     background-color: $switch-off-border-color;
-
     &::before,
     &::after {
       content: '';
@@ -97,18 +91,15 @@ $switch-distance: 20px;
       background-color: $switch-off-bgc;
       transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.28);
     }
-
     &::after {
       width: $switch-height;
       background-color: $color-white;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
   }
-
   .calf-switch-label {
     display: inline-block;
     margin-left: 10px;
-
     &:empty {
       margin-left: 0;
     }

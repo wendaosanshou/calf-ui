@@ -3,6 +3,7 @@
    <calf-button @click="handleClick1">toast（一行）</calf-button>
    <calf-button @click="handleClick2">toast（多行）</calf-button>
    <calf-button @click="handleClick3">toast（3s后隐藏）</calf-button>
+   <calf-button @click="handleClick4">toast（带图标）</calf-button>
  </div>
 </template>
 
@@ -30,6 +31,17 @@ export default {
       this.$createToast({
         duration: 3 * 1000,
         content: '银行预留手机号码用于银行卡进行快捷',
+        onClose: () => {
+          console.log('close')
+        }
+      }).show()
+    },
+    handleClick4() {
+      this.$createToast({
+        duration: 3 * 1000,
+        // icon: 'tick-red',
+        icon: 'error-red',
+        content: '加载中...',
         onClose: () => {
           console.log('close')
         }

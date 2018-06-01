@@ -1,10 +1,11 @@
 import Button from '../pages/button.vue'
-import Checkbox from '../pages/checkbox.vue'
+// import Checkbox from '../pages/checkbox.vue'
 import Dialog from '../pages/dialog.vue'
 import Loading from '../pages/loading.vue'
 import Toast from '../pages/toast.vue'
-import Input from '../pages/input.vue'
-import Textarea from '../pages/textarea.vue'
+import Notice from '../pages/notice.vue'
+// import Input from '../pages/input.vue'
+// import Textarea from '../pages/textarea.vue'
 import Switch from '../pages/switch.vue'
 import Index from '../pages/index.vue'
 
@@ -22,21 +23,25 @@ const routes = [
     component: Toast
   },
   {
+    path: '/notice',
+    component: Notice
+  },
+  {
     path: '/loading',
     component: Loading
   },
-  {
-    path: '/checkbox',
-    component: Checkbox
-  },
-  {
-    path: '/input',
-    component: Input
-  },
-  {
-    path: '/textarea',
-    component: Textarea
-  },
+  // {
+  //   path: '/checkbox',
+  //   component: Checkbox
+  // },
+  // {
+  //   path: '/input',
+  //   component: Input
+  // },
+  // {
+  //   path: '/textarea',
+  //   component: Textarea
+  // },
   {
     path: '/switch',
     component: Switch

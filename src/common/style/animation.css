@@ -1,0 +1,14 @@
+/* loading动画 */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-rotation {
+  transform: rotate(360deg);
+  animation: rotation 3s linear infinite;
+}

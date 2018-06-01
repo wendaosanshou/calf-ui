@@ -1,6 +1,7 @@
 @import './variable.css';
 @import './mixin.css';
 @import './calf-icon.css';
+@import './animation.css';
 
 body,
 html {

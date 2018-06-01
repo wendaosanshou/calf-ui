@@ -5,6 +5,7 @@ import {
   Loading,
   Checkbox,
   Input,
+  Notice,
   Textarea,
   Toast,
   Switch
@@ -22,6 +23,7 @@ function install(Vue) {
     Loading,
     Checkbox,
     Input,
+    Notice,
     Textarea,
     Toast,
     Switch

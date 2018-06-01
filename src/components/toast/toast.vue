@@ -4,6 +4,10 @@
       <slot></slot>
     </div>
     <div class="calf-toast" v-else>
+      <claf-icon
+        class="calf-toast-icon"
+        v-if="icon"
+        :name="icon"/>
       {{content}}
     </div>
   </calf-popup>
@@ -11,6 +15,7 @@
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
+import ClafIcon from '../icon/icon'
 import CalfPopup from '../popup/popup'
 
 const COMPONENT_NAME = 'calf-toast'
@@ -26,6 +31,10 @@ export default {
     }
   },
   props: {
+    type: {
+      type: String,
+      default: 'toast'
+    },
     duration: {
       type: Number,
       default: 0
@@ -33,6 +42,10 @@ export default {
     content: {
       type: String,
       default: '未知的系统错误'
+    },
+    icon: {
+      type: String,
+      default: ''
     }
   },
   computed: {},
@@ -59,7 +72,10 @@ export default {
       }, this.duration)
     }
   },
-  components: {},
+  components: {
+    CalfPopup,
+    ClafIcon
+  },
   mounted() {}
 }
 </script>
@@ -67,8 +83,13 @@ export default {
 <style lang="postcss" scoped>
 .calf-toast {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: auto;
   max-width: 270px;
+  height: auto;
   font-size: 14px;
   color: #ffffff;
   padding: 8px 16px;
@@ -76,5 +97,10 @@ export default {
   text-align: center;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
+  .calf-toast-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
+  }
 }
 </style>
