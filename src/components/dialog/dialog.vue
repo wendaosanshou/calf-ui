@@ -1,23 +1,25 @@
 <template>
-  <calf-popup type="dialog" @mask-click="handleMaskClick" v-show="isVisible">
-    <div class="calf-dialog" :class="rootClass">
-      <h1 class="calf-header">
-        {{title}}
-        <i class="icon-close" @click="handleCancel" v-if="showClose || !hasTitle"></i>
-      </h1>
-      <div class="calf-content" v-if="$slots.default">
-        <slot></slot>
+  <transition name="calf-dialog-fade">
+    <calf-popup type="dialog" @mask-click="handleMaskClick" v-show="isVisible">
+      <div class="calf-dialog" :class="rootClass">
+        <h1 class="calf-header">
+          {{title}}
+          <i class="icon-close" @click="handleCancel" v-if="showClose || !hasTitle"></i>
+        </h1>
+        <div class="calf-content" v-if="$slots.default">
+          <slot></slot>
+        </div>
+        <div class="calf-content" v-else>{{content}}</div>
+        <the-btns
+          :type="type"
+          :confirmBtn="confirmBtn"
+          :cancelBtn="cancelBtn"
+          :onlyOneBtn="onlyOneBtn"
+          @on-cancle="handleCancel"
+          @on-confirm="handleConfirm"/>
       </div>
-      <div class="calf-content" v-else>{{content}}</div>
-      <the-btns
-        :type="type"
-        :confirmBtn="confirmBtn"
-        :cancelBtn="cancelBtn"
-        :onlyOneBtn="onlyOneBtn"
-        @on-cancle="handleCancel"
-        @on-confirm="handleConfirm"/>
-    </div>
-  </calf-popup>
+    </calf-popup>
+  </transition>
 </template>
 
 <script>
@@ -156,6 +158,61 @@ export default {
     line-height: 20px;
     text-align: center;
     padding: 0 16px 28px 17px;
+  }
+}
+
+.calf-dialog-fade-enter-active {
+  animation: dialog-fadein 0.4s;
+  .calf-dialog {
+    animation: dialog-zoom 0.4s;
+  }
+}
+
+.calf-dialog-fade-leave-active {
+  animation: dialog-fadeout 0.4s;
+  .calf-dialog {
+    animation: dialog-zoom-out 0.4s;
+  }
+}
+
+@keyframes dialog-fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dialog-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-zoom {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dialog-zoom-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
   }
 }
 </style>

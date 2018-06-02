@@ -4,6 +4,7 @@ import Dialog from '../pages/dialog.vue'
 import Loading from '../pages/loading.vue'
 import Toast from '../pages/toast.vue'
 import Notice from '../pages/notice.vue'
+import PullRefresh from '../pages/pull-refresh.vue'
 // import Input from '../pages/input.vue'
 // import Textarea from '../pages/textarea.vue'
 import Switch from '../pages/switch.vue'
@@ -25,6 +26,10 @@ const routes = [
   {
     path: '/notice',
     component: Notice
+  },
+  {
+    path: '/pull-refresh',
+    component: PullRefresh
   },
   {
     path: '/loading',

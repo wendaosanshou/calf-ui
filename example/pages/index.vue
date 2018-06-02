@@ -29,6 +29,7 @@ export default {
           return hasWord
         })
         .map(item => {
+          console.log(item)
           let name = this.getFilterName(item.path)
           return {
             path: item.path,
@@ -40,12 +41,7 @@ export default {
   },
   methods: {
     getFilterName(path) {
-      let name = path.replace(/^([^\w])([\w])([\w]*)$/g, function(
-        word,
-        a,
-        b,
-        c
-      ) {
+      let name = path.replace(/^([^\w])([\w])(.*)$/g, function(word, a, b, c) {
         return b.toUpperCase() + c
       })
       return name

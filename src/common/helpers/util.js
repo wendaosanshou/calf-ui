@@ -5,7 +5,7 @@ function findIndex(ary, fn) {
   /* istanbul ignore next */
   let index = -1
   /* istanbul ignore next */
-  ary.some(function (item, i, ary) {
+  ary.some(function(item, i, ary) {
     const ret = fn.call(this, item, i, ary)
     if (ret) {
       index = i
@@ -77,7 +77,7 @@ function resetTypeValue(obj, key, defVal) {
     const resetHandler = typesReset[typeof value]
     resetHandler && resetHandler(obj, key, value)
   } else {
-    Object.keys(obj).forEach((key) => {
+    Object.keys(obj).forEach(key => {
       resetTypeValue(obj, key)
     })
   }
@@ -91,7 +91,7 @@ function parallel(tasks, cb) {
     return cb(results)
   }
   tasks.forEach((task, i) => {
-    task((ret) => {
+    task(ret => {
       doneCount += 1
       results[i] = ret
       if (doneCount === tasksLen) {
@@ -106,8 +106,8 @@ function cb2PromiseWithResolve(cb) {
   let promise
   if (typeof window.Promise !== 'undefined') {
     const _cb = cb
-    promise = new window.Promise((resolve) => {
-      cb = (data) => {
+    promise = new window.Promise(resolve => {
+      cb = data => {
         _cb && _cb(data)
         resolve(data)
       }
@@ -121,14 +121,14 @@ function debounce(func, wait, immediate, initValue) {
   let timeout
   let result = initValue
 
-  const later = function (context, args) {
+  const later = function(context, args) {
     timeout = null
     if (args) {
       result = func.apply(context, args)
     }
   }
 
-  const debounced = function (...args) {
+  const debounced = function(...args) {
     if (timeout) {
       clearTimeout(timeout)
     }
@@ -147,7 +147,7 @@ function debounce(func, wait, immediate, initValue) {
     return result
   }
 
-  debounced.cancel = function () {
+  debounced.cancel = function() {
     clearTimeout(timeout)
     timeout = null
   }
@@ -155,4 +155,36 @@ function debounce(func, wait, immediate, initValue) {
   return debounced
 }
 
-export { findIndex, deepAssign, createAddAPI, toLocaleDateString, resetTypeValue, parallel, cb2PromiseWithResolve, debounce }
+function throttle(fn, delay, mustRunDelay = 0) {
+  let timer = null
+  let tStart
+  return function() {
+    const context = this
+    const args = arguments
+    const tCurr = +new Date()
+    clearTimeout(timer)
+    if (!tStart) {
+      tStart = tCurr
+    }
+    if (mustRunDelay !== 0 && tCurr - tStart >= mustRunDelay) {
+      fn.apply(context, args)
+      tStart = tCurr
+    } else {
+      timer = setTimeout(function() {
+        fn.apply(context, args)
+      }, delay)
+    }
+  }
+}
+
+export {
+  findIndex,
+  deepAssign,
+  createAddAPI,
+  toLocaleDateString,
+  resetTypeValue,
+  parallel,
+  cb2PromiseWithResolve,
+  debounce,
+  throttle
+}

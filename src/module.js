@@ -5,6 +5,7 @@ import Loading from './modules/loading'
 import Checkbox from './modules/checkbox'
 import Input from './modules/input'
 import Notice from './modules/notice'
+import PullRefresh from './modules/pull-refresh'
 import Textarea from './modules/textarea'
 import Toast from './modules/toast'
 import Switch from './modules/switch'
@@ -17,6 +18,7 @@ export {
   Checkbox,
   Input,
   Notice,
+  PullRefresh,
   Textarea,
   Toast,
   Switch

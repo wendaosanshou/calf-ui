@@ -1,10 +1,12 @@
 <template>
- <div class="calf-notice" :class="rootClass" v-show="value" @click="handleArrowToogle">
-  <i class="calf-icon-broadcast" :class="iconBroadcastClass" v-show="showIcon"></i>
-  <p class="calf-notice-content" ref="content">{{content}}</p>
-  <i class="calf-icon-close" :class="iconCloseClass" @click="handleClose" v-show="showClose"></i>
-  <i class="calf-icon-arrow" :class="iconArrowClass" v-show="showArrow"></i>
- </div>
+  <transition name="calf-notice-fade">
+    <div class="calf-notice" :class="rootClass" v-show="value" @click="handleArrowToogle">
+      <i class="calf-icon-broadcast" :class="iconBroadcastClass" v-show="showIcon"></i>
+      <p class="calf-notice-content" ref="content">{{content}}</p>
+      <i class="calf-icon-close" :class="iconCloseClass" @click="handleClose" v-show="showClose"></i>
+      <i class="calf-icon-arrow" :class="iconArrowClass" v-show="showArrow"></i>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -94,7 +96,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding-left: 16px;
+  padding: 0 16px;
   &.calf-notice-info {
     color: #666666;
     background: #ffffff;
@@ -179,6 +181,31 @@ export default {
       background: resolve('calfic-right-red.png');
       background-size: 100% 100%;
     }
+  }
+}
+
+.calf-notice-fade-enter-active {
+  animation: notice-in 0.2s;
+}
+.calf-notice-fade-leave-active {
+  animation: notice-out 0.2s;
+}
+
+@keyframes notice-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes notice-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 </style>

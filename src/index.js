@@ -6,6 +6,7 @@ import {
   Checkbox,
   Input,
   Notice,
+  PullRefresh,
   Textarea,
   Toast,
   Switch
@@ -24,6 +25,7 @@ function install(Vue) {
     Checkbox,
     Input,
     Notice,
+    PullRefresh,
     Textarea,
     Toast,
     Switch

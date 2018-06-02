@@ -1,16 +1,18 @@
 <template>
-  <calf-popup type="toast" @mask-click="handleMaskClick" v-show="isVisible">
-    <div class="calf-toast" v-if="$slots.default">
-      <slot></slot>
-    </div>
-    <div class="calf-toast" v-else>
-      <claf-icon
-        class="calf-toast-icon"
-        v-if="icon"
-        :name="icon"/>
-      {{content}}
-    </div>
-  </calf-popup>
+  <transition name="calf-toast-fade">
+    <calf-popup type="toast" @mask-click="handleMaskClick" v-show="isVisible">
+      <div class="calf-toast" v-if="$slots.default">
+        <slot></slot>
+      </div>
+      <div class="calf-toast" v-else>
+        <claf-icon
+          class="calf-toast-icon"
+          v-if="icon"
+          :name="icon"/>
+        {{content}}
+      </div>
+    </calf-popup>
+  </transition>
 </template>
 
 <script>
@@ -101,6 +103,31 @@ export default {
     width: 28px;
     height: 28px;
     margin-bottom: 8px;
+  }
+}
+
+.calf-toast-fade-enter-active {
+  animation: toast-in 0.2s;
+}
+.calf-toast-fade-leave-active {
+  animation: toast-out 0.2s;
+}
+
+@keyframes toast-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes toast-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 </style>
