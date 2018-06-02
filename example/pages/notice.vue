@@ -50,7 +50,10 @@ export default {
       console.log('close')
     },
     handleNotice3() {
-      console.log('toogle')
+      this.$createToast({
+        duration: 1 * 1000,
+        content: 'toogle'
+      }).show()
     },
     handleNotice4() {
       console.log('close')
