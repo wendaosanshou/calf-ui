@@ -1,22 +1,22 @@
 const TOP_DEFAULT_CONFIG = {
-  pullText: '下拉刷新',
-  triggerText: '释放更新',
+  pullText: '下拉即可刷新',
+  triggerText: '释放即可刷新',
   loadingText: '加载中...',
   doneText: '加载完成',
   failText: '加载失败',
   loadedStayTime: 400,
-  stayDistance: 50,
+  stayDistance: 40,
   triggerDistance: 70
 }
 
 const BOTTOM_DEFAULT_CONFIG = {
-  pullText: '上拉加载',
-  triggerText: '释放更新',
+  pullText: '上拉即可刷新',
+  triggerText: '释放即可刷新',
   loadingText: '加载中...',
   doneText: '加载完成',
   failText: '加载失败',
   loadedStayTime: 400,
-  stayDistance: 50,
+  stayDistance: 40,
   triggerDistance: 70
 }
 

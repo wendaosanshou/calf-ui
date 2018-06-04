@@ -3,16 +3,15 @@
 ```vue
 <template>
   <div>
-    <pull-to :top-load-method="refresh">
+    <calf-pull-refresh :top-load-method="refresh">
       <ul v-for="item in dataList">
         <li>{{ item }}</li>
       </ul>
-    </pull-to>
+    </calf-pull-refresh>
   </div>
 </template>
 
 <script>
-import PullTo from 'vue-pull-to'
 import { fetchDataList } from 'api'
 
 export default {

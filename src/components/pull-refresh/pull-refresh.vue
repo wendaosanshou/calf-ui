@@ -7,6 +7,7 @@
       <slot name="top-block"
             :state="state"
             :state-text="topText">
+        <i class="default-loading" :class="iconClass"></i>
         <p class="default-text">{{ topText }}</p>
       </slot>
     </div>
@@ -38,11 +39,11 @@ export default {
     },
     topBlockHeight: {
       type: Number,
-      default: 50
+      default: 40
     },
     bottomBlockHeight: {
       type: Number,
-      default: 50
+      default: 40
     },
     wrapperHeight: {
       type: String,
@@ -113,6 +114,9 @@ export default {
     },
     _bottomConfig: function() {
       return Object.assign({}, BOTTOM_DEFAULT_CONFIG, this.bottomConfig)
+    },
+    iconClass() {
+      return this.state ? `icon-${this.state}` : ''
     }
   },
   watch: {
@@ -321,7 +325,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
+@import '../../common/style/animation.css';
+
 .calf-pull-refresh-wrapper {
   display: flex;
   flex-direction: column;
@@ -336,12 +342,50 @@ export default {
 
 .calf-pull-refresh-wrapper .action-block {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
+.default-loading {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  &.icon-pull,
+  &.icon-trigger {
+    transition: all 0.3s;
+    background: resolve('calfic-loading-down.png');
+    background-size: 100% 100%;
+  }
+  &.icon-pull {
+    transform: rotate(0deg);
+  }
+  &.icon-trigger {
+    transform: rotate(180deg);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    width: 16px;
+    height: 16px;
+    transform: rotate(360deg);
+    animation: rotation 3s linear infinite;
+    background: resolve('calfic-loading.png');
+    background-size: 100% 100%;
+  }
+}
+
 .default-text {
+  font-size: 12px;
+  color: #999999;
   height: 100%;
-  line-height: 50px;
+  line-height: 40px;
+  margin-left: 8px;
   text-align: center;
 }
 </style>
