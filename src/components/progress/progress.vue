@@ -7,7 +7,8 @@
   <progress-lable
     :current="current"
     :steps="steps"
-    v-else-if="isLable" />
+    :isFinish="isFinish"
+    v-else-if="isLable"/>
   <progress-default
     :current="current"
     :steps="steps"
@@ -40,6 +41,10 @@ export default {
       default() {
         return ['']
       }
+    },
+    isFinish: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
