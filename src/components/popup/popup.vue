@@ -60,16 +60,29 @@ export default {
     height: 100%;
     background-color: rgba(51, 51, 51, 0.6);
   }
-  .calf-popup-container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: auto;
-    transform: translate(-50%, -50%);
+  .calf-popup-dialog,
+  .calf-popup-toast {
+    .calf-popup-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: auto;
+      transform: translate(-50%, -50%);
+    }
   }
   .calf-popup-content {
     font-size: 14px;
     color: #ffffff;
+  }
+}
+
+.calf-popup-captch {
+  .calf-popup-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
   }
 }
 

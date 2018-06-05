@@ -1,4 +1,5 @@
 import Button from '../pages/button.vue'
+import captch from '../pages/captch.vue'
 // import Checkbox from '../pages/checkbox.vue'
 import Dialog from '../pages/dialog.vue'
 import Loading from '../pages/loading.vue'
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/button',
     component: Button
+  },
+  {
+    path: '/captch',
+    component: captch
   },
   {
     path: '/dialog',

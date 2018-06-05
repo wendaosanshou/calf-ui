@@ -1,4 +1,5 @@
 import Button from './modules/button'
+import captch from './modules/captch'
 import Popup from './modules/popup'
 import Dialog from './modules/dialog'
 import Loading from './modules/loading'
@@ -13,6 +14,7 @@ import Switch from './modules/switch'
 
 export {
   Button,
+  captch,
   Popup,
   Dialog,
   Loading,

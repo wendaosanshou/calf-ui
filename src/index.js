@@ -1,5 +1,6 @@
 import {
   Button,
+  captch,
   Popup,
   Dialog,
   Loading,
@@ -20,6 +21,7 @@ function install(Vue) {
   install.installed = true
   const components = [
     Button,
+    captch,
     Popup,
     Dialog,
     Loading,
