@@ -1,6 +1,9 @@
 <template>
   <div class="captch-panel">
-    <h4 class="captch-panel-title">数字安全键盘</h4>
+    <div class="captch-panel-title">
+      <i class="title-logo"></i>
+      <span class="title-content">数字安全键盘</span>
+    </div>
     <ul class="captch-panel-list">
       <li class="captch-panel-item">
         <div class="item-number" @click="handleChooseNumber(1)">1</div>
@@ -61,15 +64,30 @@ export default {
 
 <style lang="postcss" scoped>
 .captch-panel {
-  padding-top: 28px;
   .captch-panel-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 36px;
-    line-height: 36px;
-    font-size: 12px;
-    color: #14ba89;
     text-align: center;
     background: #f9f9f9;
+    .title-logo {
+      display: block;
+      width: 16px;
+      height: 16px;
+      background: resolve('calfic-shield.png');
+      background-size: 100% 100%;
+    }
+    .title-content {
+      width: auto;
+      height: 36px;
+      line-height: 36px;
+      margin-left: 6px;
+      font-size: 12px;
+      color: #14ba89;
+    }
   }
   .captch-panel-list {
     .captch-panel-item {

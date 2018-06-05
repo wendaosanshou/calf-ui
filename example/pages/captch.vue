@@ -1,7 +1,11 @@
 <template>
  <div class="page-captch">
-   <calf-captch v-model="captchVisible"/>
-   <calf-button @click="handlecaptch">触发</calf-button>
+   <calf-captch
+    v-model="captchVisible"
+    :mobile="mobile"
+    :type="captchType"/>
+   <calf-button @click="handleCaptch">触发验证码</calf-button>
+   <calf-button @click="handlePassword">触发密码</calf-button>
  </div>
 </template>
 
@@ -10,14 +14,21 @@ export default {
   name: 'page-captch',
   data() {
     return {
-      captchVisible: false
+      captchVisible: false,
+      mobile: '18612345678',
+      captchType: 'verify'
     }
   },
   props: {},
   computed: {},
   watch: {},
   methods: {
-    handlecaptch() {
+    handleCaptch() {
+      this.captchType = 'verify'
+      this.captchVisible = true
+    },
+    handlePassword() {
+      this.captchType = 'password'
       this.captchVisible = true
     }
   },
@@ -29,5 +40,8 @@ export default {
 <style lang="postcss" scoped>
 .page-captch {
   padding: 16px;
+}
+.calf-button {
+  margin: 10px 0;
 }
 </style>

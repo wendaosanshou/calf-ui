@@ -29,7 +29,6 @@ export default {
           return hasWord
         })
         .map(item => {
-          console.log(item)
           let name = this.getFilterName(item.path)
           return {
             path: item.path,

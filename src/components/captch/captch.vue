@@ -1,29 +1,33 @@
 <template>
   <transition name="calf-captch-fade">
   <calf-popup type="captch" @mask-click="handleMaskClick" v-show="isVisible">
-      <div class="calf-captch">
-        <div class="captch-title">请输入手机验证码</div>
-        <div class="captch-body">
-          <captch-input
-            :captchStatus="captchStatus"
+    <div class="calf-captch" :class="rootClass">
+      <div class="captch-title">{{captchTitle}}</div>
+      <div class="captch-body">
+        <div class="captch-header">
+        <captch-input
+          :captchStatus="captchStatus"
+          :currentIndex="currentIndex"
+          :codes="codes"
+          :mobile="mobile"
+          :type="type"
+          @on-repeat="onRepeat"/>
+        </div>
+        <div class="captch-content">
+          <captch-panel
             :currentIndex="currentIndex"
             :codes="codes"
-            @on-repeat="onRepeat"/>
-          <div class="captch-content">
-            <captch-panel
-              :currentIndex="currentIndex"
-              :codes="codes"
-              @on-choose="handleChooseNumber"
-              @on-delete="handleDelete"
-              @on-clear="onClear"
-              v-if="isBeforeVerify"/>
-            <div class="captch-loading" v-else-if="isAfterVerify">
-              <i class="icon-loading"></i>
-            </div>
-            <div class="captch-result" v-else-if="isVerifyFail">验证码错误，2s后重新输入</div>
+            @on-choose="handleChooseNumber"
+            @on-delete="handleDelete"
+            @on-clear="onClear"
+            v-if="isBeforeVerify"/>
+          <div class="captch-loading" v-else-if="isAfterVerify">
+            <i class="icon-loading"></i>
           </div>
+          <div class="captch-result" v-else-if="isVerifyFail">验证码错误，2s后重新输入</div>
         </div>
       </div>
+    </div>
   </calf-popup>
  </transition>
 </template>
@@ -44,7 +48,6 @@ export default {
   mixins: [visibilityMixin],
   data() {
     return {
-      currentIndex: 0,
       codes: ['', '', '', '', '', ''],
       allCodes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
       afterVerify: false,
@@ -52,8 +55,20 @@ export default {
       captchStatus: 0
     }
   },
-  props: {},
+  props: {
+    mobile: {
+      type: String,
+      default: '***********'
+    },
+    type: {
+      type: String,
+      default: 'verify'
+    }
+  },
   computed: {
+    rootClass() {
+      return `calf-captch-${this.type}`
+    },
     isBeforeVerify() {
       return this.captchStatus === BEFORE_VERIFY_STATUS
     },
@@ -62,6 +77,31 @@ export default {
     },
     isVerifyFail() {
       return this.captchStatus === VERIFY_FAIL_STATUS
+    },
+    isVerifyCode() {
+      return this.type === 'verify'
+    },
+    isPassword() {
+      return this.type === 'password'
+    },
+    captchTitle() {
+      return this.isVerifyCode ? '手机号码验证' : '请输入交易密码'
+    },
+    currentIndex() {
+      let currentIndex = 0
+      this.codes.forEach((code, index) => {
+        let prev = this.codes[index - 1]
+        let hasCompletePrev = this.allCodes.indexOf(prev) > -1
+        let hasCompleteCurrent = this.allCodes.indexOf(code) > -1
+        if (index === 0 && !hasCompleteCurrent) {
+          currentIndex = index
+        } else if (hasCompletePrev && !hasCompleteCurrent) {
+          currentIndex = index
+        } else if (index === this.codes.length - 1 && hasCompleteCurrent) {
+          currentIndex = this.codes.length
+        }
+      })
+      return currentIndex
     }
   },
   watch: {
@@ -79,25 +119,9 @@ export default {
       this.codes = this.codes.map(item => {
         return ''
       })
-      this.updateCurrentIndex()
     },
     onRepeat() {
       this.$emit('on-repeat')
-    },
-    updateCurrentIndex() {
-      let hadFindCurrentIndex = false
-      this.codes.forEach((code, index) => {
-        let prev = this.codes[index - 1]
-        let hasCompletePrev = this.allCodes.indexOf(prev) > -1
-        let hasCompleteCurrent = this.allCodes.indexOf(code) > -1
-        if (index === 0 && !hasCompleteCurrent) {
-          this.currentIndex = index
-        } else if (hasCompletePrev && !hasCompleteCurrent) {
-          this.currentIndex = index
-        } else if (index === this.codes.length - 1 && hasCompleteCurrent) {
-          this.currentIndex = this.codes.length
-        }
-      })
     },
     handleMaskClick() {
       this.hide()
@@ -105,7 +129,6 @@ export default {
     handleChooseNumber(number) {
       if (this.currentIndex <= this.codes.length - 1) {
         this.codes.splice(this.currentIndex, 1, number)
-        this.updateCurrentIndex()
       }
       if (this.currentIndex === this.codes.length) {
         this.captchStatus = AFTER_VERIFY_STATUS
@@ -117,7 +140,6 @@ export default {
     handleDelete() {
       if (this.currentIndex > 0) {
         this.codes.splice(this.currentIndex - 1, 1, '')
-        this.updateCurrentIndex()
       }
     }
   },
@@ -152,10 +174,20 @@ export default {
   }
 }
 
+.calf-captch-verify .captch-body .captch-header {
+  padding-top: 20px;
+}
+
+.calf-captch-password .captch-body .captch-header {
+  padding-top: 18px;
+}
+
 .captch-body {
   .captch-content {
+    box-sizing: border-box;
     width: 100%;
     height: 280px;
+    padding-top: 28px;
     .captch-loading {
       position: relative;
       box-sizing: border-box;

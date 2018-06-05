@@ -1,11 +1,14 @@
 <template>
  <div class="captch-input">
-    <h4 class="captch-input-title">已向 151****9302 发送验证短信</h4>
-    <p class="captch-input-desc" v-if="!afterTimeout">{{count}}s后重新获取</p>
-    <p class="captch-repeat" v-else @click="handleRepeat">重新获取</p>
+    <div class="captch-title-wrap" v-if="isVerifyCode">
+      <h4 class="captch-input-title">已向 {{maskMobile}} 发送验证短信</h4>
+      <p class="captch-input-desc" v-if="!afterTimeout">{{count}}s后重新获取</p>
+      <p class="captch-repeat" v-else @click="handleRepeat">重新获取</p>
+    </div>
     <ul class="captch-input-list" :class="{'is-verify-fail': isVerifyFail}">
       <li class="captch-input-item" :class="{'current': index === currentIndex}" v-for="(item, index) in codes" :key="index">{{item}}</li>
     </ul>
+    <p class="captch-forget" @click="handleForget" v-if="isPassword">忘记密码</p>
  </div>
 </template>
 
@@ -37,11 +40,28 @@ export default {
     currentIndex: {
       type: Number,
       default: 0
+    },
+    mobile: {
+      type: String,
+      default: '***********'
+    },
+    type: {
+      type: String,
+      default: 'verify'
     }
   },
   computed: {
     isVerifyFail() {
       return this.captchStatus === VERIFY_FAIL_STATUS
+    },
+    maskMobile() {
+      return `${this.mobile.slice(0, 3)}****${this.mobile.slice(7, 11)}`
+    },
+    isVerifyCode() {
+      return this.type === 'verify'
+    },
+    isPassword() {
+      return this.type === 'password'
     }
   },
   watch: {},
@@ -49,6 +69,9 @@ export default {
     handleRepeat() {
       this.afterTimeout = false
       this.$emit('on-repeat')
+    },
+    handleForget() {
+      this.$emit('on-forget')
     },
     initTimeInterval() {
       this.afterTimeout = false
@@ -72,7 +95,9 @@ export default {
 
 <style lang="postcss" scoped>
 .captch-input {
-  padding-top: 20px;
+  .captch-title-wrap {
+    padding-bottom: 8px;
+  }
   .captch-input-title {
     font-size: 14px;
     color: #666666;
@@ -97,7 +122,6 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 8px;
     &.is-verify-fail .captch-input-item {
       color: #ff4a31;
     }
@@ -113,6 +137,15 @@ export default {
         border-bottom: 1px solid #666666;
       }
     }
+  }
+  .captch-forget {
+    width: 100%;
+    height: 16px;
+    font-size: 12px;
+    color: #5e91d5;
+    margin-top: 24px;
+    text-align: center;
+    line-height: 16px;
   }
 }
 </style>
