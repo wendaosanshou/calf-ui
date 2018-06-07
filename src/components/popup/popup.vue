@@ -1,5 +1,5 @@
 <template>
-  <div class="calf-popup" :style="{'z-index': zIndex}" :class="rootClass" v-show="isVisible">
+  <div class="calf-popup" :style="{'z-index': zIndex}" :class="[rootClass, centerClass]" v-show="isVisible">
     <div class="calf-popup-mask" @click="handleMask"></div>
     <div class="calf-popup-container">
       <div class="calf-popup-content" v-if="$slots.default">
@@ -31,11 +31,18 @@ export default {
     zIndex: {
       type: Number,
       default: 100
+    },
+    center: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
     rootClass() {
       return `calf-popup-${this.type}`
+    },
+    centerClass() {
+      return this.center ? 'calf-popup-center' : 'calf-popup-bottom'
     }
   },
   methods: {
@@ -66,8 +73,7 @@ export default {
   }
 }
 
-.calf-popup-dialog,
-.calf-popup-toast {
+.calf-popup-center {
   .calf-popup-container {
     position: absolute;
     left: 50%;
@@ -77,7 +83,7 @@ export default {
   }
 }
 
-.calf-popup-captch {
+.calf-popup-bottom {
   .calf-popup-container {
     position: absolute;
     left: 0;

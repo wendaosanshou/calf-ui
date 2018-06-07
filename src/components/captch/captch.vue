@@ -1,35 +1,35 @@
 <template>
   <transition name="calf-captch-fade">
-  <calf-popup type="captch" @mask-click="handleMaskClick" v-show="isVisible">
-    <div class="calf-captch" :class="rootClass">
-      <div class="captch-title">{{captchTitle}}</div>
-      <div class="captch-body">
-        <div class="captch-header">
-        <captch-input
-          :captchStatus="captchStatus"
-          :currentIndex="currentIndex"
-          :codes="codes"
-          :mobile="mobile"
-          :type="type"
-          @on-repeat="onRepeat"/>
-        </div>
-        <div class="captch-content">
-          <captch-panel
+    <calf-popup type="captch" :center="false" @mask-click="handleMaskClick" v-show="isVisible">
+      <div class="calf-captch" :class="rootClass">
+        <div class="captch-title">{{captchTitle}}</div>
+        <div class="captch-body">
+          <div class="captch-header">
+          <captch-input
+            :captchStatus="captchStatus"
             :currentIndex="currentIndex"
             :codes="codes"
-            @on-choose="handleChooseNumber"
-            @on-delete="handleDelete"
-            @on-clear="onClear"
-            v-if="isBeforeVerify"/>
-          <div class="captch-loading" v-else-if="isAfterVerify">
-            <i class="icon-loading"></i>
+            :mobile="mobile"
+            :type="type"
+            @on-repeat="onRepeat"/>
           </div>
-          <div class="captch-result" v-else-if="isVerifyFail">验证码错误，2s后重新输入</div>
+          <div class="captch-content">
+            <captch-panel
+              :currentIndex="currentIndex"
+              :codes="codes"
+              @on-choose="handleChooseNumber"
+              @on-delete="handleDelete"
+              @on-clear="onClear"
+              v-if="isBeforeVerify"/>
+            <div class="captch-loading" v-else-if="isAfterVerify">
+              <i class="icon-loading"></i>
+            </div>
+            <div class="captch-result" v-else-if="isVerifyFail">验证码错误，2s后重新输入</div>
+          </div>
         </div>
       </div>
-    </div>
-  </calf-popup>
- </transition>
+    </calf-popup>
+  </transition>
 </template>
 
 <script>

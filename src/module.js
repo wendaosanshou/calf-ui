@@ -6,6 +6,7 @@ import Loading from './modules/loading'
 import Checkbox from './modules/checkbox'
 import Input from './modules/input'
 import Notice from './modules/notice'
+import Picker from './modules/picker'
 import Progress from './modules/progress'
 import PullRefresh from './modules/pull-refresh'
 import Textarea from './modules/textarea'
@@ -21,6 +22,7 @@ export {
   Checkbox,
   Input,
   Notice,
+  Picker,
   Progress,
   PullRefresh,
   Textarea,
