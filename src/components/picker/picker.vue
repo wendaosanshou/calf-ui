@@ -8,22 +8,25 @@
       @mask-click="cancel">
       <div class="calf-picker">
         <div class="calf-picker-header">
-          <i class="calf-icon"></i>
-          <span class="calf-title">借款金额</span>
-          <span class="calf-label">下一步</span>
+          <i class="calf-icon" @click="cancel"></i>
+          <span class="calf-title">{{title}}</span>
+          <span class="calf-label" @click="confirm">确定</span>
         </div>
 
         <div class="calf-picker-content">
           <i class="top-mask"></i>
           <i class="bottom-mask"></i>
-          <div class="calf-picker-wraper" ref="wraper">
-            <ul class="calf-picker-list">
-              <li class="calf-picker-item" v-for="(item, key) in pickerData" :key="key">
-                {{item.text}}
-              </li>
-            </ul>
+          <div class="calf-picker-wraper" ref="wheelWrapper">
+            <div v-for="(data,index) in pickerData" :key="index">
+              <ul class="calf-picker-list">
+                <li class="calf-picker-item" v-for="(item, key) in data" :key="key">
+                  {{item.text}}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
+
       </div>
     </calf-popup>
   </transition>
@@ -33,22 +36,25 @@
 import BScroll from 'better-scroll'
 import calfPopup from '../popup/popup.vue'
 import visibilityMixin from '../../common/mixins/visibility'
+import basicPickerMixin from '../../common/mixins/basic-picker'
+import pickerMixin from '../../common/mixins/picker'
 
 const COMPONENT_NAME = 'calf-picker'
 
+const EVENT_CHANGE = 'change'
+const EVENT_SELECT = 'select'
+
 export default {
   name: COMPONENT_NAME,
-  mixins: [visibilityMixin],
-  props: {
-    pending: {
-      type: Boolean,
-      default: false
-    }
-  },
+  mixins: [visibilityMixin, basicPickerMixin, pickerMixin],
   data() {
     return {
       scroll: '',
-      pickerData: this.data.slice()
+      pickerSelectedIndex: [],
+      pickerSelectedVal: [],
+      pickerSelectedText: [],
+      pickerData: this.data.slice(),
+      pickerSelectedIndex: this.selectedIndex
     }
   },
   props: {
@@ -61,20 +67,103 @@ export default {
     cancel() {
       this.hide()
     },
-    initBetterScroll() {
-      let scroll = new BScroll(this.$refs.wraper)
-      scroll.on('scrollEnd', () => {
-        console.log(scroll.getSelectedIndex())
+    confirm() {
+      if (!this.canConfirm()) {
+        return
+      }
+      this.hide()
+      this.updatePickerSelected()
+
+      this.$emit(
+        EVENT_SELECT,
+        this.pickerSelectedVal,
+        this.pickerSelectedIndex,
+        this.pickerSelectedText
+      )
+    },
+    updatePickerSelected() {
+      const dataLength = this.pickerData.length
+      const selectedValLength = this.pickerSelectedVal.length
+
+      for (let i = 0; i < dataLength; i++) {
+        let index = this.wheels[i].getSelectedIndex()
+        this.pickerSelectedIndex[i] = index
+
+        let value = null
+        let text = ''
+        if (this.pickerData[i].length) {
+          value = this.pickerData[i][index][this.valueKey]
+          text = this.pickerData[i][index][this.textKey]
+        }
+        this.pickerSelectedVal[i] = value
+        this.pickerSelectedText[i] = text
+      }
+    },
+    show() {
+      if (this.isVisible) {
+        return
+      }
+
+      this.isVisible = true
+      this.initWheel()
+    },
+    initWheel() {
+      if (!this.wheels) {
+        this.$nextTick(() => {
+          this.wheels = this.wheels || []
+          let wheelWrapper = this.$refs.wheelWrapper
+          for (let i = 0; i < this.pickerData.length; i++) {
+            this.createWheel(wheelWrapper, i).enable()
+            this.wheels[i].wheelTo(this.pickerSelectedIndex[i])
+          }
+        })
+      } else {
+        for (let i = 0; i < this.pickerData.length; i++) {
+          this.wheels[i].enable()
+          this.wheels[i].wheelTo(this.pickerSelectedIndex[i])
+        }
+      }
+    },
+    createWheel(wheelWrapper, i) {
+      if (!this.wheels[i]) {
+        const wheel = (this.wheels[i] = new BScroll(wheelWrapper.children[i], {
+          wheel: {
+            selectedIndex: this.pickerSelectedIndex[i] || 0,
+            wheelWrapperClass: 'calf-picker-list',
+            wheelItemClass: 'calf-picker-item'
+          },
+          swipeTime: this.swipeTime,
+          observeDOM: false
+        }))
+        wheel.on('scrollEnd', () => {
+          let selectedIndex = wheel.getSelectedIndex()
+          this.$emit(EVENT_CHANGE, i, selectedIndex)
+        })
+      } else {
+        this.wheels[i].refresh()
+      }
+      return this.wheels[i]
+    },
+    canConfirm() {
+      return this.wheels.every(wheel => {
+        return !wheel.isInTransition
       })
+    },
+    initPickerSelected() {
+      this.pickerSelectedVal = []
+      if (!this.pickerSelectedIndex.length) {
+        this.pickerSelectedIndex = []
+        for (let i = 0; i < this.pickerData.length; i++) {
+          this.pickerSelectedIndex[i] = 0
+        }
+      }
     }
   },
   components: {
     calfPopup
   },
   created() {
-    this.$nextTick(() => {
-      this.initBetterScroll()
-    })
+    this.initPickerSelected()
   }
 }
 </script>
@@ -135,11 +224,11 @@ export default {
       left: 0;
       width: 100%;
       height: 96px;
+      z-index: 10;
       pointer-events: none;
     }
     .top-mask {
       top: 0;
-      z-index: 10;
       border-bottom: 1px solid #f1f1f1;
       background: linear-gradient(
         to top,
@@ -158,13 +247,23 @@ export default {
     }
     .calf-picker-wraper {
       position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
       width: 100%;
       height: 240px;
       overflow: auto;
+      div {
+        flex: 1;
+        flex-basis: 0.000000001px;
+        width: 1%;
+      }
     }
     .calf-picker-list {
       width: 100%;
       height: auto;
+      margin-top: 96px;
       .calf-picker-item {
         width: 100%;
         height: 48px;

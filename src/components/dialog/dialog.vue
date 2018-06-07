@@ -9,7 +9,7 @@
         <div class="calf-content" v-if="$slots.default">
           <slot></slot>
         </div>
-        <div class="calf-content" v-else>{{content}}</div>
+        <div class="calf-content" v-else v-html="content"></div>
         <the-btns
           :type="type"
           :confirmBtn="confirmBtn"
