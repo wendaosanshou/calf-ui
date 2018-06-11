@@ -9,8 +9,8 @@
       <div class="calf-picker">
         <div class="calf-picker-header">
           <i class="calf-icon" @click="cancel"></i>
-          <span class="calf-title">{{title}}</span>
-          <span class="calf-label" @click="confirm">确定</span>
+          <span class="calf-title" v-html="title"></span>
+          <span class="calf-label" @click="confirm">{{confirmTxt}}</span>
         </div>
 
         <div class="calf-picker-content">
@@ -48,7 +48,6 @@ export default {
   mixins: [visibilityMixin, basicPickerMixin, pickerMixin],
   data() {
     return {
-      scroll: '',
       pickerSelectedIndex: [],
       pickerSelectedVal: [],
       pickerSelectedText: [],
