@@ -6,7 +6,7 @@
       v-show="isVisible"
       @touchmove.prevent
       @mask-click="cancel">
-      <div class="calf-picker">
+      <div class="calf-picker calf-picker-container">
         <div class="calf-picker-header">
           <i class="calf-icon" @click="cancel"></i>
           <span class="calf-title" v-html="title"></span>
@@ -33,7 +33,7 @@
 
 <script type="text/ecmascript-6">
 import BScroll from 'better-scroll'
-import calfPopup from '../popup/popup.vue'
+import CalfPopup from '../popup/popup.vue'
 import visibilityMixin from '../../common/mixins/visibility'
 import basicPickerMixin from '../../common/mixins/basic-picker'
 import pickerMixin from '../../common/mixins/picker'
@@ -226,7 +226,7 @@ export default {
     }
   },
   components: {
-    calfPopup
+    CalfPopup
   },
   created() {
     this.initPickerSelected()
@@ -234,7 +234,9 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
+@import '../../common/style/animation.css';
+
 .calf-picker {
   width: 100%;
   height: 284px;
@@ -340,56 +342,6 @@ export default {
         text-align: center;
       }
     }
-  }
-}
-
-.calf-picker-fade-enter-active {
-  animation: captch-fadein 0.3s;
-  .calf-picker {
-    animation: captch-slide-in 0.3s;
-  }
-}
-
-.calf-picker-fade-leave-active {
-  animation: captch-fadeout 0.3s;
-  .calf-picker {
-    animation: captch-slide-out 0.3s;
-  }
-}
-
-@keyframes captch-fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes captch-fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes captch-slide-out {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes captch-slide-in {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
   }
 }
 </style>

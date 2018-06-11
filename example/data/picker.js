@@ -123,7 +123,7 @@ const data3 = [
   }
 ]
 
-const expressData = [
+const data4 = [
   {
     text: '顺丰',
     value: '顺丰'
@@ -138,4 +138,4 @@ const expressData = [
   }
 ]
 
-export { data1, data2, data3, expressData }
+export { data1, data2, data3, data4 }

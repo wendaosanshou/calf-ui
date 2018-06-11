@@ -10,13 +10,15 @@
     @click="handlePicker4">日期</calf-button>
   <calf-button
     @click="handlePicker5">城市</calf-button>
+  <calf-button
+    @click="handlePicker6">较少选项</calf-button>
  </div>
 </template>
 
 <script>
 import { cascadeData } from '../data/cascade.js'
 import { provinceList, cityList, areaList } from '../data/area'
-import { data1, data2, data3 } from '../data/picker'
+import { data1, data2, data3, data4 } from '../data/picker'
 
 const asyncProvinceList = provinceList.slice()
 const asyncCityList = JSON.parse(JSON.stringify(cityList))
@@ -40,6 +42,7 @@ export default {
   name: 'page-picker',
   data() {
     return {
+      selectListIndex: 1,
       pickerVisible: false
     }
   },
@@ -76,12 +79,17 @@ export default {
         },
         onSelect: this.selectDateHandle
       })
-      this.asyncPicker = this.$createCascadePicker({
+      this.picker5 = this.$createCascadePicker({
         title: 'Async Load Data',
         data: asyncData,
         selectedIndex: asyncSelectedIndex.slice(),
         onSelect: this.selectHandle,
         onCancel: this.cancelHandle
+      })
+      this.picker6 = this.$createListPicker({
+        data: data4,
+        selectedIndex: this.selectListIndex,
+        onSelect: this.seletListHandle
       })
     },
     handlePicker1() {
@@ -97,7 +105,15 @@ export default {
       this.picker4.show()
     },
     handlePicker5() {
-      this.asyncPicker.show()
+      this.picker5.show()
+    },
+    handlePicker6() {
+      this.picker6.show()
+    },
+    selectListCancel() {
+      this.$createDialog({
+        content: `picker cancel`
+      }).show()
     },
     asyncChangeHandle(i, newIndex) {
       if (newIndex !== asyncSelectedIndex[i]) {
@@ -139,6 +155,14 @@ export default {
         )} <br/>  index: ${selectedIndex.join(
           ', '
         )} <br/>  text: ${selectedText.join(' ')}`
+      }).show()
+    },
+    seletListHandle(selectedVal, selectedIndex, selectedText) {
+      this.$createDialog({
+        content: `Selected Item: <br/>
+        value: ${selectedVal} <br/>
+        index: ${selectedIndex} <br/>
+        text: ${selectedText}`
       }).show()
     },
     selectDateHandle(selectedVal, selectedIndex, selectedText) {

@@ -1,10 +1,11 @@
 import {
   Button,
-  captch,
+  Captch,
   Popup,
   Dialog,
   Loading,
-  cascadePicker,
+  ListPicker,
+  CascadePicker,
   DatePicker,
   Checkbox,
   Input,
@@ -24,11 +25,12 @@ function install(Vue) {
   install.installed = true
   const components = [
     Button,
-    captch,
+    Captch,
     Popup,
     Dialog,
     Loading,
-    cascadePicker,
+    ListPicker,
+    CascadePicker,
     DatePicker,
     Checkbox,
     Input,

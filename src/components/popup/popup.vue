@@ -20,6 +20,10 @@ export default {
   name: COMPONENT_NAME,
   mixins: [visibilityMixin],
   props: {
+    animation: {
+      type: String,
+      default: 'picker'
+    },
     type: {
       type: String,
       default: 'popup'
@@ -79,6 +83,7 @@ export default {
     left: 50%;
     top: 50%;
     width: auto;
+    height: auto;
     transform: translate(-50%, -50%);
   }
 }

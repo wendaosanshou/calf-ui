@@ -1,9 +1,10 @@
 import Button from './modules/button'
-import captch from './modules/captch'
+import Captch from './modules/captch'
 import Popup from './modules/popup'
 import Dialog from './modules/dialog'
 import Loading from './modules/loading'
-import cascadePicker from './modules/cascade-picker'
+import ListPicker from './modules/list-picker'
+import CascadePicker from './modules/cascade-picker'
 import DatePicker from './modules/date-picker'
 import Checkbox from './modules/checkbox'
 import Input from './modules/input'
@@ -17,8 +18,9 @@ import Switch from './modules/switch'
 
 export {
   Button,
-  captch,
-  cascadePicker,
+  Captch,
+  ListPicker,
+  CascadePicker,
   DatePicker,
   Popup,
   Dialog,

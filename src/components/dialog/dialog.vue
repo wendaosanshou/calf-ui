@@ -1,7 +1,11 @@
 <template>
   <transition name="calf-dialog-fade">
-    <calf-popup type="dialog" @mask-click="handleMaskClick" v-show="isVisible">
-      <div class="calf-dialog" :class="rootClass">
+    <calf-popup
+      animation="dialog"
+      type="dialog"
+      @mask-click="handleMaskClick"
+      v-show="isVisible">
+      <div class="calf-dialog calf-dialog-container" :class="rootClass">
         <h1 class="calf-header">
           {{title}}
           <i class="icon-close" @click="handleCancel" v-if="showClose || !hasTitle"></i>
@@ -103,6 +107,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/animation.css';
+
 .calf-dialog {
   width: 295px;
   height: auto;
@@ -158,61 +164,6 @@ export default {
     line-height: 20px;
     text-align: center;
     padding: 0 16px 28px 17px;
-  }
-}
-
-.calf-dialog-fade-enter-active {
-  animation: dialog-fadein 0.4s;
-  .calf-dialog {
-    animation: dialog-zoom 0.4s;
-  }
-}
-
-.calf-dialog-fade-leave-active {
-  animation: dialog-fadeout 0.4s;
-  .calf-dialog {
-    animation: dialog-zoom-out 0.4s;
-  }
-}
-
-@keyframes dialog-fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes dialog-fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes dialog-zoom {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes dialog-zoom-out {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0);
   }
 }
 </style>

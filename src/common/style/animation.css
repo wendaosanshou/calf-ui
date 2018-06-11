@@ -1,4 +1,116 @@
+/* picker animation */
+.calf-picker-fade-enter-active {
+  animation: picker-fadein 0.3s;
+  .calf-picker-container {
+    animation: picker-slide-in 0.3s;
+  }
+}
+
+.calf-picker-fade-leave-active {
+  animation: picker-fadeout 0.3s;
+  .calf-picker-container {
+    animation: picker-slide-out 0.3s;
+  }
+}
+
+@keyframes picker-fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes picker-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes picker-slide-in {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes picker-slide-out {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* dialog animation */
+.calf-dialog-fade-enter-active {
+  animation: dialog-fadein 0.4s;
+  .calf-dialog-container {
+    animation: dialog-zoom 0.4s;
+  }
+}
+
+.calf-dialog-fade-leave-active {
+  animation: dialog-fadeout 0.4s;
+  .calf-dialog-container {
+    animation: dialog-zoom-out 0.4s;
+  }
+}
+
+@keyframes dialog-fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dialog-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-zoom {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dialog-zoom-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
 /* loading动画 */
+.loading-rotation {
+  transform: rotate(360deg);
+  animation: rotation 3s linear infinite;
+}
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -6,9 +118,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.loading-rotation {
-  transform: rotate(360deg);
-  animation: rotation 3s linear infinite;
 }
