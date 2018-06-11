@@ -26,7 +26,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </calf-popup>
   </transition>
@@ -61,6 +60,10 @@ export default {
     data: {
       type: Array,
       default: []
+    },
+    pending: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -144,6 +147,31 @@ export default {
       }
       return this.wheels[i]
     },
+    setData(data, selectedIndex) {
+      this.pickerSelectedIndex = selectedIndex ? [...selectedIndex] : []
+      this.pickerData = data.slice()
+      if (this.isVisible) {
+        this.$nextTick(() => {
+          const wheelWrapper = this.$refs.wheelWrapper
+          this.pickerData.forEach((item, i) => {
+            this.createWheel(wheelWrapper, i)
+            this.wheels[i].wheelTo(this.pickerSelectedIndex[i])
+          })
+          this.destroyExtraWheels()
+        })
+      } else {
+        this.dirty = true
+      }
+    },
+    destroyExtraWheels() {
+      const dataLength = this.pickerData.length
+      if (this.wheels.length > dataLength) {
+        const extraWheels = this.wheels.splice(dataLength)
+        extraWheels.forEach(wheel => {
+          wheel.destroy()
+        })
+      }
+    },
     canConfirm() {
       return this.wheels.every(wheel => {
         return !wheel.isInTransition
@@ -157,6 +185,45 @@ export default {
           this.pickerSelectedIndex[i] = 0
         }
       }
+    },
+    refill(datas) {
+      let ret = []
+      if (!datas.length) {
+        return ret
+      }
+      datas.forEach((data, index) => {
+        ret[index] = this.refillColumn(index, data)
+      })
+      return ret
+    },
+    refillColumn(index, data) {
+      const wheelWrapper = this.$refs.wheelWrapper
+      let scroll = wheelWrapper.children[index].querySelector(
+        '.cube-picker-wheel-scroll'
+      )
+      let wheel = this.wheels ? this.wheels[index] : false
+      let dist = 0
+      if (scroll && wheel) {
+        let oldData = this.pickerData[index]
+        this.$set(this.pickerData, index, data)
+        let selectedIndex = wheel.getSelectedIndex()
+        if (oldData.length) {
+          let oldValue = oldData[selectedIndex][this.valueKey]
+          for (let i = 0; i < data.length; i++) {
+            if (data[i][this.valueKey] === oldValue) {
+              dist = i
+              break
+            }
+          }
+        }
+        this.pickerSelectedIndex[index] = dist
+        this.$nextTick(() => {
+          // recreate wheel so that the wrapperHeight will be correct.
+          wheel = this._createWheel(wheelWrapper, index)
+          wheel.wheelTo(dist)
+        })
+      }
+      return dist
     }
   },
   components: {

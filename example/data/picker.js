@@ -37,7 +37,7 @@ const data1 = [
   },
   {
     text: '撼地神牛',
-    value: '神谕者'
+    value: '撼地神牛'
   },
   {
     text: '蓝胖子',

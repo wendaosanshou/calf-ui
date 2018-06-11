@@ -4,11 +4,15 @@
     @click="handlePicker1">单列</calf-button>
   <calf-button
     @click="handlePicker2">多列</calf-button>
+  <calf-button
+    @click="handlePicker3">级联</calf-button>
  </div>
 </template>
 
 <script>
+import { cascadeData } from '../data/cascade.js'
 import { data1, data2, data3 } from '../data/picker'
+
 export default {
   name: 'page-picker',
   data() {
@@ -20,20 +24,32 @@ export default {
   computed: {},
   watch: {},
   methods: {
-    handlePicker1() {
-      this.$createPicker({
+    initPicker() {
+      this.picker1 = this.$createPicker({
         title: '单列内容',
         data: [data1],
         onSelect: this.selectHandle,
         onChange: this.onChange
-      }).show()
-    },
-    handlePicker2() {
-      this.$createPicker({
+      })
+      this.picker2 = this.$createPicker({
         title: '多列内容',
         data: [data1, data2, data3],
         onSelect: this.selectHandle
-      }).show()
+      })
+      this.picker3 = this.$createCascadePicker({
+        title: '级联内容',
+        data: cascadeData,
+        onSelect: this.selectHandle
+      })
+    },
+    handlePicker1() {
+      this.picker1.show()
+    },
+    handlePicker2() {
+      this.picker2.show()
+    },
+    handlePicker3() {
+      this.picker3.show()
     },
     onChange(current, index) {
       console.log(current, index, data1[index])
@@ -50,7 +66,9 @@ export default {
     cancelHandle() {}
   },
   components: {},
-  mounted() {}
+  mounted() {
+    this.initPicker()
+  }
 }
 </script>
 

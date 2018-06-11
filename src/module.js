@@ -3,6 +3,7 @@ import captch from './modules/captch'
 import Popup from './modules/popup'
 import Dialog from './modules/dialog'
 import Loading from './modules/loading'
+import cascadePicker from './modules/cascade-picker'
 import Checkbox from './modules/checkbox'
 import Input from './modules/input'
 import Notice from './modules/notice'
@@ -16,6 +17,7 @@ import Switch from './modules/switch'
 export {
   Button,
   captch,
+  cascadePicker,
   Popup,
   Dialog,
   Loading,
