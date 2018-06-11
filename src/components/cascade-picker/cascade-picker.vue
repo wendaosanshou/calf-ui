@@ -74,7 +74,6 @@ export default {
     _updatePickerData(fromColumn = 0) {
       let data = this.cascadeData
       let i = 0
-      console.log(JSON.parse(JSON.stringify(data)))
       while (data) {
         if (i >= fromColumn) {
           let columnData = []

@@ -6,6 +6,8 @@
     @click="handlePicker2">多列</calf-button>
   <calf-button
     @click="handlePicker3">级联</calf-button>
+  <calf-button
+    @click="handlePicker4">日期</calf-button>
  </div>
 </template>
 
@@ -41,6 +43,18 @@ export default {
         data: cascadeData,
         onSelect: this.selectHandle
       })
+      this.picker4 = this.$createDatePicker({
+        title: '日期',
+        min: new Date(2008, 7, 8),
+        max: new Date(2020, 9, 20),
+        value: new Date(),
+        format: {
+          year: 'YYYY年',
+          month: 'MM月',
+          date: '第 D 日'
+        },
+        onSelect: this.selectDateHandle
+      })
     },
     handlePicker1() {
       this.picker1.show()
@@ -51,6 +65,9 @@ export default {
     handlePicker3() {
       this.picker3.show()
     },
+    handlePicker4() {
+      this.picker4.show()
+    },
     onChange(current, index) {
       console.log(current, index, data1[index])
     },
@@ -59,6 +76,13 @@ export default {
         content: `Selected Item: <br/>  value: ${selectedVal.join(
           ', '
         )} <br/>  index: ${selectedIndex.join(
+          ', '
+        )} <br/>  text: ${selectedText.join(' ')}`
+      }).show()
+    },
+    selectDateHandle(selectedVal, selectedIndex, selectedText) {
+      this.$createDialog({
+        content: `Selected Item: <br/>  value: ${selectedVal} <br/>  index: ${selectedIndex.join(
           ', '
         )} <br/>  text: ${selectedText.join(' ')}`
       }).show()

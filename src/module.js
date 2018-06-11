@@ -4,6 +4,7 @@ import Popup from './modules/popup'
 import Dialog from './modules/dialog'
 import Loading from './modules/loading'
 import cascadePicker from './modules/cascade-picker'
+import DatePicker from './modules/date-picker'
 import Checkbox from './modules/checkbox'
 import Input from './modules/input'
 import Notice from './modules/notice'
@@ -18,6 +19,7 @@ export {
   Button,
   captch,
   cascadePicker,
+  DatePicker,
   Popup,
   Dialog,
   Loading,
