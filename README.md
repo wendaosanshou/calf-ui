@@ -1,32 +1,32 @@
-# calf-ui
+### kn-cnpm
 
-> A mobile ui lib implement by Vue
+[cnpm](http://172.22.23.180:7002) 私有库代码
 
-## 构建步骤
-
-```bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
+#### 文件夹说明
+```
+    - @common 服务类
+    - @ui ui组件库
+    - @demo 参考示例
+    - @scaffold 脚手架
 ```
 
-## 参考规范
+#### 项目约定
 
-* cnpm 地址: [http://cnpm.sui.work/](http://cnpm.sui.work/)
-* git 仓库: [http://git.sui.work/data-loan/kaniu-fe](http://git.sui.work/data-loan/kaniu-fe)
-* git 提交规范: [http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
-* cube-ui : [https://github.com/didi/cube-ui](https://github.com/didi/cube-ui)
+- 1、每个package以小写英文单词+中划线组成，不能用驼峰模式
+- 2、项目已经整合eslint, 写代码时候需要开启，可以在外层目录执行 npm run lint
+- 3、每新加一个package需要添加单元测试，请参考demo
+- 4、每个package目录规定如下：
+
+```
+    - package-name
+        - test #测试文件目录 【必须】
+        - dist #输出的打包文件目录【可选】
+        - src  #源代码目录【可选】
+        - index.js #入口文件 
+        - package.json 【必须】
+        - readMe.md 【必须】
+```
+
+- 5、提交代码前需要在项目第一层执行：npm run lint
+
+
