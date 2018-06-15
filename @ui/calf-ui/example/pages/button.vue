@@ -3,7 +3,7 @@
     <calf-button>按钮（正常）</calf-button>
     <calf-button :disabled="true">按钮（禁止）</calf-button>
     <calf-button :invalid="true">按钮（失效）</calf-button>
-    <calf-button :inline="true">行内按钮</calf-button>
+    <calf-button :inline="true">确定</calf-button>
     <calf-button :minor="true">次要按钮</calf-button>
     <calf-button :minor="true" :disabled="true">次要按钮</calf-button>
     <calf-button :minor="true" :invalid="true">次要按钮</calf-button>

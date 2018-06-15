@@ -6,11 +6,11 @@ import App from './App.vue'
 import router from './router'
 
 // dev example
-import Calf from '../src/index'
+// import Calf from '../src/index'
 
 // prod example
-// import '../lib/calf.min.css'
-// import Calf from '../lib/calf.min.js'
+import '../lib/calf.min.css'
+import Calf from '../lib/calf.min.js'
 
 /* eslint-disable no-unused-vars */
 Vue.use(Calf)

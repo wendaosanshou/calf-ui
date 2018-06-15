@@ -15,13 +15,14 @@
     :class="{'only-one-btn': onlyOneBtn}"
     v-else-if="type === 'primary'">
     <calf-button
-      :inlineCancel="true"
+      :inline="true"
+      :minor="true"
       :disabled="mergeCancelBtn.disabled"
       v-if="!onlyOneBtn"
       @click="handleCancel">{{mergeCancelBtn.text}}</calf-button>
     <calf-button
       class="calf-btn-confirm"
-      :inlineConfirm="true"
+      :inline="true"
       :disabled="mergeConfirmBtn.disabled"
       @click="handleConfirm">{{mergeConfirmBtn.text}}</calf-button>
   </div>
