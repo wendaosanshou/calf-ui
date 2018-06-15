@@ -9,3 +9,8 @@ html {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+button {
+  outline: none;
+  border: none;
+}

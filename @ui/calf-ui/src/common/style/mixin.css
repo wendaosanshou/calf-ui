@@ -27,3 +27,15 @@
     transform: scale(0.333) translateZ(0);
   }
 }
+
+@mixin flex(
+  $direction: row,
+  $justify-content: flex-start,
+  $align-items: flex-start,
+  $flex-wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}

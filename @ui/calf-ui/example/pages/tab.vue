@@ -10,30 +10,8 @@ export default {
   name: 'page-tab',
   data() {
     return {
-      tabs1: [
-        {
-          text: '极速推荐',
-          value: 0
-        },
-        {
-          text: '其他贷款',
-          value: 1
-        }
-      ],
-      tabs2: [
-        {
-          text: '极速推荐',
-          value: 0
-        },
-        {
-          text: '其他贷款',
-          value: 1
-        },
-        {
-          text: '低息贷款',
-          value: 2
-        }
-      ],
+      tabs1: ['极速推荐', '其他贷款'],
+      tabs2: ['极速推荐', '热门贷款', '其他贷款'],
       selectTab: 1
     }
   },
@@ -41,11 +19,11 @@ export default {
   computed: {},
   watch: {},
   methods: {
-    handleSelect(index, text) {
+    handleSelect(item, index) {
       this.$createDialog({
         type: 'default',
-        title: text,
-        content: `index: ${index}  <br/> text: ${text}`
+        title: item,
+        content: `index: ${index}  <br/> item: ${item}`
       }).show()
     }
   },

@@ -11,7 +11,11 @@
         <slot name="desc"></slot>
       </div>
     </div>
-    <slot v-else></slot>
+    <!-- <slot v-else></slot> -->
+    <div class="calf-button-icon-container" v-else>
+      <img :src="iconTarget" class="calf-button-icon" :class="{'loading-rotation': this.icon === 'loading'}" v-if="iconTarget">
+      <slot></slot>
+    </div>
   </button>
 </template>
 
@@ -24,11 +28,7 @@ export default {
       type: Boolean,
       default: false
     },
-    inlineConfirm: {
-      type: Boolean,
-      default: false
-    },
-    inlineCancel: {
+    inline: {
       type: Boolean,
       default: false
     },
@@ -36,18 +36,33 @@ export default {
       type: Boolean,
       default: false
     },
-    type: {
+    minor: {
+      type: Boolean,
+      default: false
+    },
+    icon: {
       type: String,
-      default: 'button'
+      default: ''
     }
   },
   computed: {
+    iconTarget() {
+      let icons = ['loading', 'success']
+      if (icons.indexOf(this.icon) > -1) {
+        return require(`../../common/icon/calfic-button-${this.icon}.png`)
+      }
+      return ''
+    },
+    hasBoxShadow() {
+      return !(this.inline || this.invalid || this.minor)
+    },
     btnClass() {
       return {
         'calf-button-disabled': this.disabled,
         'calf-button-invalid': this.invalid,
-        'calf-button-inline-confirm': this.inlineConfirm,
-        'calf-button-inline-cancel': this.inlineCancel
+        'calf-button-inline': this.inline,
+        'calf-button-minor': this.minor,
+        'has-box-shadow': this.hasBoxShadow
       }
     }
   },
@@ -67,70 +82,77 @@ export default {
 <style lang="postcss" scoped>
 @import '../../common/style/base.css';
 
+$btn-radius: 4px;
+$btn-opacity-active: 0.8;
+$btn-opacity-disable: 0.5;
+$btn-opacity-default: 1;
+$btn-desc-color: rgba(255, 255, 255, 0.7);
+$btn-bgc: linear-gradient(-270deg, #ff9155 0%, #fe7336 100%);
+$btn-box-shadow-content: 0 3px 10px 0 rgba(255, 146, 80, 0.5);
+
 .calf-button-content {
-  font-size: 16px;
-  color: #ffffff;
-  line-height: 24px;
+  font-size: $fontsize-large;
+  color: $color-white;
+  line-height: $lineheight-large;
 }
 .calf-button-desc {
-  font-size: 11px;
-  line-height: 16px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: $fontsize-small-s;
+  line-height: $lineheight-small-s;
+  color: $btn-desc-color;
 }
 .calf-button {
   box-sizing: border-box;
   display: block;
-  width: 100%;
-  height: 44px;
-  line-height: 44px;
-  color: #ffffff;
-  font-size: 17px;
-  letter-spacing: 0;
+  width: $btn-width;
+  height: $btn-height;
+  line-height: $btn-height;
+  color: $color-white;
+  font-size: $fontsize-large;
   text-align: center;
-  background: linear-gradient(-270deg, #ff9155 0%, #fe7336 100%);
-  box-shadow: 0 3px 10px 0 rgba(255, 146, 80, 0.5);
-  border-radius: 4px;
-  outline: none;
-  border: none;
-  border-radius: 4px;
+  background: $btn-bgc;
+  border-radius: $btn-radius;
+  &.has-box-shadow {
+    box-shadow: $btn-box-shadow-content;
+  }
   &:active {
-    opacity: 0.8;
+    opacity: $btn-opacity-active;
   }
   &.calf-button-disabled {
-    opacity: 0.5;
-    &:active {
-      opacity: 0.5;
+    opacity: $btn-opacity-disable;
+  }
+  &.calf-button-minor {
+    color: $btn-minor-color;
+    border: 1px solid $btn-minor-color;
+    background: $color-white;
+    border-radius: $btn-minor-radius;
+    &.calf-button-invalid {
+      color: $color-gray;
+      border: 1px solid $color-gray;
+      background: $color-white;
+      &:active {
+        opacity: $btn-opacity-default;
+      }
     }
   }
   &.calf-button-invalid {
-    background: #cccccc;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+    background: $color-gray;
     &:active {
-      opacity: 1;
-      background: #cccccc;
-      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+      opacity: $btn-opacity-default;
     }
   }
-  &.calf-button-inline-confirm {
+  &.calf-button-inline {
     display: inline-block;
-    width: 120px;
-    height: 32px;
-    line-height: 24px;
-    font-size: 16px;
-    color: #ffffff;
-    vertical-align: middle;
+    width: $btn-inline-width;
+    height: $btn-inline-height;
+    line-height: $btn-inline-height;
   }
-  &.calf-button-inline-cancel {
-    display: inline-block;
-    width: 120px;
-    height: 32px;
-    line-height: 24px;
-    font-size: 16px;
-    color: #f95c06;
-    background: #ffffff;
-    border: 1px solid #f95c06;
-    box-shadow: 0 0 0 0 #fff;
-    vertical-align: middle;
+  .calf-button-icon-container {
+    @include flex(row, center, center);
+    .calf-button-icon {
+      width: $btn-icon-width;
+      height: $btn-icon-width;
+      margin-right: $btn-icon-margin-right;
+    }
   }
 }
 </style>

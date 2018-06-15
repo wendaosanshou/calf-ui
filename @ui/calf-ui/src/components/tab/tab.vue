@@ -2,9 +2,9 @@
  <div class="calf-tab">
    <ul class="calf-tab-list" ref="tabList">
      <li class="calf-tab-item"
-      :class="{'active': selectTabValue === index}"
+      :class="{'active': selectTabIndex === index}"
       v-for="(item, index) in tabs" :key="index"
-      @click="handleClick(index, item.text, $event)">{{item.text}}</li>
+      @click="handleClick(item, index, $event)">{{item}}</li>
    </ul>
    <div class="calf-tab-line" :style="{'left': linePositionLeft, 'width': lineWidth}" ref="line" v-show="showLine"></div>
  </div>
@@ -18,7 +18,7 @@ export default {
   name: COMPONENT_NAME,
   data() {
     return {
-      selectTabValue: this.selectTab,
+      selectTabIndex: this.selectTab,
       linePositionLeft: 0
     }
   },
@@ -40,23 +40,21 @@ export default {
       default: true
     }
   },
-  watch: {},
   methods: {
     getLinePosition() {
       let theItemWidth = this.$refs.tabList.querySelector('.calf-tab-item')
         .clientWidth
       let theLineWidth = this.$refs.line.clientWidth
-      let prevTabWidth = this.selectTabValue * theItemWidth
+      let prevTabWidth = this.selectTabIndex * theItemWidth
       this.linePositionLeft = `${prevTabWidth +
         (theItemWidth - theLineWidth) / 2}px`
     },
-    handleClick(index, text, event) {
-      this.selectTabValue = index
-      this.$emit(EVENT_SELECT, index, text, event)
+    handleClick(item, index, event) {
+      this.selectTabIndex = index
+      this.$emit(EVENT_SELECT, item, index, event)
       this.getLinePosition()
     }
   },
-  components: {},
   mounted() {
     this.$nextTick(res => {
       this.getLinePosition()
