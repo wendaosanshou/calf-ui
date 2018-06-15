@@ -13,6 +13,7 @@ import {
   Picker,
   Progress,
   PullRefresh,
+  Tab,
   Textarea,
   Toast,
   Switch
@@ -38,6 +39,7 @@ function install(Vue) {
     Picker,
     Progress,
     PullRefresh,
+    Tab,
     Textarea,
     Toast,
     Switch

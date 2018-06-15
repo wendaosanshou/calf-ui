@@ -12,6 +12,7 @@ import Notice from './modules/notice'
 import Picker from './modules/picker'
 import Progress from './modules/progress'
 import PullRefresh from './modules/pull-refresh'
+import Tab from './modules/tab'
 import Textarea from './modules/textarea'
 import Toast from './modules/toast'
 import Switch from './modules/switch'
@@ -31,6 +32,7 @@ export {
   Picker,
   Progress,
   PullRefresh,
+  Tab,
   Textarea,
   Toast,
   Switch

@@ -3,6 +3,7 @@ import captch from '../pages/captch.vue'
 // import Checkbox from '../pages/checkbox.vue'
 import Dialog from '../pages/dialog.vue'
 import Loading from '../pages/loading.vue'
+import Tab from '../pages/tab.vue'
 import Toast from '../pages/toast.vue'
 import Notice from '../pages/notice.vue'
 import Picker from '../pages/picker.vue'
@@ -41,6 +42,10 @@ const routes = [
   {
     path: '/progress',
     component: Progress
+  },
+  {
+    path: '/tab',
+    component: Tab
   },
   {
     path: '/pull-refresh',
