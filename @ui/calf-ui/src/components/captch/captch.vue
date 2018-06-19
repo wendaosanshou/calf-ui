@@ -1,8 +1,8 @@
 <template>
-  <transition name="calf-captch-fade">
-    <calf-popup type="captch" :center="false" @mask-click="handleMaskClick" v-show="isVisible">
-      <div class="calf-captch" :class="rootClass">
-        <div class="captch-title">{{captchTitle}}</div>
+  <transition name="calf-picker-fade">
+    <calf-popup type="captch" :center="false" @mask-click="close" v-show="isVisible">
+      <div class="calf-captch calf-picker-container" :class="rootClass">
+        <div class="captch-title">{{title}}</div>
         <div class="captch-body">
           <div class="captch-header">
           <captch-input
@@ -17,9 +17,9 @@
             <captch-panel
               :currentIndex="currentIndex"
               :codes="codes"
-              @on-choose="handleChooseNumber"
+              @on-choose="handleChoose"
               @on-delete="handleDelete"
-              @on-clear="onClear"
+              @on-clear="handleClear"
               v-if="isBeforeVerify"/>
             <div class="captch-loading" v-else-if="isAfterVerify">
               <i class="icon-loading"></i>
@@ -43,6 +43,13 @@ const BEFORE_VERIFY_STATUS = 0
 const AFTER_VERIFY_STATUS = 10
 const VERIFY_FAIL_STATUS = 20
 
+const EVENT_CANCEL = 'cancel'
+const EVENT_CHANGE = 'change'
+const EVENT_CONFIRM = 'confirm'
+const EVENT_SUCCESS = 'success'
+const EVENT_FAIL = 'fail'
+const EVENT_REPEAT_SENT = 'repeat'
+
 export default {
   name: COMPONENT_NAME,
   mixins: [visibilityMixin],
@@ -63,6 +70,22 @@ export default {
     type: {
       type: String,
       default: 'verify'
+    },
+    title: {
+      type: String,
+      default() {
+        return this.type === 'verify' ? '请输入手机验证码' : '请输入交易密码'
+      }
+    },
+    duration: {
+      type: Number,
+      default: 1 * 1000
+    },
+    confirmCaptch: {
+      type: Function,
+      default: () => {
+        return Promise.resolve()
+      }
     }
   },
   computed: {
@@ -77,15 +100,6 @@ export default {
     },
     isVerifyFail() {
       return this.captchStatus === VERIFY_FAIL_STATUS
-    },
-    isVerifyCode() {
-      return this.type === 'verify'
-    },
-    isPassword() {
-      return this.type === 'password'
-    },
-    captchTitle() {
-      return this.isVerifyCode ? '手机号码验证' : '请输入交易密码'
     },
     currentIndex() {
       let currentIndex = 0
@@ -102,6 +116,9 @@ export default {
         }
       })
       return currentIndex
+    },
+    clearCode() {
+      return this.codes.join('')
     }
   },
   watch: {
@@ -109,33 +126,49 @@ export default {
       if (newVal) {
         setTimeout(() => {
           this.captchStatus = BEFORE_VERIFY_STATUS
-          this.onClear()
+          this.handleClear()
         }, 2 * 1000)
       }
+    },
+    codes(newVal) {
+      this.$emit(EVENT_CHANGE, this.clearCode)
     }
   },
   methods: {
-    onClear() {
+    handleClear() {
       this.codes = this.codes.map(item => {
         return ''
       })
     },
     onRepeat() {
-      this.$emit('on-repeat')
+      this.$emit(EVENT_REPEAT_SENT)
     },
-    handleMaskClick() {
+    close() {
+      this.captchStatus = BEFORE_VERIFY_STATUS
+      this.$emit(EVENT_CANCEL, this.clearCode)
       this.hide()
     },
-    handleChooseNumber(number) {
+    handleChoose(number) {
       if (this.currentIndex <= this.codes.length - 1) {
         this.codes.splice(this.currentIndex, 1, number)
       }
       if (this.currentIndex === this.codes.length) {
         this.captchStatus = AFTER_VERIFY_STATUS
-        setTimeout(() => {
-          this.captchStatus = VERIFY_FAIL_STATUS
-        }, 1000)
+        this.handleConfirm()
       }
+    },
+    handleConfirm() {
+      this.$emit(EVENT_CONFIRM, this.clearCode)
+      this.confirmCaptch(this.clearCode)
+        .then(res => {
+          this.$emit(EVENT_SUCCESS, this.clearCode, res)
+          this.handleClear()
+          this.close()
+        })
+        .catch(res => {
+          this.$emit(EVENT_FAIL, this.clearCode, res)
+          this.captchStatus = VERIFY_FAIL_STATUS
+        })
     },
     handleDelete() {
       if (this.currentIndex > 0) {
@@ -148,7 +181,9 @@ export default {
     CaptchInput,
     CaptchPanel
   },
-  mounted() {}
+  mounted() {
+    console.log(this.$vnode)
+  }
 }
 </script>
 
@@ -197,7 +232,7 @@ export default {
         display: block;
         position: absolute;
         left: 50%;
-        top: 105px;
+        top: 77px;
         margin-left: -17px;
         width: 34px;
         height: 34px;
@@ -217,56 +252,6 @@ export default {
       text-align: center;
       background: #ff4a31;
     }
-  }
-}
-
-.calf-captch-fade-enter-active {
-  animation: captch-fadein 0.3s;
-  .calf-captch {
-    animation: captch-slide-in 0.3s;
-  }
-}
-
-.calf-captch-fade-leave-active {
-  animation: captch-fadeout 0.3s;
-  .calf-captch {
-    animation: captch-slide-out 0.3s;
-  }
-}
-
-@keyframes captch-fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes captch-fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes captch-slide-out {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes captch-slide-in {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
   }
 }
 </style>

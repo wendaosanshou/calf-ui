@@ -58,6 +58,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/animation.css';
+
 .calf-popup {
   position: fixed;
   left: 0;

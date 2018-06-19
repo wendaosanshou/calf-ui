@@ -92,7 +92,7 @@ $btn-box-shadow-content: 0 3px 10px 0 rgba(255, 146, 80, 0.5);
 
 .calf-button-content {
   font-size: $fontsize-large;
-  color: $color-white;
+  color: $color-bg-white;
   line-height: $lineheight-large;
 }
 .calf-button-desc {
@@ -106,7 +106,7 @@ $btn-box-shadow-content: 0 3px 10px 0 rgba(255, 146, 80, 0.5);
   width: $btn-width;
   height: $btn-height;
   line-height: $btn-height;
-  color: $color-white;
+  color: $color-bg-white;
   font-size: $fontsize-large;
   text-align: center;
   background: $btn-bgc;
@@ -123,19 +123,19 @@ $btn-box-shadow-content: 0 3px 10px 0 rgba(255, 146, 80, 0.5);
   &.calf-button-minor {
     color: $btn-minor-color;
     border: 1px solid $btn-minor-color;
-    background: $color-white;
+    background: $color-bg-white;
     border-radius: $btn-minor-radius;
     &.calf-button-invalid {
-      color: $color-gray;
-      border: 1px solid $color-gray;
-      background: $color-white;
+      color: $color-grey;
+      border: 1px solid $color-grey;
+      background: $color-bg-white;
       &:active {
         opacity: $btn-opacity-default;
       }
     }
   }
   &.calf-button-invalid {
-    background: $color-gray;
+    background: $color-grey;
     &:active {
       opacity: $btn-opacity-default;
     }

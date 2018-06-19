@@ -20,11 +20,7 @@ export default {
   watch: {},
   methods: {
     handleSelect(item, index) {
-      this.$createDialog({
-        type: 'default',
-        title: item,
-        content: `index: ${index}  <br/> item: ${item}`
-      }).show()
+      console.log(`item: ${item}, index: ${index}`)
     }
   },
   components: {},

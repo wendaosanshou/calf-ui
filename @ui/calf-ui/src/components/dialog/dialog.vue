@@ -107,8 +107,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import '../../common/style/animation.css';
-
 .calf-dialog {
   width: 295px;
   height: auto;

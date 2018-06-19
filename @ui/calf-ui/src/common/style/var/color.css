@@ -1,3 +1,20 @@
-$color-orange: #f95c06;
+$color-orange: #fb814d;
 $color-white: #ffffff;
-$color-gray: #cccccc;
+
+/* 背景色 */
+$color-bg-white: #ffffff;
+$color-bg-grey: #f6f6f6;
+$color-bg-grey-light: #fafafa;
+
+/* 线的颜色 */
+$color-line-grey: #f1f1f1;
+$color-line-grey-dark: #e4e4e4;
+
+/* 常用色 */
+$color-grey: #cccccc;
+$color-grey-dark: #999999;
+$color-grey-dark-s: #666666;
+$color-grey-dark-ss: #333333;
+
+$color-blur-link: #5e91d5;
+$color-red-warn: #ff4a31;
