@@ -47,7 +47,7 @@ export default {
         title: '测试一下',
         mobile: '18612345678',
         type: 'verify',
-        duration: 120,
+        duration: 5,
         status: this.captchStatus,
         confirmCaptch: this.confirmCaptch,
         onCancel: () => {
@@ -64,6 +64,9 @@ export default {
         },
         onFail: code => {
           console.log('onFail:', code)
+        },
+        onRepeat: () => {
+          console.log('onRepeat')
         }
       }).show()
     },

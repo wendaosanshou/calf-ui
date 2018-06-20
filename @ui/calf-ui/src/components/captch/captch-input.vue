@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     handleRepeat() {
-      this.afterTimeout = false
+      this.initTimeInterval()
       this.$emit(EVENT_REPEAT)
     },
     handleForget() {
@@ -84,7 +84,7 @@ export default {
         if (this.count > 1) {
           this.count--
         } else {
-          this.count = 60
+          this.count = this.duration
           clearInterval(this.tid)
           this.afterTimeout = true
         }

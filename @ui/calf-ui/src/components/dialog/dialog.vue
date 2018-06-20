@@ -107,45 +107,44 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/animation.css';
+@import '../../common/style/mixin.css';
+
 .calf-dialog {
-  width: 295px;
+  width: $dialog-width;
   height: auto;
-  background: #ffffff;
-  border-radius: 8px;
+  background: $dialog-bgc;
+  border-radius: $dialog-radius;
   &.has-title {
     .calf-header {
       border-bottom: 1px solid #f1f1f1;
     }
     .calf-content {
-      padding: 20px 16px 28px 17px;
+      padding: $dialog-content-padding-has-title;
     }
   }
   .calf-header {
     position: relative;
     width: 100%;
-    height: 44px;
-    line-height: 44px;
-    font-size: 16px;
-    color: #333333;
+    height: $dialog-header-height;
+    line-height: $dialog-header-height;
+    font-size: $fontsize-large;
+    color: $color-grey-dark-ss;
     text-align: center;
-    background: #ffffff;
-    border-radius: 8px 8px 0 0;
-
+    border-radius: $dialog-radius $dialog-radius 0 0;
     .icon-close {
+      @include flex(row, center, center);
       position: absolute;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
       top: 0;
       right: 0;
-      width: 44px;
-      height: 44px;
+      width: $dialog-header-height;
+      height: $dialog-header-height;
       &:after {
         content: '';
         display: block;
-        width: 14px;
-        height: 14px;
+        width: $dialog-header-icon-close-width;
+        height: $dialog-header-icon-close-width;
         background: resolve('calfic-close-gray.png');
         background-size: 100% 100%;
       }
@@ -154,14 +153,13 @@ export default {
   .calf-content {
     box-sizing: border-box;
     width: 100%;
-    min-height: 68px;
+    min-height: $dialog-content-min-height;
     height: auto;
-    font-size: 13px;
-    color: #999999;
-    letter-spacing: 0;
-    line-height: 20px;
+    font-size: $fontsize-medium;
+    color: $color-grey-dark;
+    line-height: $lineheight-medium;
     text-align: center;
-    padding: 0 16px 28px 17px;
+    padding: $dialog-content-padding-no-title;
   }
 }
 </style>

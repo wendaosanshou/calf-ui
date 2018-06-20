@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import CalfButton from '../button/button'
-
 const defConfirmBtn = {
   text: '确定',
   disabled: false
@@ -102,34 +100,30 @@ export default {
       }
       this.$emit('on-confirm', e)
     }
-  },
-  components: {
-    CalfButton
-  },
-  mounted() {}
+  }
 }
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/animation.css';
+@import '../../common/style/mixin.css';
+
 .calf-btns-default {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  @include flex(row, flex-start, center);
   width: 100%;
-  height: 48px;
-  line-height: 24px;
-  border-top: 1px solid #f1f1f1;
-  border-radius: 0 0 8px 8px;
+  height: $dialog-btns-height;
+  border-top: 1px solid $dialog-line-color;
+  border-radius: 0 0 $dialog-radius $dialog-radius;
   &.only-one-btn {
     .calf-button-default-confirm {
       border: 0;
-      border-radius: 0 0 8px 8px;
+      border-radius: 0 0 $dialog-radius $dialog-radius;
     }
   }
   .calf-dialog-button {
     &:active {
-      background: rgba(0, 0, 0, 0.3);
+      background: $dialog-btn-bgc-active;
     }
   }
   .calf-button-default-cancel {
@@ -137,12 +131,12 @@ export default {
     display: block;
     width: 50%;
     height: 100%;
-    font-size: 16px;
-    color: #333333;
+    font-size: $dialog-btn-fontsize;
+    color: $dialog-btn-cancel-color;
     text-align: center;
-    background: #ffffff;
+    background: $dialog-bgc;
     border: 0;
-    border-radius: 0 0 0 8px;
+    border-radius: 0 0 0 $dialog-radius;
   }
   .calf-button-default-confirm {
     box-sizing: border-box;
@@ -150,43 +144,39 @@ export default {
     flex-grow: 1;
     width: auto;
     height: 100%;
-    font-size: 16px;
+    font-size: $dialog-btn-fontsize;
     color: #f95c06;
     text-align: center;
-    background: #ffffff;
+    background: $dialog-bgc;
     border: 0;
-    border-left: 1px solid #f1f1f1;
-    border-radius: 0 0 8px 0;
+    border-left: 1px solid $dialog-line-color;
+    border-radius: 0 0 $dialog-radius 0;
   }
 }
 
 .calf-btns-primary {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: flex-end;
+  @include flex(row, center, flex-end);
   width: 100%;
   height: auto;
-  padding-bottom: 24px;
+  padding-bottom: $dialog-btns-primary-padding-bottom;
   &.only-one-btn {
     .calf-btn-confirm {
-      width: 180px;
-      height: 36px;
+      width: $dialog-one-btn-width;
+      height: $dialog-one-btn-height;
       margin-left: 0;
     }
   }
   .calf-btn-confirm {
-    margin-left: 15px;
+    margin-left: $dialog-btn-margin;
   }
   .calf-dialog-btn {
-    width: 124px;
-    height: 36px;
-    line-height: 16px;
-    font-size: 16px;
-    color: #ffffff;
-    background-image: linear-gradient(-270deg, #fe7336 0%, #ff9155 100%);
-    border-radius: 4px;
+    width: $dialog-btn-primary-width;
+    height: $dialog-btn-primary-height;
+    line-height: $dialog-btn-primary-height;
+    font-size: $dialog-btn-primary-fontsize;
+    color: $dialog-btn-primary-color;
+    background-image: $dialog-btn-primary-bgc;
+    border-radius: $dialog-btn-primary-radius;
     border: 0;
   }
 }
