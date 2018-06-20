@@ -13,6 +13,14 @@ $captch-radius: 8px 8px 0 0;
 $captch-title-width: 44px;
 $captch-title-border: 1px solid #f1f1f1;
 $captch-content-height: 280px;
+$captch-header-color: $color-grey-dark-s;
+$captch-header-margin-bottom: 8px;
+$captch-header-color-orange: #f95c06;
+$captch-input-item-width: 36px;
+$captch-input-item-height: 45px;
+$captch-input-item-fontsize: 32px;
+$captch-input-item-margin: 12px;
+$captch-forget-margin: 24px;
 
 $switch-on-bgc: $color-orange;
 $switch-off-bgc: $color-white;

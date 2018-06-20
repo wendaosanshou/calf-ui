@@ -61,70 +61,72 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/mixin.css';
+@import '../../common/style/animation.css';
+
+$panel-title-height: 36px;
+$panel-title-bgc: #f9f9f9;
+$panel-logo-width: 16px;
+$panel-title-text-margin: 6px;
+$panel-content-item-height: 54px;
+$panel-content-item-bgc-active: rgba(0, 0, 0, 0.03);
+
 .captch-panel {
   .captch-panel-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    @include flex(row, center, center);
     width: 100%;
-    height: 36px;
+    height: $panel-title-height;
     text-align: center;
-    background: #f9f9f9;
+    background: $panel-title-bgc;
     .title-logo {
       display: block;
-      width: 16px;
-      height: 16px;
+      width: $panel-logo-width;
+      height: $panel-logo-width;
       background: resolve('calfic-shield.png');
       background-size: 100% 100%;
     }
     .title-content {
       width: auto;
-      height: 36px;
-      line-height: 36px;
-      margin-left: 6px;
-      font-size: 12px;
-      color: #14ba89;
+      height: $panel-title-height;
+      line-height: $panel-title-height;
+      margin-left: $panel-title-text-margin;
+      font-size: $fontsize-small;
+      color: $color-green;
     }
   }
   .captch-panel-list {
     .captch-panel-item {
+      @include flex(row, flex-start, flex-start);
       width: 100%;
-      height: 54px;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
+      height: $panel-content-item-height;
     }
     .item-number {
       position: relative;
       flex-grow: 1;
       width: auto;
-      height: 54px;
-      line-height: 54px;
-      font-size: 24px;
-      color: #333333;
+      height: $panel-content-item-height;
+      line-height: $panel-content-item-height;
+      font-size: $fontsize-large-xxx;
+      color: $color-grey-dark-ss;
       text-align: center;
-      background: #ffffff;
+      background: $color-bg-white;
       &.bg-gray {
-        background: #f6f6f6;
+        background: $color-bg-grey;
       }
       &.item-icon-delete {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+        @include flex(row, center, center);
         &:after {
           display: block;
           content: '';
-          width: 16px;
-          height: 16px;
+          width: $panel-logo-width;
+          height: $panel-logo-width;
           background: resolve('calfic-close-gray.png');
           background-size: 100% 100%;
         }
       }
       &:active {
-        background: rgba(0, 0, 0, 0.03);
+        background: $panel-content-item-bgc-active;
       }
     }
   }

@@ -98,58 +98,62 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/mixin.css';
+
 .captch-input {
   .captch-title-wrap {
-    padding-bottom: 8px;
+    width: 100%;
+    height: auto;
+    .captch-input-title {
+      width: 100%;
+      height: auto;
+      font-size: $fontsize-medium;
+      color: $captch-header-color;
+      text-align: center;
+      line-height: $lineheight-small-s;
+      margin-bottom: $captch-header-margin-bottom;
+    }
   }
-  .captch-input-title {
-    font-size: 14px;
-    color: #666666;
-    text-align: center;
-    line-height: 16px;
-    margin-bottom: 8px;
-  }
+
   .captch-input-desc {
-    font-size: 12px;
-    color: #cccccc;
+    font-size: $fontsize-small;
+    color: $color-grey;
     text-align: center;
-    line-height: 16px;
+    line-height: $lineheight-small-s;
   }
   .captch-repeat {
-    font-size: 12px;
-    color: #f95c06;
+    font-size: $fontsize-small;
+    color: $captch-header-color-orange;
     text-align: center;
-    line-height: 16px;
+    line-height: $lineheight-small-s;
   }
   .captch-input-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
+    @include flex(row, center, flex-start);
     &.is-verify-fail .captch-input-item {
-      color: #ff4a31;
+      color: $color-red-warn;
     }
     .captch-input-item {
-      width: 36px;
-      height: 45px;
-      font-size: 32px;
-      color: #333333;
+      width: $captch-input-item-width;
+      height: $captch-input-item-height;
+      font-size: $captch-input-item-fontsize;
+      color: $color-grey-dark-ss;
       text-align: center;
-      border-bottom: 1px solid #cccccc;
-      margin-left: 12px;
+      border-bottom: 1px solid $color-grey;
+      margin-left: $captch-input-item-margin;
       &.current {
-        border-bottom: 1px solid #666666;
+        border-bottom: 1px solid $color-grey-dark-s;
       }
     }
   }
   .captch-forget {
     width: 100%;
-    height: 16px;
-    font-size: 12px;
-    color: #5e91d5;
-    margin-top: 24px;
+    height: $lineheight-small-s;
+    font-size: $fontsize-small;
+    color: $color-blur-link;
+    margin-top: $captch-forget-margin;
     text-align: center;
-    line-height: 16px;
+    line-height: $lineheight-small-s;
   }
 }
 </style>

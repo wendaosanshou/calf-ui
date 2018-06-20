@@ -5,14 +5,14 @@
         <div class="captch-title">{{title}}</div>
         <div class="captch-body">
           <div class="captch-header">
-          <captch-input
-            :captchStatus="captchStatus"
-            :currentIndex="currentIndex"
-            :codes="codes"
-            :mobile="mobile"
-            :type="type"
-            :duration="duration"
-            @on-repeat="onRepeat"/>
+            <captch-input
+              :captchStatus="captchStatus"
+              :currentIndex="currentIndex"
+              :codes="codes"
+              :mobile="mobile"
+              :type="type"
+              :duration="duration"
+              @on-repeat="onRepeat"/>
           </div>
           <div class="captch-content">
             <captch-panel
