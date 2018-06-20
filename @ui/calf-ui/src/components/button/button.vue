@@ -80,7 +80,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import '../../common/style/base.css';
+@import '../../common/style/variable.css';
+@import '../../common/style/mixin.css';
+@import '../../common/style/animation.css';
 
 $btn-radius: 4px;
 $btn-opacity-active: 0.8;
@@ -154,5 +156,10 @@ $btn-box-shadow-content: 0 3px 10px 0 rgba(255, 146, 80, 0.5);
       margin-right: $btn-icon-margin-right;
     }
   }
+}
+
+button {
+  outline: none;
+  border: none;
 }
 </style>

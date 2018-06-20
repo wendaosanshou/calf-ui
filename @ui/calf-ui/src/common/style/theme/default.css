@@ -9,6 +9,11 @@ $btn-inline-height: 32px;
 $btn-minor-color: #f95c06;
 $btn-minor-radius: 2px;
 
+$captch-radius: 8px 8px 0 0;
+$captch-title-width: 44px;
+$captch-title-border: 1px solid #f1f1f1;
+$captch-content-height: 280px;
+
 $switch-on-bgc: $color-orange;
 $switch-off-bgc: $color-white;
 $switch-off-border-color: #e4e4e4;

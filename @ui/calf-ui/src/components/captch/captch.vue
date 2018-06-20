@@ -11,6 +11,7 @@
             :codes="codes"
             :mobile="mobile"
             :type="type"
+            :duration="duration"
             @on-repeat="onRepeat"/>
           </div>
           <div class="captch-content">
@@ -22,7 +23,7 @@
               @on-clear="handleClear"
               v-if="isBeforeVerify"/>
             <div class="captch-loading" v-else-if="isAfterVerify">
-              <i class="icon-loading"></i>
+              <i class="icon-loading loading-rotation"></i>
             </div>
             <div class="captch-result" v-else-if="isVerifyFail">验证码错误，2s后重新输入</div>
           </div>
@@ -79,7 +80,7 @@ export default {
     },
     duration: {
       type: Number,
-      default: 1 * 1000
+      default: 60
     },
     confirmCaptch: {
       type: Function,
@@ -188,20 +189,29 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/animation.css';
+
+$verify-body-padding-top: 20px;
+$captch-body-padding-top: 18px;
+$captch-content-padding-top: 28px;
+$captch-loading-width: 34px;
+$captch-loading-top: 77px;
+
 .calf-captch {
   width: 100%;
   height: auto;
-  border-radius: 8px 8px 0 0;
-  background: #ffffff;
+  border-radius: $captch-radius;
+  background: $color-bg-white;
   .captch-title {
     width: 100%;
-    height: 44px;
-    line-height: 44px;
-    font-size: 16px;
-    color: #333333;
+    height: $captch-title-width;
+    line-height: $captch-title-width;
+    font-size: $fontsize-large;
+    color: $color-grey-dark-ss;
     text-align: center;
-    border-radius: 8px 8px 6px 6px;
-    border-bottom: 1px solid #f1f1f1;
+    border-radius: $captch-radius;
+    border-bottom: $captch-title-border;
   }
   .captch-body {
     width: 100%;
@@ -210,19 +220,19 @@ export default {
 }
 
 .calf-captch-verify .captch-body .captch-header {
-  padding-top: 20px;
+  padding-top: $verify-body-padding-top;
 }
 
 .calf-captch-password .captch-body .captch-header {
-  padding-top: 18px;
+  padding-top: $captch-body-padding-top;
 }
 
 .captch-body {
   .captch-content {
     box-sizing: border-box;
     width: 100%;
-    height: 280px;
-    padding-top: 28px;
+    height: $captch-content-height;
+    padding-top: $captch-content-padding-top;
     .captch-loading {
       position: relative;
       box-sizing: border-box;
@@ -232,11 +242,11 @@ export default {
         display: block;
         position: absolute;
         left: 50%;
-        top: 77px;
-        margin-left: -17px;
-        width: 34px;
-        height: 34px;
-        background: resolve('calfic-tick.png');
+        top: $captch-loading-top;
+        margin-left: $captch-loading-width / 2;
+        width: $captch-loading-width;
+        height: $captch-loading-width;
+        background: resolve('calfic-loading.png');
         background-size: 100% 100%;
       }
     }
@@ -245,12 +255,12 @@ export default {
       left: 0;
       bottom: 0;
       width: 100%;
-      height: 44px;
-      line-height: 44px;
-      font-size: 12px;
-      color: #ffffff;
+      height: $captch-title-width;
+      line-height: $captch-title-width;
+      font-size: $fontsize-small;
+      color: $color-bg-white;
       text-align: center;
-      background: #ff4a31;
+      background: $color-red-warn;
     }
   }
 }

@@ -16,12 +16,14 @@
 const BEFORE_VERIFY_STATUS = 0
 const AFTER_VERIFY_STATUS = 10
 const VERIFY_FAIL_STATUS = 20
+const EVENT_REPEAT = 'on-repeat'
+const EVENT_FORGET = 'on-forget'
 
 export default {
   name: 'captch-input',
   data() {
     return {
-      count: 60,
+      count: this.duration,
       tid: '',
       afterTimeout: false
     }
@@ -48,6 +50,10 @@ export default {
     type: {
       type: String,
       default: 'verify'
+    },
+    duration: {
+      type: Number,
+      default: 60
     }
   },
   computed: {
@@ -64,14 +70,13 @@ export default {
       return this.type === 'password'
     }
   },
-  watch: {},
   methods: {
     handleRepeat() {
       this.afterTimeout = false
-      this.$emit('on-repeat')
+      this.$emit(EVENT_REPEAT)
     },
     handleForget() {
-      this.$emit('on-forget')
+      this.$emit(EVENT_FORGET)
     },
     initTimeInterval() {
       this.afterTimeout = false
@@ -86,7 +91,6 @@ export default {
       }, 1 * 1000)
     }
   },
-  components: {},
   mounted() {
     this.initTimeInterval()
   }

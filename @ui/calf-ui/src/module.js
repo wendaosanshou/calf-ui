@@ -6,7 +6,6 @@ import Loading from './modules/loading'
 import ListPicker from './modules/list-picker'
 import CascadePicker from './modules/cascade-picker'
 import DatePicker from './modules/date-picker'
-import Checkbox from './modules/checkbox'
 import Input from './modules/input'
 import Notice from './modules/notice'
 import Picker from './modules/picker'
@@ -26,7 +25,6 @@ export {
   Popup,
   Dialog,
   Loading,
-  Checkbox,
   Input,
   Notice,
   Picker,

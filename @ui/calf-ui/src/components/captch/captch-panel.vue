@@ -47,8 +47,6 @@ export default {
       }
     }
   },
-  computed: {},
-  watch: {},
   methods: {
     handleChooseNumber(number) {
       this.$emit('on-choose', number)
