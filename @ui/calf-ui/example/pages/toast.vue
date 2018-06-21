@@ -40,7 +40,7 @@ export default {
       this.$createToast({
         duration: 3 * 1000,
         // icon: 'tick-red',
-        icon: 'error-red',
+        icon: 'close',
         content: '加载中...',
         onClose: () => {
           console.log('close')

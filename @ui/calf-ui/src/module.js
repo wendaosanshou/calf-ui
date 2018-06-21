@@ -6,7 +6,6 @@ import Loading from './modules/loading'
 import ListPicker from './modules/list-picker'
 import CascadePicker from './modules/cascade-picker'
 import DatePicker from './modules/date-picker'
-import Input from './modules/input'
 import Notice from './modules/notice'
 import Picker from './modules/picker'
 import Progress from './modules/progress'
@@ -25,7 +24,6 @@ export {
   Popup,
   Dialog,
   Loading,
-  Input,
   Notice,
   Picker,
   Progress,

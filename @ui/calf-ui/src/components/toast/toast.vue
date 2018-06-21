@@ -5,10 +5,7 @@
         <slot></slot>
       </div>
       <div class="calf-toast" v-else>
-        <claf-icon
-          class="calf-toast-icon"
-          v-if="icon"
-          :name="icon"/>
+        <i class="calf-toast-icon" :class="iconClass" v-if="icon" name="desc"></i>
         {{content}}
       </div>
     </calf-popup>
@@ -17,7 +14,6 @@
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
-import ClafIcon from '../icon/icon'
 import CalfPopup from '../popup/popup'
 
 const COMPONENT_NAME = 'calf-toast'
@@ -50,7 +46,11 @@ export default {
       default: ''
     }
   },
-  computed: {},
+  computed: {
+    iconClass() {
+      return `calfic-${this.icon}`
+    }
+  },
   watch: {
     isVisible(newVal, oldVal) {
       if (newVal && this.duration > 0) {
@@ -75,59 +75,35 @@ export default {
     }
   },
   components: {
-    CalfPopup,
-    ClafIcon
+    CalfPopup
   },
   mounted() {}
 }
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/animation.css';
+@import '../../common/style/mixin.css';
+@import '../../common/style/calf-icon.css';
+
 .calf-toast {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  @include flex(column, flex-start, center);
   width: auto;
   max-width: 270px;
   height: auto;
-  font-size: 14px;
-  color: #ffffff;
+  font-size: $toast-fontsize;
+  color: $toast-color;
   padding: 8px 16px;
-  line-height: 21px;
+  line-height: $toast-lineheight;
   text-align: center;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
+  background: $toast-bgc;
+  border-radius: $toast-radius;
   .calf-toast-icon {
     width: 28px;
     height: 28px;
     margin-bottom: 8px;
-  }
-}
-
-.calf-toast-fade-enter-active {
-  animation: toast-in 0.2s;
-}
-.calf-toast-fade-leave-active {
-  animation: toast-out 0.2s;
-}
-
-@keyframes toast-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes toast-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 </style>

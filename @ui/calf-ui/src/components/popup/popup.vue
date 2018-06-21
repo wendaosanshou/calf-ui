@@ -59,23 +59,21 @@ export default {
 
 <style lang="postcss" scoped>
 @import '../../common/style/animation.css';
+@import '../../common/style/variable.css';
 
 .calf-popup {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 100;
+  z-index: 10000;
   .calf-popup-mask {
-    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(51, 51, 51, 0.6);
+    background-color: $popup-mask-bgc;
   }
   .calf-popup-content {
-    font-size: 14px;
-    color: #ffffff;
+    font-size: $popup-content-fontsize;
+    color: $popup-content-color;
   }
 }
 
@@ -103,14 +101,14 @@ export default {
 .calf-popup-dialog {
   .calf-popup-content {
     padding: 0;
-    border-radius: 8px;
+    border-radius: $popup-content-dialog-radius;
   }
 }
 
 .calf-popup-toast {
   .calf-popup-content {
     padding: 0;
-    border-radius: 4px;
+    border-radius: $popup-content-toast-radius;
   }
 }
 </style>

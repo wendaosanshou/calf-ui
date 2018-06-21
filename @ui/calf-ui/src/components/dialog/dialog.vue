@@ -14,7 +14,7 @@
           <slot></slot>
         </div>
         <div class="calf-content" v-else v-html="content"></div>
-        <the-btns
+        <dialog-btns
           :type="type"
           :confirmBtn="confirmBtn"
           :cancelBtn="cancelBtn"
@@ -29,7 +29,7 @@
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
 import CalfPopup from '../popup/popup'
-import TheBtns from './the-btns'
+import DialogBtns from './dialog-btns'
 
 const COMPONENT_NAME = 'calf-dialog'
 const EVENT_CONFIRM = 'confirm'
@@ -101,7 +101,7 @@ export default {
   },
   components: {
     CalfPopup,
-    TheBtns
+    DialogBtns
   }
 }
 </script>

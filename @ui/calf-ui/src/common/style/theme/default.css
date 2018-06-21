@@ -46,6 +46,18 @@ $dialog-btn-primary-color: $color-bg-white;
 $dialog-btn-primary-bgc: linear-gradient(-270deg, #fe7336 0%, #ff9155 100%);
 $dialog-btn-primary-radius: 4px;
 
+$popup-mask-bgc: rgba(51, 51, 51, 0.6);
+$popup-content-fontsize: $fontsize-medium;
+$popup-content-color: $color-white;
+$popup-content-toast-radius: 4px;
+$popup-content-dialog-radius: 8px;
+
+$toast-fontsize: $fontsize-medium;
+$toast-lineheight: $lineheight-medium;
+$toast-color: $color-white;
+$toast-bgc: rgba(0, 0, 0, 0.5);
+$toast-radius: 4px;
+
 $switch-on-bgc: $color-orange;
 $switch-off-bgc: $color-white;
 $switch-off-border-color: #e4e4e4;

@@ -1,0 +1,19 @@
+
+### 本地预览
+```
+npm i docsify-cli -g
+docsify serve docs
+ http://localhost:3000
+```
+
+部署、将项目部署在web服务器下即可正常访问
+
+
+新建文档 
+在md 文件件下新建 .md文档、然后在 _sidebar.md   文档里面添加导航页面
+
+页面中编写方式参考 ### 
+
+
+参考文档
+https://docsify.js.org/#/
