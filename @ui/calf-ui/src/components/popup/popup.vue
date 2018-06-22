@@ -63,6 +63,9 @@ export default {
 
 .calf-popup {
   z-index: 10000;
+  &.calf-popup-loading .calf-popup-mask {
+    background-color: $popup-mask-loading-bgc;
+  }
   .calf-popup-mask {
     position: fixed;
     left: 0;

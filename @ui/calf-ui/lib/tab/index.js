@@ -61,155 +61,12 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 263);
+/******/ 	return __webpack_require__(__webpack_require__.s = 258);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 180:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var COMPONENT_NAME = 'calf-tab';
-var EVENT_SELECT = 'select';
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  name: COMPONENT_NAME,
-  data: function data() {
-    return {
-      selectTabIndex: this.selectTab,
-      linePositionLeft: 0
-    };
-  },
-
-  props: {
-    tabs: {
-      type: Array,
-      default: []
-    },
-    selectTab: {
-      type: String | Number,
-      default: 0
-    },
-    lineWidth: {
-      type: String,
-      default: '108px'
-    },
-    showLine: {
-      type: Boolean,
-      default: true
-    }
-  },
-  methods: {
-    getLinePosition: function getLinePosition() {
-      var theItemWidth = this.$refs.tabList.querySelector('.calf-tab-item').clientWidth;
-      var theLineWidth = this.$refs.line.clientWidth;
-      var prevTabWidth = this.selectTabIndex * theItemWidth;
-      this.linePositionLeft = prevTabWidth + (theItemWidth - theLineWidth) / 2 + 'px';
-    },
-    handleClick: function handleClick(item, index, event) {
-      this.selectTabIndex = index;
-      this.$emit(EVENT_SELECT, item, index, event);
-      this.getLinePosition();
-    }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.$nextTick(function (res) {
-      _this.getLinePosition();
-    });
-  }
-});
-
-/***/ }),
-
-/***/ 263:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__ = __webpack_require__(264);
-
-
-__WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */].install = function (Vue) {
-  Vue.component(__WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */]);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */]);
-
-/***/ }),
-
-/***/ 264:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_tab_vue__ = __webpack_require__(180);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_69062523_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_tab_vue__ = __webpack_require__(266);
-function injectStyle (ssrContext) {
-  __webpack_require__(265)
-}
-var normalizeComponent = __webpack_require__(9)
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-69062523"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_tab_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_69062523_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_tab_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-
-/***/ 265:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 266:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"calf-tab"},[_c('ul',{ref:"tabList",staticClass:"calf-tab-list"},_vm._l((_vm.tabs),function(item,index){return _c('li',{key:index,staticClass:"calf-tab-item",class:{'active': _vm.selectTabIndex === index},on:{"click":function($event){_vm.handleClick(item, index, $event)}}},[_vm._v(_vm._s(item))])})),_vm._v(" "),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showLine),expression:"showLine"}],ref:"line",staticClass:"calf-tab-line",style:({'left': _vm.linePositionLeft, 'width': _vm.lineWidth})})])}
-var staticRenderFns = []
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-
-/***/ }),
-
-/***/ 9:
+/***/ 12:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -316,6 +173,149 @@ module.exports = function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ 175:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var COMPONENT_NAME = 'calf-tab';
+var EVENT_SELECT = 'select';
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: COMPONENT_NAME,
+  data: function data() {
+    return {
+      selectTabIndex: this.selectTab,
+      linePositionLeft: 0
+    };
+  },
+
+  props: {
+    tabs: {
+      type: Array,
+      default: []
+    },
+    selectTab: {
+      type: String | Number,
+      default: 0
+    },
+    lineWidth: {
+      type: String,
+      default: '108px'
+    },
+    showLine: {
+      type: Boolean,
+      default: true
+    }
+  },
+  methods: {
+    getLinePosition: function getLinePosition() {
+      var theItemWidth = this.$refs.tabList.querySelector('.calf-tab-item').clientWidth;
+      var theLineWidth = this.$refs.line.clientWidth;
+      var prevTabWidth = this.selectTabIndex * theItemWidth;
+      this.linePositionLeft = prevTabWidth + (theItemWidth - theLineWidth) / 2 + 'px';
+    },
+    handleClick: function handleClick(item, index, event) {
+      this.selectTabIndex = index;
+      this.$emit(EVENT_SELECT, item, index, event);
+      this.getLinePosition();
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$nextTick(function (res) {
+      _this.getLinePosition();
+    });
+  }
+});
+
+/***/ }),
+
+/***/ 258:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__ = __webpack_require__(259);
+
+
+__WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */].install = function (Vue) {
+  Vue.component(__WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */]);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_tab_tab_vue__["a" /* default */]);
+
+/***/ }),
+
+/***/ 259:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_tab_vue__ = __webpack_require__(175);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_69062523_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_tab_vue__ = __webpack_require__(261);
+function injectStyle (ssrContext) {
+  __webpack_require__(260)
+}
+var normalizeComponent = __webpack_require__(12)
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-69062523"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_tab_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_69062523_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_tab_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 260:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 261:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"calf-tab"},[_c('ul',{ref:"tabList",staticClass:"calf-tab-list"},_vm._l((_vm.tabs),function(item,index){return _c('li',{key:index,staticClass:"calf-tab-item",class:{'active': _vm.selectTabIndex === index},on:{"click":function($event){_vm.handleClick(item, index, $event)}}},[_vm._v(_vm._s(item))])})),_vm._v(" "),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showLine),expression:"showLine"}],ref:"line",staticClass:"calf-tab-line",style:({'left': _vm.linePositionLeft, 'width': _vm.lineWidth})})])}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
 
 /***/ })
 

@@ -6,12 +6,12 @@
   </calf-progress>
   <calf-button @click="handleProgress1">下一步</calf-button>
   <calf-progress
-    :type="'line'"
+    type="line"
     :current="current2"
     :steps="progress1"></calf-progress>
   <calf-button @click="handleProgress2">下一步</calf-button>
   <calf-progress
-    :type="'label'"
+    type="label"
     :current="current3"
     :steps="progress2"
     :isFinish="true"></calf-progress>

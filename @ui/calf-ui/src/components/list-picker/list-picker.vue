@@ -69,6 +69,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
 @import '../../common/style/animation.css';
 
 .calf-list-picker {
@@ -80,25 +81,25 @@ export default {
     width: 100%;
     height: auto;
     margin: 0 auto 8px auto;
-    background: #ffffff;
-    border-radius: 8px;
+    background: $list-content-bgc;
+    border-radius: $list-content-radius;
     .calf-item {
       width: 100%;
       height: 48px;
       line-height: 48px;
-      font-size: 15px;
-      color: #333333;
+      font-size: $list-content-fontsize;
+      color: $list-content-color;
       text-align: center;
-      background: #ffffff;
-      border-bottom: 1px solid #f1f1f1;
+      background: $list-content-bgc;
+      border-bottom: 1px solid $color-line-grey;
       &.active {
-        color: #f95c06;
+        color: $list-content-color-active;
       }
       &:nth-child(1) {
-        border-radius: 8px 8px 0 0;
+        border-radius: $list-content-radius $list-content-radius 0 0;
       }
       &:nth-last-child(1) {
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 0 $list-content-radius $list-content-radius;
         border-bottom: 0;
       }
     }
@@ -106,12 +107,12 @@ export default {
   .calf-item-cancel {
     width: 100%;
     height: 48px;
-    font-size: 16px;
-    color: #666666;
-    text-align: center;
     line-height: 48px;
-    background: #ffffff;
-    border-radius: 8px;
+    font-size: $list-content-fontsize-cancel;
+    color: $list-content-color-cancel;
+    text-align: center;
+    background: $list-content-bgc;
+    border-radius: $list-content-radius;
   }
 }
 </style>

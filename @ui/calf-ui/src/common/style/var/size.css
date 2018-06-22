@@ -11,4 +11,6 @@ $lineheight-large: 24px;
 $lineheight-medium: 20px;
 $lineheight-small-s: 16px;
 
-$radius-size-medium: 5px;
+$radius-size-large: 8px;
+$radius-size-medium: 6px;
+$radius-size-small: 4px;
