@@ -1,5 +1,5 @@
 <template>
-  <transition name="calf-notice-fade">
+  <transition name="calf-fade">
     <div class="calf-notice" :class="rootClass" v-show="value" @click="handleArrowToogle">
       <i class="calf-icon-broadcast" :class="iconBroadcastClass" v-show="showIcon"></i>
       <p class="calf-notice-content" ref="content">{{content}}</p>
@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import ClafIcon from '../icon/icon'
-
 const COMPONENT_NAME = 'calf-notice'
 const EVENT_CLOSE = 'on-close'
 const EVENT_ARROW_TOOGLE = 'on-toogle'
@@ -78,44 +76,41 @@ export default {
     handleArrowToogle(event) {
       this.$emit(EVENT_ARROW_TOOGLE, event)
     }
-  },
-  components: {
-    ClafIcon
-  },
-  mounted() {}
+  }
 }
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/mixin.css';
+@import '../../common/style/animation.css';
+
 .calf-notice {
+  @include flex(row, flex-start, center);
   position: relative;
   box-sizing: border-box;
   width: 100%;
   min-height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   padding: 0 16px;
   &.calf-notice-info {
-    color: #666666;
-    background: #ffffff;
+    color: $notice-info-color;
+    background: $notice-info-bgc;
     .calf-notice-content {
-      color: #666666;
+      color: $notice-info-color;
     }
   }
   &.calf-notice-warning {
-    color: #f69917;
-    background: rgba(246, 153, 23, 0.1);
+    color: $notice-warning-color;
+    background: $notice-warning-bgc;
     .calf-notice-content {
-      color: #f69917;
+      color: $notice-warning-color;
     }
   }
   &.calf-notice-error {
-    color: #f95c06;
-    background: rgba(249, 92, 6, 0.1);
+    color: $notice-error-color;
+    background: $notice-error-bgc;
     .calf-notice-content {
-      color: #f95c06;
+      color: $notice-error-color;
     }
   }
   .calf-icon-broadcast {
@@ -136,17 +131,13 @@ export default {
     }
   }
   .calf-notice-content {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
-    color: #f69917;
     padding: 10px 0;
   }
   .calf-icon-close,
   .calf-icon-arrow {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    @include flex(row, center, center);
     position: absolute;
     top: 0;
     right: 0;
@@ -181,31 +172,6 @@ export default {
       background: resolve('calfic-right-red.png');
       background-size: 100% 100%;
     }
-  }
-}
-
-.calf-notice-fade-enter-active {
-  animation: notice-in 0.2s;
-}
-.calf-notice-fade-leave-active {
-  animation: notice-out 0.2s;
-}
-
-@keyframes notice-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes notice-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 </style>

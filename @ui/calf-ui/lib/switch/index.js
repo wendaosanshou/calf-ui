@@ -61,131 +61,12 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 259);
+/******/ 	return __webpack_require__(__webpack_require__.s = 254);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 179:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-
-var COMPONENT_NAME = 'calf-switch';
-
-var EVENT_INPUT = 'input';
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  name: COMPONENT_NAME,
-  props: {
-    value: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data: function data() {
-    return {
-      checkboxValue: this.value
-    };
-  },
-
-  watch: {
-    value: function value(newVal) {
-      this.checkboxValue = newVal;
-    },
-    checkboxValue: function checkboxValue(newVal) {
-      this.$emit(EVENT_INPUT, newVal);
-    }
-  }
-});
-
-/***/ }),
-
-/***/ 259:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__ = __webpack_require__(260);
-
-
-__WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */].install = function (Vue) {
-  Vue.component(__WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */]);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */]);
-
-/***/ }),
-
-/***/ 260:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_switch_vue__ = __webpack_require__(179);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_76720e93_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_switch_vue__ = __webpack_require__(262);
-function injectStyle (ssrContext) {
-  __webpack_require__(261)
-}
-var normalizeComponent = __webpack_require__(9)
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-76720e93"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_switch_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_76720e93_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_switch_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-
-/***/ 261:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 262:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"calf-switch"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.checkboxValue),expression:"checkboxValue"}],staticClass:"calf-switch-input",attrs:{"type":"checkbox","disabled":_vm.disabled},domProps:{"checked":Array.isArray(_vm.checkboxValue)?_vm._i(_vm.checkboxValue,null)>-1:(_vm.checkboxValue)},on:{"change":function($event){var $$a=_vm.checkboxValue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.checkboxValue=$$a.concat([$$v]))}else{$$i>-1&&(_vm.checkboxValue=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.checkboxValue=$$c}}}}),_vm._v(" "),_c('i',{staticClass:"calf-switch-ui"}),_vm._v(" "),_c('span',{staticClass:"calf-switch-label"},[_vm._t("default")],2)])}
-var staticRenderFns = []
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-
-/***/ }),
-
-/***/ 9:
+/***/ 12:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -292,6 +173,125 @@ module.exports = function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ 174:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+
+var COMPONENT_NAME = 'calf-switch';
+
+var EVENT_INPUT = 'input';
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: COMPONENT_NAME,
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    return {
+      checkboxValue: this.value
+    };
+  },
+
+  watch: {
+    value: function value(newVal) {
+      this.checkboxValue = newVal;
+    },
+    checkboxValue: function checkboxValue(newVal) {
+      this.$emit(EVENT_INPUT, newVal);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 254:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__ = __webpack_require__(255);
+
+
+__WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */].install = function (Vue) {
+  Vue.component(__WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */]);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_switch_switch_vue__["a" /* default */]);
+
+/***/ }),
+
+/***/ 255:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_switch_vue__ = __webpack_require__(174);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_76720e93_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_switch_vue__ = __webpack_require__(257);
+function injectStyle (ssrContext) {
+  __webpack_require__(256)
+}
+var normalizeComponent = __webpack_require__(12)
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-76720e93"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_switch_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_76720e93_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_switch_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 256:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 257:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"calf-switch"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.checkboxValue),expression:"checkboxValue"}],staticClass:"calf-switch-input",attrs:{"type":"checkbox","disabled":_vm.disabled},domProps:{"checked":Array.isArray(_vm.checkboxValue)?_vm._i(_vm.checkboxValue,null)>-1:(_vm.checkboxValue)},on:{"change":function($event){var $$a=_vm.checkboxValue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.checkboxValue=$$a.concat([$$v]))}else{$$i>-1&&(_vm.checkboxValue=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.checkboxValue=$$c}}}}),_vm._v(" "),_c('i',{staticClass:"calf-switch-ui"}),_vm._v(" "),_c('span',{staticClass:"calf-switch-label"},[_vm._t("default")],2)])}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
 
 /***/ })
 

@@ -1,7 +1,6 @@
 <template>
   <div class="page-loading">
     <calf-button @click="handleLoading">toogle</calf-button>
-    <calf-loading v-model="showLoading"/>
   </div>
 </template>
 
@@ -14,7 +13,12 @@ export default {
   },
   methods: {
     handleLoading() {
-      this.showLoading = true
+      this.$createLoading({
+        duration: 3 * 1000,
+        onClose: () => {
+          console.log('close')
+        }
+      }).show()
     }
   }
 }

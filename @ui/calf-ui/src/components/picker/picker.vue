@@ -235,26 +235,22 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/mixin.css';
 @import '../../common/style/animation.css';
 
 .calf-picker {
   width: 100%;
   height: 284px;
-  background: #ffffff;
+  background: $picker-bgc;
   .calf-picker-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(row, space-between, center);
     width: 100%;
     height: 44px;
-    border-radius: 8px 8px 6px 6px;
-    border-bottom: 1px solid #f1f1f1;
+    border-radius: $picker-radius $picker-radius 0 0;
+    border-bottom: 1px solid $color-line-grey;
     .calf-icon {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      @include flex(row, center, center);
       width: 44px;
       height: 44px;
       &:after {
@@ -270,16 +266,16 @@ export default {
       width: auto;
       height: 44px;
       line-height: 44px;
-      font-size: 16px;
-      color: #333333;
+      font-size: $picker-title-fontsize;
+      color: $picker-title-color;
       text-align: center;
     }
     .calf-label {
       width: auto;
       height: 44px;
       line-height: 44px;
-      font-size: 16px;
-      color: #f95c06;
+      font-size: $fontsize-large;
+      color: $picker-title-fontsize;
       padding-right: 16px;
     }
   }
@@ -338,7 +334,7 @@ export default {
         line-height: 48px;
         text-align: center;
         font-size: 15px;
-        color: #333333;
+        color: $picker-item-color;
         text-align: center;
       }
     }

@@ -4,26 +4,14 @@ i {
   height: 14px;
 }
 
-.calfic-square-select {
-  display: block;
-  width: 14px;
-  height: 14px;
-  background: url('../img/calf-checkbox-select.png');
-  background-size: 100% 100%;
-}
-
-.calfic-square-unselect {
-  display: block;
-  width: 14px;
-  height: 14px;
-  background: url('../img/calf-checkbox-unselect.png');
-  background-size: 100% 100%;
-}
-
 .calfic-close {
   display: block;
-  width: 14px;
-  height: 14px;
-  background: url('../img/calf-close.png');
+  background: resolve('calfic-close-gray.png');
+  background-size: 100% 100%;
+}
+
+.calfic-loading {
+  display: block;
+  background: resolve('calfic-button-loading.png');
   background-size: 100% 100%;
 }

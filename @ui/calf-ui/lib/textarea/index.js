@@ -61,179 +61,12 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 267);
+/******/ 	return __webpack_require__(__webpack_require__.s = 262);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 181:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var COMPONENT_NAME = 'calf-textarea';
-var EVENT_INPUT = 'input';
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  name: COMPONENT_NAME,
-  data: function data() {
-    return {
-      textareaValue: this.value,
-      expanded: false,
-      isFocus: false
-    };
-  },
-
-  props: {
-    value: {
-      type: String,
-      default: ''
-    },
-    cols: Number,
-    rows: Number,
-    readonly: Boolean,
-    wrap: String,
-    required: Boolean,
-    placeholder: {
-      type: String,
-      default: 'please type here...'
-    },
-    dirname: String,
-    form: String,
-    name: String,
-    autofocus: Boolean,
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    maxlength: {
-      type: Number,
-      default: 60
-    }
-  },
-  computed: {
-    remain: function remain() {
-      return this.maxlength - this.value.length;
-    }
-  },
-  watch: {
-    value: function value(newValue) {
-      this.textareaValue = newValue;
-    },
-    textareaValue: function textareaValue(newValue) {
-      this.$emit(EVENT_INPUT, newValue);
-      if (!this.isFocus && this.expanded) {
-        this.expanded = false;
-      }
-    }
-  },
-  methods: {
-    handleFocus: function handleFocus(e) {
-      this.$emit('focus', e);
-      this.expanded = true;
-      this.isFocus = true;
-    },
-    handleBlur: function handleBlur(e) {
-      this.$emit('blur', e);
-      if (this.textareaValue.length === 0) {
-        this.expanded = false;
-      }
-      this.isFocus = false;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ 267:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__ = __webpack_require__(268);
-
-
-__WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */].install = function (Vue) {
-  Vue.component(__WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */]);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */]);
-
-/***/ }),
-
-/***/ 268:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_textarea_vue__ = __webpack_require__(181);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_42dc09f4_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_textarea_vue__ = __webpack_require__(270);
-function injectStyle (ssrContext) {
-  __webpack_require__(269)
-}
-var normalizeComponent = __webpack_require__(9)
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-42dc09f4"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_textarea_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_42dc09f4_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_textarea_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-
-/***/ 269:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 270:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"calf-textarea-wrapper",class:{'calf-textarea_expanded': _vm.expanded, 'calf-textarea_active': _vm.isFocus}},[_c('textarea',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.textareaValue),expression:"textareaValue"}],staticClass:"calf-textarea",attrs:{"placeholder":_vm.placeholder,"maxlength":_vm.maxlength,"disabled":_vm.disabled},domProps:{"value":(_vm.textareaValue)},on:{"focus":_vm.handleFocus,"blur":_vm.handleBlur,"input":function($event){if($event.target.composing){ return; }_vm.textareaValue=$event.target.value}}},'textarea',_vm.$props,false)),_vm._v(" "),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.expanded),expression:"expanded"}],staticClass:"calf-textarea-indicator"},[_vm._v(_vm._s(_vm.remain))])])}
-var staticRenderFns = []
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-
-/***/ }),
-
-/***/ 9:
+/***/ 12:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -340,6 +173,173 @@ module.exports = function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ 176:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var COMPONENT_NAME = 'calf-textarea';
+var EVENT_INPUT = 'input';
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: COMPONENT_NAME,
+  data: function data() {
+    return {
+      textareaValue: this.value,
+      expanded: false,
+      isFocus: false
+    };
+  },
+
+  props: {
+    value: {
+      type: String,
+      default: ''
+    },
+    cols: Number,
+    rows: Number,
+    readonly: Boolean,
+    wrap: String,
+    required: Boolean,
+    placeholder: {
+      type: String,
+      default: 'please type here...'
+    },
+    dirname: String,
+    form: String,
+    name: String,
+    autofocus: Boolean,
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    maxlength: {
+      type: Number,
+      default: 60
+    }
+  },
+  computed: {
+    remain: function remain() {
+      return this.maxlength - this.value.length;
+    }
+  },
+  watch: {
+    value: function value(newValue) {
+      this.textareaValue = newValue;
+    },
+    textareaValue: function textareaValue(newValue) {
+      this.$emit(EVENT_INPUT, newValue);
+      if (!this.isFocus && this.expanded) {
+        this.expanded = false;
+      }
+    }
+  },
+  methods: {
+    handleFocus: function handleFocus(e) {
+      this.$emit('focus', e);
+      this.expanded = true;
+      this.isFocus = true;
+    },
+    handleBlur: function handleBlur(e) {
+      this.$emit('blur', e);
+      if (this.textareaValue.length === 0) {
+        this.expanded = false;
+      }
+      this.isFocus = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 262:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__ = __webpack_require__(263);
+
+
+__WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */].install = function (Vue) {
+  Vue.component(__WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */]);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_textarea_textarea_vue__["a" /* default */]);
+
+/***/ }),
+
+/***/ 263:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_textarea_vue__ = __webpack_require__(176);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_42dc09f4_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_textarea_vue__ = __webpack_require__(265);
+function injectStyle (ssrContext) {
+  __webpack_require__(264)
+}
+var normalizeComponent = __webpack_require__(12)
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-42dc09f4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_textarea_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_42dc09f4_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_textarea_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 264:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 265:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"calf-textarea-wrapper",class:{'calf-textarea_expanded': _vm.expanded, 'calf-textarea_active': _vm.isFocus}},[_c('textarea',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.textareaValue),expression:"textareaValue"}],staticClass:"calf-textarea",attrs:{"placeholder":_vm.placeholder,"maxlength":_vm.maxlength,"disabled":_vm.disabled},domProps:{"value":(_vm.textareaValue)},on:{"focus":_vm.handleFocus,"blur":_vm.handleBlur,"input":function($event){if($event.target.composing){ return; }_vm.textareaValue=$event.target.value}}},'textarea',_vm.$props,false)),_vm._v(" "),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.expanded),expression:"expanded"}],staticClass:"calf-textarea-indicator"},[_vm._v(_vm._s(_vm.remain))])])}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
 
 /***/ })
 

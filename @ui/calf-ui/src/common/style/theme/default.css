@@ -47,6 +47,7 @@ $dialog-btn-primary-bgc: linear-gradient(-270deg, #fe7336 0%, #ff9155 100%);
 $dialog-btn-primary-radius: 4px;
 
 $popup-mask-bgc: rgba(51, 51, 51, 0.6);
+$popup-mask-loading-bgc: rgba(255, 255, 255, 0);
 $popup-content-fontsize: $fontsize-medium;
 $popup-content-color: $color-white;
 $popup-content-toast-radius: 4px;
@@ -57,6 +58,31 @@ $toast-lineheight: $lineheight-medium;
 $toast-color: $color-white;
 $toast-bgc: rgba(0, 0, 0, 0.5);
 $toast-radius: 4px;
+
+$list-content-bgc: $color-bg-white;
+$list-content-radius: 8px;
+$list-content-fontsize: $fontsize-medium;
+$list-content-fontsize-cancel: $fontsize-large;
+$list-content-color: $color-grey-dark-ss;
+$list-content-color-cancel: $color-grey-dark-s;
+$list-content-color-active: #f95c06;
+
+$loading-content-bgc: rgba(0, 0, 0, 0.5);
+$loading-content-radius: 8px;
+
+$notice-info-color: $color-grey-dark-s;
+$notice-info-bgc: $color-bg-white;
+$notice-warning-color: #f69917;
+$notice-warning-bgc: rgba(246, 153, 23, 0.1);
+$notice-error-color: #f95c06;
+$notice-error-bgc: rgba(249, 92, 6, 0.1);
+
+$picker-bgc: $color-bg-white;
+$picker-radius: 8px;
+$picker-title-fontsize: $fontsize-large;
+$picker-title-color: $color-grey-dark-ss;
+$picker-right-label-color: #f95c06;
+$picker-item-color: $color-grey-dark-ss;
 
 $switch-on-bgc: $color-orange;
 $switch-off-bgc: $color-white;
