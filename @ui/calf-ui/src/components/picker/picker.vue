@@ -218,7 +218,7 @@ export default {
         this.pickerSelectedIndex[index] = dist
         this.$nextTick(() => {
           // recreate wheel so that the wrapperHeight will be correct.
-          wheel = this._createWheel(wheelWrapper, index)
+          wheel = this.createWheel(wheelWrapper, index)
           wheel.wheelTo(dist)
         })
       }
@@ -275,7 +275,7 @@ export default {
       height: 44px;
       line-height: 44px;
       font-size: $fontsize-large;
-      color: $picker-title-fontsize;
+      color: $picker-label-right-color;
       padding-right: 16px;
     }
   }
@@ -293,7 +293,7 @@ export default {
     }
     .top-mask {
       top: 0;
-      border-bottom: 1px solid #f1f1f1;
+      border-bottom: 1px solid $color-line-grey;
       background: linear-gradient(
         to top,
         rgba(255, 255, 255, 0.4),
@@ -302,7 +302,7 @@ export default {
     }
     .bottom-mask {
       bottom: 0;
-      border-top: 1px solid #f1f1f1;
+      border-top: 1px solid $color-line-grey;
       background: linear-gradient(
         to top,
         rgba(255, 255, 255, 0.4),
@@ -333,7 +333,7 @@ export default {
         height: 48px;
         line-height: 48px;
         text-align: center;
-        font-size: 15px;
+        font-size: $picker-item-fontsize;
         color: $picker-item-color;
         text-align: center;
       }

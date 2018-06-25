@@ -81,8 +81,9 @@ $picker-bgc: $color-bg-white;
 $picker-radius: 8px;
 $picker-title-fontsize: $fontsize-large;
 $picker-title-color: $color-grey-dark-ss;
-$picker-right-label-color: #f95c06;
+$picker-label-right-color: #f95c06;
 $picker-item-color: $color-grey-dark-ss;
+$picker-item-fontsize: 15px;
 
 $switch-on-bgc: $color-orange;
 $switch-off-bgc: $color-white;

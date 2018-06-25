@@ -28,7 +28,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('calf.min.js'),
+    filename: utils.assetsPath('index.js'),
     library: 'calf',
     libraryTarget: 'umd'
   },
@@ -47,7 +47,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       parallel: true
     }),
     // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('calf.min.css')),
+    new ExtractTextPlugin(utils.assetsPath('style.css')),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({

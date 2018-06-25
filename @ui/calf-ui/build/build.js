@@ -1,37 +1,31 @@
-'use strict'
-require('./check-versions')()
-
-process.env.NODE_ENV = 'production'
-
+// https://github.com/shelljs/shelljs
 require('shelljs/global')
-const ora = require('ora')
-// const rm = require('rimraf')
-// const path = require('path')
-// const chalk = require('chalk')
-const webpack = require('webpack')
-const config = require('../config')
-const utils = require('./utils')
-const webpackConfig = require('./webpack.prod.conf')
-const webpackModulesConfig = require('./webpack.modules.conf')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var config = require('../config')
+process.env.NODE_ENV = 'production'
+// if (!process.env.NODE_ENV) {
+//   process.env.NODE_ENV = JSON.parse(config.build.env.NODE_ENV)
+// }
 
-// const assetsPath = path.join(
-//   config.build.assetsRoot,
-//   config.build.assetsSubDirectory
-// )
-const rootPath = config.build.assetsRoot
-// const spinner = ora('building for production...')
-// spinner.start()
-rm('-rf', rootPath)
-// rm('-rf', assetsPath)
-// mkdir('-p', assetsPath)
+var path = require('path')
+var utils = require('./utils')
+var ora = require('ora')
+var webpack = require('webpack')
+var webpackConfig = require('./webpack.prod.conf')
+var webpackModulesConfig = require('./webpack.modules.conf')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
+var assetsPath = path.join(
+  config.build.assetsRoot,
+  config.build.assetsSubDirectory
+)
+rm('-rf', assetsPath)
+mkdir('-p', assetsPath)
 // cp('-R', 'static/*', assetsPath)
 
 function buildPack(webpackConfig, cb, spinnerText) {
   var spinner = ora(spinnerText || 'building for uncompressed files...')
   spinner.start()
-  // console.log(webpackConfig)
   webpack(webpackConfig, function(err, stats) {
     spinner.stop()
     if (err) {
@@ -50,7 +44,29 @@ function buildPack(webpackConfig, cb, spinnerText) {
   })
 }
 
-function modulesBuild() {
+buildPack(webpackConfig, function() {
+  webpackConfig.output.filename = utils.assetsPath('[name].min.js')
+  webpackConfig.output.chunkFilename = '[name].min.js'
+  webpackConfig.plugins.splice(
+    2,
+    1,
+    new ExtractTextPlugin(utils.assetsPath('[name].min.css')),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    })
+  )
+  // add UglifyJsPlugin
+  webpackConfig.plugins.splice(
+    2,
+    0,
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  )
   buildPack(
     webpackConfig,
     function() {
@@ -92,7 +108,4 @@ function modulesBuild() {
     },
     'building for compressed files...'
   )
-}
-
-buildPack(webpackConfig)
-modulesBuild()
+})
