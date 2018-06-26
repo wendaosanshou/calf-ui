@@ -30,6 +30,9 @@
 </template>
 
 <script>
+const EVENT_CHOOSE = 'on-choose'
+const EVENT_DELETE = 'on-delete'
+
 export default {
   name: 'captch-panel',
   data() {
@@ -49,10 +52,10 @@ export default {
   },
   methods: {
     handleChooseNumber(number) {
-      this.$emit('on-choose', number)
+      this.$emit(EVENT_CHOOSE, number)
     },
     handleDelete() {
-      this.$emit('on-delete')
+      this.$emit(EVENT_DELETE)
     }
   },
   components: {},

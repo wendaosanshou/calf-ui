@@ -9,7 +9,7 @@
 <script type="text/ecmascript-6">
 const COMPONENT_NAME = 'calf-switch'
 
-const EVENT_INPUT = 'input'
+const EVENT_CHANGE = 'change'
 
 export default {
   name: COMPONENT_NAME,
@@ -33,7 +33,7 @@ export default {
       this.checkboxValue = newVal
     },
     checkboxValue(newVal) {
-      this.$emit(EVENT_INPUT, newVal)
+      this.$emit(EVENT_CHANGE, newVal)
     }
   }
 }

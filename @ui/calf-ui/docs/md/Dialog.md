@@ -126,7 +126,7 @@ export default {
 
 > 使用`api`调用需要加前缀`on`，比如`onConfirm`，`onCancel`
 
-| 事件    |     说明     |
-| ------- | :----------: |
-| confirm | 点击确认按钮 |
-| cancel  | 点击取消按钮 |
+| 事件    |     说明     | 返回值 |
+| ------- | :----------: | ------ |
+| confirm | 点击确认按钮 | event  |
+| cancel  | 点击取消按钮 | event  |

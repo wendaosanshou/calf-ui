@@ -1,6 +1,6 @@
 <template>
  <div class="page-switch">
-   <calf-switch v-model="values"/>
+   <calf-switch v-model="values" @change="handleChange"/>
  </div>
 </template>
 
@@ -9,7 +9,12 @@ export default {
   name: 'page-switch',
   data() {
     return {
-      values: false
+      values: true
+    }
+  },
+  methods: {
+    handleChange(value) {
+      console.log(value)
     }
   },
   mounted() {}
