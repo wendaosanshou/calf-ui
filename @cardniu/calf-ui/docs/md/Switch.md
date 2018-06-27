@@ -55,7 +55,7 @@ export default {
 | value    | 指定当前是否选中，可以使用 v-model 双向绑定数据 | Boolean | true/false |   提示 |
 | disabled |                    禁用开关                     | Boolean | true/false |   提示 |
 
-#### EVENT
+#### EVENTS
 
 | 事件   |          说明          | 返回值     |
 | ------ | :--------------------: | ---------- |

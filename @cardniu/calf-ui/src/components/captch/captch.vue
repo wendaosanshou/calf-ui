@@ -25,7 +25,7 @@
             <div class="captch-loading" v-else-if="isAfterVerify">
               <i class="icon-loading loading-rotation"></i>
             </div>
-            <div class="captch-result" v-else-if="isVerifyFail">验证码错误，2s后重新输入</div>
+            <div class="captch-result" v-else-if="isVerifyFail">{{verifyFailMessage}}</div>
           </div>
         </div>
       </div>
@@ -50,6 +50,8 @@ const EVENT_CONFIRM = 'confirm'
 const EVENT_SUCCESS = 'success'
 const EVENT_FAIL = 'fail'
 const EVENT_REPEAT_SENT = 'repeat'
+
+const VERIFY_FAIL_MESSAGE = '验证码错误，2s后重新输入'
 
 export default {
   name: COMPONENT_NAME,
@@ -87,6 +89,10 @@ export default {
       default: () => {
         return Promise.resolve()
       }
+    },
+    verifyFailMessage: {
+      type: String,
+      default: VERIFY_FAIL_MESSAGE
     }
   },
   computed: {
