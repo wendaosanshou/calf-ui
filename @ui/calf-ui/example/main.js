@@ -4,7 +4,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import router from './router'
-import FastClick from 'fastclick'
+// import FastClick from 'fastclick'
 
 // 移动端自适应，使用flexible方案
 import './static/flexible/flexible_css'
@@ -20,7 +20,7 @@ Vue.use(Calf)
 // Vue.use(Calf)
 
 // 去除300ms延迟
-FastClick.attach(document.body)
+// FastClick.attach(document.body)
 
 // 按需引入(推荐全局引入)
 // import '../lib/style.css'

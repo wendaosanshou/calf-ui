@@ -122,7 +122,7 @@ export default {
 | cancelBtn  |    取消按钮内容    | Object/String | {text: '', disabled: false} | {text: '取消', disabled: false} |
 | onlyOneBtn | 只显示一个确认按钮 |       Boolean |                  true/false |                           false |
 
-#### EVENT
+#### EVENTS
 
 > 使用`api`调用需要加前缀`on`，比如`onConfirm`，`onCancel`
 

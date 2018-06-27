@@ -41,7 +41,7 @@ export default {
   methods: {
     getFilterName(path) {
       let name = path.replace(/^([^\w])([\w])(.*)$/g, function(word, a, b, c) {
-        return b.toUpperCase() + c
+        return b + c
       })
       return name
     },
