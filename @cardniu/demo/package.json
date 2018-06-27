@@ -1,8 +1,8 @@
 {
-  "name": "@demo/hello-word",
+  "name": "@cardniu/demo",
   "version": "1.0.0",
-  "description": "{{ description }}",
-  "author": "{{ author }}",
+  "description": "这是一个demo",
+  "author": "yuanyuan_tang",
   "main": "dist/index.js",
   "files": [
     "test",

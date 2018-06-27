@@ -1,11 +1,11 @@
 {
-  "name": "calf-ui",
+  "name": "@cardniu/calf-ui",
   "version": "1.0.0",
   "description": "A mobile ui lib implement by Vue",
   "author": "刘涛 <tao_liu@sui.com>",
   "main": "lib/index.js",
   "module": "src/index.js",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --host 0.0.0.0",
     "doc": "docsify serve docs",

@@ -1,13 +1,10 @@
 ### kn-cnpm
 
-[cnpm](http://172.22.23.180:7002) 私有库代码
+[cnpm](http://cnpm-registry.cardniu.work) 私有库代码
 
 #### 文件夹说明
 ```
-    - @common 服务类
-    - @ui ui组件库
-    - @demo 参考示例
-    - @scaffold 脚手架
+    - @cardniu 所有模块都放置@cardniu作用域下
 ```
 
 #### 项目约定
