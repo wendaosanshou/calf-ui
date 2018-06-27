@@ -35,7 +35,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('[name]/index.js'),
-    library: 'cube',
+    library: 'calf',
     libraryTarget: 'commonjs2'
   },
   plugins: [

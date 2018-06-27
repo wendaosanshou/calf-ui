@@ -110,7 +110,7 @@ export default {
       this.initWheel()
     },
     initWheel() {
-      if (!this.wheels) {
+      if (!this.wheels || this.dirty) {
         this.$nextTick(() => {
           this.wheels = this.wheels || []
           let wheelWrapper = this.$refs.wheelWrapper
@@ -118,6 +118,8 @@ export default {
             this.createWheel(wheelWrapper, i).enable()
             this.wheels[i].wheelTo(this.pickerSelectedIndex[i])
           }
+          this.dirty && this.destroyExtraWheels()
+          this.dirty = false
         })
       } else {
         for (let i = 0; i < this.pickerData.length; i++) {
@@ -198,7 +200,7 @@ export default {
     refillColumn(index, data) {
       const wheelWrapper = this.$refs.wheelWrapper
       let scroll = wheelWrapper.children[index].querySelector(
-        '.cube-picker-wheel-scroll'
+        '.calf-picker-wraper'
       )
       let wheel = this.wheels ? this.wheels[index] : false
       let dist = 0
@@ -333,6 +335,8 @@ export default {
         height: 48px;
         line-height: 48px;
         text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
         font-size: $picker-item-fontsize;
         color: $picker-item-color;
         text-align: center;
