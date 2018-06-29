@@ -46,7 +46,7 @@ export default {
       // ajax完成后，手动触发loaded，并传入状态即可改变top-block展示，组件中默认了'done'
       setTimeout(() => {
         loaded('done')
-      }, 1000)
+      }, 10 * 1000)
     },
     handTopPull(dis) {
       // dis 下拉的位移量 单位px 是一个 >0 的数字
@@ -79,8 +79,10 @@ export default {
   mounted() {
     // wrapperHeight 是组件外层容器的高度 默认值 100% 传入 px
     // 这里如果列表很长，需要手动计算高度赋值进去，不然会导致无法正常滑动
-    this.wrapperHeight = document.querySelector('.page-pull-refresh').clientHeight -
-      document.querySelector('.title').clientHeight + 'px'
+    this.wrapperHeight =
+      document.querySelector('.page-pull-refresh').clientHeight -
+      document.querySelector('.title').clientHeight +
+      'px'
   }
 }
 </script>

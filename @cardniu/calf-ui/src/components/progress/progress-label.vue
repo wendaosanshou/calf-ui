@@ -1,7 +1,7 @@
 <template>
   <ul class="progress-list">
     <li class="progress-item"
-      :class="{'prev': current > index + 1, 'current': current === index + 1, 'next': current < index + 1}"
+      :class="{'prev': current > index, 'current': current === index, 'next': current < index}"
       v-for="(item, index) in steps" :key="index">
       <div class="item-logo-wrap">
         <i class="item-logo" :class="{'is-finish': isFinish, 'not-finish' : !isFinish}"></i>
@@ -49,13 +49,14 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/animation.css';
+@import '../../common/style/mixin.css';
+
 .progress-list {
   .progress-item {
+    @include flex(row, flex-start, flex-start);
     position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
     width: 100%;
     height: 72px;
     &:nth-last-child(1) {
@@ -115,13 +116,10 @@ export default {
       }
     }
     .item-logo-wrap {
+      @include flex(column, flex-start, center);
       position: relative;
       width: 46px;
       height: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
       padding-top: 4px;
       .item-logo {
         display: block;
@@ -147,10 +145,7 @@ export default {
       }
     }
     .item-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
+      @include flex(column, flex-start, flex-start);
       .item-title {
         font-size: 16px;
         color: #f95c06;

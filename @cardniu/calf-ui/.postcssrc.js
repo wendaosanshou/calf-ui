@@ -8,6 +8,7 @@ module.exports = {
     precss: {},
     'postcss-pxtorem': {
       rootValue: 37.5,
+      selectorBlackList: ['no-rem'],
       propList: [
         'width',
         'height',

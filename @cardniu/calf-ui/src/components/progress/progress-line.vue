@@ -1,7 +1,7 @@
 <template>
   <ul class="progress-list">
-    <li class="progress-item"
-    :class="{'prev': current > index + 1, 'current': current === index + 1, 'next': current < index + 1}"
+    <li class="progress-item no-rem"
+    :class="{'prev': current > index, 'current': current === index, 'next': current < index}"
     v-for="(item, index) in steps" :key="index">
       <p class="item-label">{{item}}</p>
     </li>
@@ -23,9 +23,7 @@ export default {
     },
     steps: {
       type: Array,
-      default() {
-        return ['']
-      }
+      required: true
     }
   },
   computed: {},
@@ -37,30 +35,29 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import '../../common/style/variable.css';
+@import '../../common/style/animation.css';
+@import '../../common/style/mixin.css';
+
 .progress-list {
+  @include flex(row, flex-start, center);
   width: auto;
   height: 68px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   .progress-item {
+    @include flex(column, center, center);
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 90px;
     height: 68px;
     margin-left: 6px;
-    &:before {
+    &.no-rem:before {
+      box-sizing: border-box;
       content: '';
       position: absolute;
-      left: 43px;
-      top: 18px;
+      left: 46%;
+      top: 27%;
       width: 8px;
       height: 8px;
-      border-radius: 100%;
+      border-radius: 8px;
       background: #fb7a52;
       z-index: 999;
     }

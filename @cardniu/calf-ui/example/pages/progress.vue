@@ -24,9 +24,9 @@ export default {
   name: 'page-progress',
   data() {
     return {
-      current1: 1,
-      current2: 1,
-      current3: 1,
+      current1: 0,
+      current2: 0,
+      current3: 0,
       progress1: ['芝麻认证', '运营商认证', '基本信息', '实名认证'],
       progress2: [
         {

@@ -202,6 +202,7 @@ $verify-body-padding-top: 20px;
 $captch-body-padding-top: 18px;
 $captch-content-padding-top: 28px;
 $captch-loading-width: 34px;
+$captch-loading-margin-left: -17px;
 $captch-loading-top: 77px;
 
 .calf-captch {
@@ -249,10 +250,10 @@ $captch-loading-top: 77px;
         position: absolute;
         left: 50%;
         top: $captch-loading-top;
-        margin-left: $captch-loading-width / 2;
+        margin-left: $captch-loading-margin-left;
         width: $captch-loading-width;
         height: $captch-loading-width;
-        background: resolve('calfic-loading.png');
+        background: resolve('calfic-loading-grey.png');
         background-size: 100% 100%;
       }
     }

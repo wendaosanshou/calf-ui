@@ -33,7 +33,7 @@ export default {
             // eslint-disable-next-line
             reject()
           }
-        }, 1 * 1000)
+        }, 10 * 1000)
       })
     },
     handleChange(code) {

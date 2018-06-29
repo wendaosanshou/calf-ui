@@ -30,8 +30,9 @@
 import { throttle } from '../../common/helpers/util.js'
 import { TOP_DEFAULT_CONFIG, BOTTOM_DEFAULT_CONFIG } from './config'
 
+const COMPONENT_NAME = 'calf-pull-refresh'
 export default {
-  name: 'calf-pull-refresh',
+  name: COMPONENT_NAME,
   props: {
     distanceIndex: {
       type: Number,
@@ -375,7 +376,7 @@ export default {
     height: 16px;
     transform: rotate(360deg);
     animation: rotation 3s linear infinite;
-    background: resolve('calfic-loading.png');
+    background: resolve('calfic-loading-grey.png');
     background-size: 100% 100%;
   }
 }

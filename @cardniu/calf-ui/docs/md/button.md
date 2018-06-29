@@ -7,8 +7,15 @@
 ##### 引入
 
 ```javascript
-import { Button } from 'calf-ui'
-Vue.component(Button.name, Button)
+// 全局引入
+import 'calf-ui/style.css'
+import Calf from 'calf-ui'
+Vue.use(Calf)
+
+// 局部引入
+import 'calf-ui/button/style.css'
+import Button from 'calf-ui/button'
+Vue.use(Button)
 ```
 
 ##### 例子

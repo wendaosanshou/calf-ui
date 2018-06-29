@@ -42,6 +42,7 @@ const COMPONENT_NAME = 'calf-picker'
 
 const EVENT_CHANGE = 'change'
 const EVENT_SELECT = 'select'
+const EVENT_CANCEL = 'cancel'
 
 export default {
   name: COMPONENT_NAME,
@@ -68,6 +69,7 @@ export default {
   methods: {
     cancel() {
       this.hide()
+      this.$emit(EVENT_CANCEL)
     },
     confirm() {
       if (!this.canConfirm()) {

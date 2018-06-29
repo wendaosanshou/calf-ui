@@ -22,6 +22,7 @@ import ProgressLine from './progress-line'
 import ProgressLable from './progress-label'
 const COMPONENT_NAME = 'calf-progress'
 
+const EVENT_CHANGE = 'on-change'
 export default {
   name: COMPONENT_NAME,
   data() {
@@ -67,6 +68,4 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.calf-progress {
-}
 </style>

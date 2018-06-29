@@ -8,12 +8,13 @@
 
 ```javascript
 // 全局引入
+import 'calf-ui/style.css'
 import Calf from 'calf-ui'
 Vue.use(Calf)
 
 // 局部引入
-import 'calf-ui/lib/dialog/style.css'
-import Dialog from 'calf-ui/lib/dialog'
+import 'calf-ui/dialog/style.css'
+import Dialog from 'calf-ui/dialog'
 Vue.use(Dialog)
 ```
 
