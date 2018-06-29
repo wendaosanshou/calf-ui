@@ -7,8 +7,15 @@
 ##### 引入
 
 ```javascript
-import { PullRefresh } from 'calf-ui'
-Vue.component(PullRefresh.name, PullRefresh)
+// 全局引入
+import 'calf-ui/style.css'
+import Calf from 'calf-ui'
+Vue.use(Calf)
+
+// 局部引入
+import 'calf-ui/pull-refresh/style.css'
+import PullRefresh from 'calf-ui/pull-refresh'
+Vue.use(PullRefresh)
 ```
 
 ##### 例子
