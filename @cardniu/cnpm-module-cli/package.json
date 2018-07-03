@@ -1,0 +1,25 @@
+{
+  "name": "@cardniu/cnpm-module-cli",
+  "version": "1.0.0",
+  "description": "cnpm module脚手架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "cnpm-module": "bin/cli"
+  },
+  "keywords": [
+    "cnpm",
+    "脚手架"
+  ],
+  "author": "yuanyuan_tang",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "child-process": "^1.0.2",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.16.0"
+  }
+}
