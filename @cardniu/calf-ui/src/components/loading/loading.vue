@@ -4,13 +4,17 @@
       type="loading"
       v-show="isVisible">
       <div class="calf-loading">
-        <div class="loading-content">
+        <div class="loading-content" :class="bgClass" v-if="!text">
           <i class="calfic-loading loading-image loading-rotation"></i>
+        </div>
+        <div class="loading-content loading-bg-text"  v-else>
+          <i class="calfic-loading loading-image loading-rotation"></i>
+          <div class="loading-text" v-html="text"></div>
         </div>
       </div>
     </calf-popup>
   </transition>
-</template>
+</template> 
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
@@ -24,25 +28,21 @@ export default {
     return {}
   },
   props: {
-    duration: {
-      type: Number,
-      default: 1 * 1000
+    text: {
+       type: String,
+       default: ''
+    },
+    bg: {
+      type: String,
+      default: ''
     }
   },
-  watch: {
-    isVisible(newVal) {
-      if (newVal) {
-        this.initLoadingDuration()
-      }
+  computed: {
+    bgClass() {
+      return `loading-bg-${this.bg}`
     }
   },
   methods: {
-    initLoadingDuration() {
-      setTimeout(() => {
-        this.$emit(EVENT_CLOSE)
-        this.hide()
-      }, this.duration)
-    }
   }
 }
 </script>
@@ -65,10 +65,26 @@ export default {
   left: 50%;
   top: 50%;
   width: 76px;
+  height: auto;
   height: 76px;
   transform: translate(-50%, -50%);
   background: $loading-content-bgc;
   border-radius: $loading-content-radius;
+}
+.loading-bg-white{
+  background: #fff;
+  .calfic-loading {
+    display: block;
+    background: resolve('calfic-loading-grey.png');
+    background-size: 100% 100%;
+  }
+}
+.loading-bg-text{
+   @include flex(column, center, center);
+}
+.loading-text{
+  line-height: 20px;
+  font-size: 10px;
 }
 .loading-image {
   display: block;
