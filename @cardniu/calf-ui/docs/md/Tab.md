@@ -1,8 +1,8 @@
-
 ### Tab
-***
 
-?>tab栏切换组件。
+---
+
+?>tab 栏切换组件。
 
 ##### 引入
 
@@ -15,17 +15,16 @@ Vue.component(Tab)
 
 示例体验：http://www.calf-ui.com/#/tab
 
-
 ##### 使用
-1.tab栏个数动态配置栏目切换、配置数组数据生成对应tab个数
 
+1.tab 栏个数动态配置栏目切换、配置数组数据生成对应 tab 个数
 
 ##### 代码片段
+
 ```html
    <calf-tab :tabs="tabs1" :selectTab="0"></calf-tab>
    <calf-tab :tabs="tabs2" :selectTab="0" lineWidth="40px" @select="handleSelect"></calf-tab>
 ```
-
 
 ```javascript
 export default {
@@ -49,22 +48,16 @@ export default {
 }
 ```
 
-
 #### API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值
-| - | :-: | -: | -: | -: | 
-| selectTab| tab高亮值| number| | |
-| lineWidth| tab宽度| string| | |
-| select| 触发回调| function | | | |
+| 参数      |        说明        |    类型 |     可选值 | 默认值 |
+| --------- | :----------------: | ------: | ---------: | -----: |
+| selectTab |     tab 高亮值     |  number |            |      0 |
+| lineWidth |      tab 宽度      |  string |            |  104px |
+| showLine  | 是否显示底部高亮线 | booleal | true/false |   true |
 
+#### EVENTS
 
-#### 事件
-`select` 事件
-
-select 回调事件提供了、`item`  `index`两个返回值、即某个 `tab`以及对应的索引
-
-
-#### Slot
-
-
+| 事件   |     说明     | 返回值      |
+| ------ | :----------: | ----------- |
+| select | 点击确认按钮 | value,index |

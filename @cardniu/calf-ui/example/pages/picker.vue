@@ -12,6 +12,9 @@
     @click="handlePicker5">城市</calf-button>
   <calf-button
     @click="handlePicker6">较少选项</calf-button>
+  <calf-button
+    @click="pickerVisible = true">测试</calf-button>
+  <calf-picker :data="[data1]" v-model="pickerVisible"/>
  </div>
 </template>
 
@@ -43,7 +46,8 @@ export default {
   data() {
     return {
       selectListIndex: 1,
-      pickerVisible: false
+      pickerVisible: false,
+      data1: data1
     }
   },
   props: {},
@@ -65,7 +69,7 @@ export default {
       this.picker3 = this.$createCascadePicker({
         title: '级联内容',
         data: cascadeData,
-        onSelect: this.selectHandle
+        onSelect: this.asyncChangeHandle
       })
       this.picker4 = this.$createDatePicker({
         title: '日期',
