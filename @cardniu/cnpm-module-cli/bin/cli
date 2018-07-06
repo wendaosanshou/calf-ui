@@ -1,0 +1,16 @@
+#!/usr/bin/env node --harmony
+'use strict'
+const commander = require('commander')
+// 定义版本号
+commander
+.version(require('../package').version)
+.usage('<command>')
+.command('init')
+.description('generate a new cnpm scaffold project from template.')
+.action(function(){
+   require('../command/init')()
+})
+commander.parse(process.argv)
+if(!commander.args.length){
+  commander.help()
+}
