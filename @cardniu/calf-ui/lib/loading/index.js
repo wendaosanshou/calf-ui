@@ -2106,6 +2106,10 @@ function parseEvents(events) {
 //
 //
 //
+//
+//
+//
+//
 
 
 var COMPONENT_NAME = 'calf-loading';
@@ -2119,28 +2123,21 @@ var EVENT_CLOSE = 'close';
   },
 
   props: {
-    duration: {
-      type: Number,
-      default: 1 * 1000
+    text: {
+      type: String,
+      default: ''
+    },
+    bg: {
+      type: String,
+      default: ''
     }
   },
-  watch: {
-    isVisible: function isVisible(newVal) {
-      if (newVal) {
-        this.initLoadingDuration();
-      }
+  computed: {
+    bgClass: function bgClass() {
+      return 'loading-bg-' + this.bg;
     }
   },
-  methods: {
-    initLoadingDuration: function initLoadingDuration() {
-      var _this = this;
-
-      setTimeout(function () {
-        _this.$emit(EVENT_CLOSE);
-        _this.hide();
-      }, this.duration);
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2228,7 +2225,7 @@ __WEBPACK_IMPORTED_MODULE_0__components_loading_loading_vue__["a" /* default */]
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_loading_vue__ = __webpack_require__(128);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_a8b0656a_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_loading_vue__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_b4226274_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_loading_vue__ = __webpack_require__(192);
 function injectStyle (ssrContext) {
   __webpack_require__(191)
 }
@@ -2243,12 +2240,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-a8b0656a"
+var __vue_scopeId__ = "data-v-b4226274"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_script_index_0_loading_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_a8b0656a_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_loading_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_13_7_2_vue_loader_lib_template_compiler_index_id_data_v_b4226274_hasScoped_true_transformToRequire_video_src_poster_source_src_img_src_image_xlink_href_buble_transforms_node_modules_vue_loader_13_7_2_vue_loader_lib_selector_type_template_index_0_loading_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -2269,7 +2266,7 @@ var Component = normalizeComponent(
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"calf-toast-fade"}},[_c('calf-popup',{directives:[{name:"show",rawName:"v-show",value:(_vm.isVisible),expression:"isVisible"}],attrs:{"type":"loading"}},[_c('div',{staticClass:"calf-loading"},[_c('div',{staticClass:"loading-content"},[_c('i',{staticClass:"calfic-loading loading-image loading-rotation"})])])])],1)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"calf-toast-fade"}},[_c('calf-popup',{directives:[{name:"show",rawName:"v-show",value:(_vm.isVisible),expression:"isVisible"}],attrs:{"type":"loading"}},[_c('div',{staticClass:"calf-loading"},[(!_vm.text)?_c('div',{staticClass:"loading-content",class:_vm.bgClass},[_c('i',{staticClass:"calfic-loading loading-image loading-rotation"})]):_c('div',{staticClass:"loading-content loading-bg-text"},[_c('i',{staticClass:"calfic-loading loading-image loading-rotation"}),_vm._v(" "),_c('div',{staticClass:"loading-text",domProps:{"innerHTML":_vm._s(_vm.text)}})])])])],1)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

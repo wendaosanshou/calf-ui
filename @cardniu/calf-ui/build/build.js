@@ -26,7 +26,6 @@ mkdir('-p', assetsPath)
 function buildPack(webpackConfig, cb, spinnerText) {
   var spinner = ora(spinnerText || 'building for uncompressed files...')
   spinner.start()
-  console.log(webpackConfig)
   webpack(webpackConfig, function(err, stats) {
     spinner.stop()
     if (err) {

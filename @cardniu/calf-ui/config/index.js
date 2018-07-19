@@ -71,5 +71,16 @@ module.exports = {
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
+  },
+
+  demoBuild: {
+    env: require('./prod.env'),
+    index: path.resolve(__dirname, '../example/index.html'),
+    entry: {
+      app: path.resolve(__dirname, '../example/main.js')
+    },
+    assetsRoot: path.resolve(__dirname, '../docs/example'),
+    assetsSubDirectory: '',
+    productionSourceMap: false
   }
 }

@@ -1,23 +1,20 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import router from './router'
-// import FastClick from 'fastclick'
 
 // 移动端自适应，使用flexible方案
 import './static/flexible/flexible_css'
 import './static/flexible/flexible'
 
 // 本地开发环境引入
-import Calf from '../src/index'
-Vue.use(Calf)
+// import Calf from '../src/index'
+// Vue.use(Calf)
 
 // 全局引入
-// import 'calf-ui/style.css'
-// import Calf from 'calf-ui'
-// Vue.use(Calf)
+import 'calf-ui/style.css'
+import Calf from 'calf-ui'
+Vue.use(Calf)
 
 // 去除300ms延迟
 // FastClick.attach(document.body)
