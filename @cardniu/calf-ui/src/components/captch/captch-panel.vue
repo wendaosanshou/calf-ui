@@ -64,9 +64,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import '../../common/style/variable.css';
-@import '../../common/style/mixin.css';
-@import '../../common/style/animation.css';
+@import "../../common/style/variable.css";
+@import "../../common/style/mixin.css";
+@import "../../common/style/animation.css";
 
 $panel-title-height: 36px;
 $panel-title-bgc: #f9f9f9;
@@ -86,7 +86,7 @@ $panel-content-item-bgc-active: rgba(0, 0, 0, 0.03);
       display: block;
       width: $panel-logo-width;
       height: $panel-logo-width;
-      background: resolve('calfic-shield.png');
+      background: url("../../common/icon/calfic-shield.png");
       background-size: 100% 100%;
     }
     .title-content {
@@ -121,10 +121,10 @@ $panel-content-item-bgc-active: rgba(0, 0, 0, 0.03);
         @include flex(row, center, center);
         &:after {
           display: block;
-          content: '';
+          content: "";
           width: $panel-logo-width;
           height: $panel-logo-width;
-          background: resolve('calfic-close-gray.png');
+          background: url("../../common/icon/calfic-close-gray.png");
           background-size: 100% 100%;
         }
       }

@@ -195,8 +195,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import '../../common/style/variable.css';
-@import '../../common/style/animation.css';
+@import "../../common/style/variable.css";
+@import "../../common/style/animation.css";
 
 $verify-body-padding-top: 20px;
 $captch-body-padding-top: 18px;
@@ -253,7 +253,7 @@ $captch-loading-top: 77px;
         margin-left: $captch-loading-margin-left;
         width: $captch-loading-width;
         height: $captch-loading-width;
-        background: resolve('calfic-loading-grey.png');
+        background: url("../../common/icon/calfic-loading-grey.png");
         background-size: 100% 100%;
       }
     }

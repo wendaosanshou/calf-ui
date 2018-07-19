@@ -358,7 +358,7 @@ export default {
   &.icon-pull,
   &.icon-trigger {
     transition: all 0.3s;
-    background: resolve('calfic-loading-down.png');
+    background: url('../../common/icon/calfic-loading-down.png');
     background-size: 100% 100%;
   }
   &.icon-pull {
@@ -376,7 +376,7 @@ export default {
     height: 16px;
     transform: rotate(360deg);
     animation: rotation 3s linear infinite;
-    background: resolve('calfic-loading-grey.png');
+    background: url('../../common/icon/calfic-loading-grey.png');
     background-size: 100% 100%;
   }
 }

@@ -62,13 +62,13 @@ export default {
     &:nth-last-child(1) {
       .item-logo-wrap {
         .item-logo.is-finish {
-          background: resolve('calfic-money.png');
+          background: url('../../common/icon/calfic-money.png');
           background-size: 100% 100%;
         }
       }
       .item-logo-wrap {
         .item-logo.not-finish {
-          background: resolve('calfic-tick.png');
+          background: url('../../common/icon/calfic-tick.png');
           background-size: 100% 100%;
         }
       }
@@ -82,7 +82,7 @@ export default {
           height: 100%;
         }
         .item-logo {
-          background: resolve('calfic-tick-red.png');
+          background: url('../../common/icon/calfic-tick-red.png');
           background-size: 100% 100%;
         }
       }
@@ -96,7 +96,7 @@ export default {
           height: 50%;
         }
         .item-logo {
-          background: resolve('calfic-tick-red.png');
+          background: url('../../common/icon/calfic-tick-red.png');
           background-size: 100% 100%;
         }
         .item-content .item-title {
@@ -107,7 +107,7 @@ export default {
     &.next {
       .item-logo-wrap {
         .item-logo {
-          background: resolve('calfic-tick.png');
+          background: url('../../common/icon/calfic-tick.png');
           background-size: 100% 100%;
         }
       }

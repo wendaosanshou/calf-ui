@@ -6,12 +6,12 @@ i {
 
 .calfic-close {
   display: block;
-  background: resolve('calfic-close-gray.png');
+  background: url("../icon/calfic-close-gray.png");
   background-size: 100% 100%;
 }
 
 .calfic-loading {
   display: block;
-  background: resolve('calfic-button-loading.png');
+  background: url("../icon/calfic-button-loading.png");
   background-size: 100% 100%;
 }

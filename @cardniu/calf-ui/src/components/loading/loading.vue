@@ -14,7 +14,7 @@
       </div>
     </calf-popup>
   </transition>
-</template> 
+</template>
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
@@ -71,18 +71,18 @@ export default {
   background: $loading-content-bgc;
   border-radius: $loading-content-radius;
 }
-.loading-bg-white{
+.loading-bg-white {
   background: #fff;
   .calfic-loading {
     display: block;
-    background: resolve('calfic-loading-grey.png');
+    background: url('../../common/icon/calfic-loading-grey.png');
     background-size: 100% 100%;
   }
 }
-.loading-bg-text{
-   @include flex(column, center, center);
+.loading-bg-text {
+  @include flex(column, center, center);
 }
-.loading-text{
+.loading-text {
   line-height: 20px;
   font-size: 10px;
 }

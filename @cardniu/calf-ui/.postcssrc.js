@@ -38,17 +38,6 @@ module.exports = {
       ]
     },
     // to edit target browsers: use "browserslist" field in package.json
-    autoprefixer: {},
-    'postcss-assets': {
-      loadPaths: [path.join(process.cwd(), 'src/common/icon')],
-      basePath: 'src',
-      baseUrl: '/',
-      // baseUrl:
-      //   process.env.NODE_ENV === 'production'
-      //     ? config.build.publicPath
-      //     : config.dev.publicPath,
-      cachebuster: true,
-      relative: true
-    }
+    autoprefixer: {}
   }
 }

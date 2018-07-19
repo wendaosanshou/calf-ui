@@ -118,15 +118,15 @@ export default {
     height: 18px;
     margin-right: 8px;
     &.icon-broadcast-info {
-      background: resolve('calfic-notice-gray.png');
+      background: url('../../common/icon/calfic-notice-gray.png');
       background-size: 100% 100%;
     }
     &.icon-broadcast-warning {
-      background: resolve('calfic-notice-orange.png');
+      background: url('../../common/icon/calfic-notice-orange.png');
       background-size: 100% 100%;
     }
     &.icon-broadcast-error {
-      background: resolve('calfic-notice-red.png');
+      background: url('../../common/icon/calfic-notice-red.png');
       background-size: 100% 100%;
     }
   }
@@ -149,27 +149,27 @@ export default {
       content: '';
     }
     &.icon-close-info:after {
-      background: resolve('calfic-close-gray.png');
+      background: url('../../common/icon/calfic-close-gray.png');
       background-size: 100% 100%;
     }
     &.icon-close-warning:after {
-      background: resolve('calfic-close-orange.png');
+      background: url('../../common/icon/calfic-close-orange.png');
       background-size: 100% 100%;
     }
     &.icon-close-error:after {
-      background: resolve('calfic-close-red.png');
+      background: url('../../common/icon/calfic-close-red.png');
       background-size: 100% 100%;
     }
     &.icon-arrow-info:after {
-      background: resolve('calfic-right-gray.png');
+      background: url('../../common/icon/calfic-right-gray.png');
       background-size: 100% 100%;
     }
     &.icon-arrow-warning:after {
-      background: resolve('calfic-right-orange.png');
+      background: url('../../common/icon/calfic-right-orange.png');
       background-size: 100% 100%;
     }
     &.icon-arrow-error:after {
-      background: resolve('calfic-right-red.png');
+      background: url('../../common/icon/calfic-right-red.png');
       background-size: 100% 100%;
     }
   }

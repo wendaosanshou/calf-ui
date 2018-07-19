@@ -60,7 +60,7 @@ export default {
       width: 12px;
       height: 12px;
       margin-top: -6px;
-      background: resolve('calfic-right-gray.png');
+      background: url('../../common/icon/calfic-right-gray.png');
       background-size: 100% 100%;
     }
     &:nth-child(1) {
@@ -75,7 +75,7 @@ export default {
       color: #cccccc;
       .item-icon {
         border: 0;
-        background: resolve('icon-progress-grey.png');
+        background: url('../../common/icon/icon-progress-grey.png');
         background-size: 100% 100%;
       }
     }

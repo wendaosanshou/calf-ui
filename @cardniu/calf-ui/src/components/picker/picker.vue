@@ -262,7 +262,7 @@ export default {
         content: '';
         width: 12px;
         height: 12px;
-        background: resolve('calfic-close-gray.png');
+        background: url('../../common/icon/calfic-close-gray.png');
         background-size: 100% 100%;
       }
     }

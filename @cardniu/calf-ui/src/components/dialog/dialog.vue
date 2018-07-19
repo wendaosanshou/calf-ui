@@ -145,7 +145,7 @@ export default {
         display: block;
         width: $dialog-header-icon-close-width;
         height: $dialog-header-icon-close-width;
-        background: resolve('calfic-close-gray.png');
+        background: url('../../common/icon/calfic-close-gray.png');
         background-size: 100% 100%;
       }
     }
