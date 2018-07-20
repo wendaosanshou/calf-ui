@@ -1,9 +1,6 @@
-/node_modules/
-*/**/node_modules/
-*/**/dist/
-*/**/build/
-*/**/demo/
-*/**/karma.conf.js
-karma.conf.js
-*/**/*.spec.js
-
+/build/
+/config/
+/example/static/
+/dist/
+/*.js
+/test/unit/coverage/

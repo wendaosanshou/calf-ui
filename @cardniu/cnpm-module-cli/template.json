@@ -1,8 +1,0 @@
-{
-  "tpl":{
-    "base":{
-      "url":"git@git.sui.work:yuanyuan_tang/cnpm-scaffold.git",
-      "branch":"master"
-    }
-  }
-}
