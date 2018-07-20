@@ -8,13 +8,13 @@ import './static/flexible/flexible_css'
 import './static/flexible/flexible'
 
 // 本地开发环境引入
-// import Calf from '../src/index'
-// Vue.use(Calf)
+import Calf from '../src/index'
+Vue.use(Calf)
 
 // 全局引入
-import 'calf-ui/style.css'
-import Calf from 'calf-ui'
-Vue.use(Calf)
+// import 'calf-ui/style.css'
+// import Calf from 'calf-ui'
+// Vue.use(Calf)
 
 // 去除300ms延迟
 // FastClick.attach(document.body)

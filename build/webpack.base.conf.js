@@ -30,14 +30,6 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {},
   output: {},
-  // output: {
-  //   path: config.build.assetsRoot,
-  //   filename: '[name].js',
-  //   publicPath:
-  //     process.env.NODE_ENV === 'production'
-  //       ? config.build.assetsPublicPath
-  //       : config.dev.assetsPublicPath
-  // },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

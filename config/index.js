@@ -79,6 +79,8 @@ module.exports = {
     entry: {
       app: path.resolve(__dirname, '../example/main.js')
     },
+    assetsPublicPath:
+      'http://tg.feidee.net/cardniu-credit-front/pages/calf-ui/example/',
     assetsRoot: path.resolve(__dirname, '../docs/example'),
     assetsSubDirectory: '',
     productionSourceMap: false

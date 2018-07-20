@@ -6,24 +6,24 @@
     </div>
     <ul class="captch-panel-list">
       <li class="captch-panel-item">
-        <div class="item-number" @click="handleChooseNumber(1)">1</div>
-        <div class="item-number" @click="handleChooseNumber(2)">2</div>
-        <div class="item-number" @click="handleChooseNumber(3)">3</div>
+        <div class="item-number" @click="handleChoose(1)">1</div>
+        <div class="item-number" @click="handleChoose(2)">2</div>
+        <div class="item-number" @click="handleChoose(3)">3</div>
       </li>
       <li class="captch-panel-item">
-        <div class="item-number" @click="handleChooseNumber(4)">4</div>
-        <div class="item-number" @click="handleChooseNumber(5)">5</div>
-        <div class="item-number" @click="handleChooseNumber(6)">6</div>
+        <div class="item-number" @click="handleChoose(4)">4</div>
+        <div class="item-number" @click="handleChoose(5)">5</div>
+        <div class="item-number" @click="handleChoose(6)">6</div>
       </li>
       <li class="captch-panel-item">
-        <div class="item-number" @click="handleChooseNumber(7)">7</div>
-        <div class="item-number" @click="handleChooseNumber(8)">8</div>
-        <div class="item-number" @click="handleChooseNumber(9)">9</div>
+        <div class="item-number" @click="handleChoose(7)">7</div>
+        <div class="item-number" @click="handleChoose(8)">8</div>
+        <div class="item-number" @click="handleChoose(9)">9</div>
       </li>
       <li class="captch-panel-item">
         <div class="item-number bg-gray"></div>
-        <div class="item-number" @click="handleChooseNumber(0)">0</div>
-        <div class="item-number bg-gray item-icon-delete" @click="handleDelete"></div>
+        <div class="item-number" @click="handleChoose(0)">0</div>
+        <div class="item-number bg-gray item-icon-delete" @click="onDelete"></div>
       </li>
     </ul>
   </div>
@@ -51,10 +51,10 @@ export default {
     }
   },
   methods: {
-    handleChooseNumber(number) {
+    handleChoose(number) {
       this.$emit(EVENT_CHOOSE, number)
     },
-    handleDelete() {
+    onDelete() {
       this.$emit(EVENT_DELETE)
     }
   },
@@ -64,9 +64,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import "../../common/style/variable.css";
-@import "../../common/style/mixin.css";
-@import "../../common/style/animation.css";
+@import '../../common/style/variable.css';
+@import '../../common/style/mixin.css';
+@import '../../common/style/animation.css';
 
 $panel-title-height: 36px;
 $panel-title-bgc: #f9f9f9;
@@ -86,7 +86,7 @@ $panel-content-item-bgc-active: rgba(0, 0, 0, 0.03);
       display: block;
       width: $panel-logo-width;
       height: $panel-logo-width;
-      background: url("../../common/icon/calfic-shield.png");
+      background: url('../../common/icon/calfic-shield.png');
       background-size: 100% 100%;
     }
     .title-content {
@@ -121,10 +121,10 @@ $panel-content-item-bgc-active: rgba(0, 0, 0, 0.03);
         @include flex(row, center, center);
         &:after {
           display: block;
-          content: "";
+          content: '';
           width: $panel-logo-width;
           height: $panel-logo-width;
-          background: url("../../common/icon/calfic-close-gray.png");
+          background: url('../../common/icon/calfic-close-gray.png');
           background-size: 100% 100%;
         }
       }
