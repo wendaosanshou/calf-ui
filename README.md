@@ -18,5 +18,5 @@ npm run doc
 npm run build
 
 # 编译demo项目
-npm run doc
+npm run build:example
 ```
