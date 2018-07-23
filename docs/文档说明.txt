@@ -10,7 +10,7 @@ docsify serve docs
 
 
 新建文档 
-在md 文件件下新建 .md文档、然后在 _sidebar.md   文档里面添加导航页面
+在md 文件件下新建 .md文档、然后在 _sidebar.md   文档里面添加导航页面(注意文档大小写)
 
 页面中编写方式参考 ### 
 
