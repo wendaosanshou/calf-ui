@@ -20,7 +20,7 @@ Vue.use(PullRefresh)
 
 ##### 例子
 
-示例体验：http://www.calf-ui.com/#/pull-refresh
+示例体验：http://fe.cardniu.work/calf-ui/example/#/
 
 ##### 使用
 

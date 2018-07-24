@@ -1,8 +1,8 @@
-
 ### Toast
-***
 
->轻提示组件，主要场景用来一些轻度文案提示，提供自定义类型、自定显示内容、自定义图标、自定义显示时间等
+---
+
+> 轻提示组件，主要场景用来一些轻度文案提示，提供自定义类型、自定显示内容、自定义图标、自定义显示时间等
 
 ##### 引入
 
@@ -13,11 +13,11 @@ Vue.component(Toast.name, Toast)
 
 ##### 例子
 
-示例体验：http://www.calf-ui.com/#/toast
+示例体验：http://fe.cardniu.work/calf-ui/example/#/
 
 ##### 使用
 
-基本使用通过调用this.$createToast()函数传入对应参数调用show()。
+基本使用通过调用 this.$createToast()函数传入对应参数调用 show()。
 
 ##### 代码片段
 
@@ -78,15 +78,15 @@ export default {
 
 #### API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值
-| - | :-: | -: | -: | -: |
-| type  | 类型| String | | toast
-| duration  | 显示时长| Number | | 0
-| content  | 显示内容| String | | 未知的系统错误
-| icon  | 图标| String | | 默认为空
+| 参数     |   说明   |   类型 | 可选值 |         默认值 |
+| -------- | :------: | -----: | -----: | -------------: |
+| type     |   类型   | String |        |          toast |
+| duration | 显示时长 | Number |        |              0 |
+| content  | 显示内容 | String |        | 未知的系统错误 |
+| icon     |   图标   | String |        |       默认为空 |
 
 #### Slot
 
-| 参数 | 说明
-| - | :-: |
-| content  | 显示内容
+| 参数    |   说明   |
+| ------- | :------: |
+| content | 显示内容 |

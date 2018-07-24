@@ -13,7 +13,7 @@ Vue.component(Tab)
 
 ##### 例子
 
-示例体验：http://www.calf-ui.com/#/tab
+示例体验：http://fe.cardniu.work/calf-ui/example/#/
 
 ##### 使用
 

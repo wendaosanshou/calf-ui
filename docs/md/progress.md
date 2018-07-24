@@ -1,5 +1,6 @@
 ### Progress
-***
+
+---
 
 ?>进度条/步骤条
 
@@ -12,16 +13,18 @@ Vue.component(Progress.name, Progress)
 
 ##### 例子
 
-示例体验：http://www.calf-ui.com/#/progress
+示例体验：http://fe.cardniu.work/calf-ui/example/#/
 
 ##### 使用
 
 进度条提供三种类型类型
 
 1.默认样式
+
 ```html
 <calf-progress :current="current1" :steps="progress1"></calf-progress>
 ```
+
 ```js
 export default {
   data() {
@@ -33,9 +36,11 @@ export default {
 ```
 
 2.横向步骤条
+
 ```html
 <calf-progress :current="current2" :steps="progress2" type="line"></calf-progress>
 ```
+
 ```js
 export default {
   data() {
@@ -47,9 +52,11 @@ export default {
 ```
 
 3.竖向步骤条
+
 ```html
 <calf-progress :current="current3" :steps="progress3" type="label"></calf-progress>
 ```
+
 ```js
 export default {
   data() {
@@ -78,9 +85,9 @@ export default {
 
 #### API
 
-| 参数        |   说明   |     类型 | 可选值 | 默认值 |
-| ----------- | :------: | -------: | -----: | -----: |
-| current     | 当前步骤 |  Number  |        | 0     |
-| steps       | 对象数组，配置每一步显示的标题 | Array |        | [''] |
-| type        | 样式类型 |  String  |        | "default" |
-| isFinish    | icon状态切换 |  Boolean |        | false |
+| 参数     |              说明              |    类型 | 可选值 |    默认值 |
+| -------- | :----------------------------: | ------: | -----: | --------: |
+| current  |            当前步骤            |  Number |        |         0 |
+| steps    | 对象数组，配置每一步显示的标题 |   Array |        |      [''] |
+| type     |            样式类型            |  String |        | "default" |
+| isFinish |         icon 状态切换          | Boolean |        |     false |

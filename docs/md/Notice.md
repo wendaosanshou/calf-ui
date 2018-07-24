@@ -1,8 +1,8 @@
-
 ### Notice
-***
 
->通知组件，主要场景用来放入页面头部通知、警告用户，提供消息，警告，错误三种通知提示，定义通知框左侧图标显示，右侧关闭，箭头图标，关闭回调函数。
+---
+
+> 通知组件，主要场景用来放入页面头部通知、警告用户，提供消息，警告，错误三种通知提示，定义通知框左侧图标显示，右侧关闭，箭头图标，关闭回调函数。
 
 ##### 引入
 
@@ -13,7 +13,7 @@ Vue.component(Notice.name, Notice)
 
 ##### 例子
 
-示例体验：http://www.calf-ui.com/#/notice
+示例体验：http://fe.cardniu.work/calf-ui/example/#/
 
 ##### 使用
 
@@ -89,16 +89,16 @@ export default {
 
 #### API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值
-| - | :-: | -: | -: | -: |
-| type  | 类型| String | | info
-| value  | value| Boolean | | false
-| icon  | 图标| String | | notice-orange
-| content  | 通知文案| String | | 未知的错误提示
-| showIcon  | 是否显示图标| Boolean | | false
-| showClose  | 是否显示关闭图标| Boolean | | false
-| showArrow  | 是否显示箭头| Boolean | | false
+| 参数      |       说明       |    类型 | 可选值 |         默认值 |
+| --------- | :--------------: | ------: | -----: | -------------: |
+| type      |       类型       |  String |        |           info |
+| value     |      value       | Boolean |        |          false |
+| icon      |       图标       |  String |        |  notice-orange |
+| content   |     通知文案     |  String |        | 未知的错误提示 |
+| showIcon  |   是否显示图标   | Boolean |        |          false |
+| showClose | 是否显示关闭图标 | Boolean |        |          false |
+| showArrow |   是否显示箭头   | Boolean |        |          false |
 
 #### Slot
 
-  暂无
+暂无

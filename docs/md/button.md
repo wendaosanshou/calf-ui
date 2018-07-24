@@ -1,6 +1,6 @@
-
 ### Button
-***
+
+---
 
 ?>按钮，提供几种基础样式和尺寸，可自定义图标。
 
@@ -20,17 +20,17 @@ Vue.use(Button)
 
 ##### 例子
 
-示例体验：http://www.calf-ui.com/#/button
-
+示例体验：http://fe.cardniu.work/calf-ui/example/#/
 
 ##### 使用
-1.按钮提供 【/灰色/白底镂空/橙色】对应3种场景 分为 禁止 正常失效；
+
+1.按钮提供 【/灰色/白底镂空/橙色】对应 3 种场景 分为 禁止 正常失效；
 分别对应【.btn-primary/.btn-danger/.btn-warning/.btn-disabled/.btn-hollow】；
 
 2.按钮分为普通按钮、块级按钮；
 
-
 ##### 代码片段
+
 ```html
   <calf-button>按钮（正常）</calf-button>
     <calf-button :disabled="true">按钮（禁止）</calf-button>
@@ -55,7 +55,6 @@ Vue.use(Button)
     <calf-button @click="handleClick">触发弹窗</calf-button>
     <calf-button @click="handleBack">返回</calf-button>
 ```
-
 
 ```javascript
 export default {
@@ -88,23 +87,20 @@ export default {
 }
 ```
 
-
 #### API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值
-| - | :-: | -: | -: | -: | 
-| disabled  | 禁用状态| Boolean | | false
-| invalid  | 失效状态| Boolean | | false
-| inline  | 是否块级| Boolean | | false
-| minor  | 次要按钮| Boolean | | false
-| handleBack  | 返回事件| function | | false
-| handleClick  | 触发弹窗| function | | false
-
-
+| 参数        |   说明   |     类型 | 可选值 | 默认值 |
+| ----------- | :------: | -------: | -----: | -----: |
+| disabled    | 禁用状态 |  Boolean |        |  false |
+| invalid     | 失效状态 |  Boolean |        |  false |
+| inline      | 是否块级 |  Boolean |        |  false |
+| minor       | 次要按钮 |  Boolean |        |  false |
+| handleBack  | 返回事件 | function |        |  false |
+| handleClick | 触发弹窗 | function |        |  false |
 
 #### Slot
 
-| 参数 | 说明 
-| - | :-: | 
-| content  | 按钮文字
-| desc  | 按钮小字描述
+| 参数    |     说明     |
+| ------- | :----------: |
+| content |   按钮文字   |
+| desc    | 按钮小字描述 |

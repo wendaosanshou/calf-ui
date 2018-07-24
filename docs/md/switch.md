@@ -19,7 +19,7 @@ Vue.use(Switch)
 
 ##### 例子
 
-示例体验：http://www.calf-ui.com/#/switch
+示例体验：http://fe.cardniu.work/calf-ui/example/#/
 
 ##### 代码片段
 
