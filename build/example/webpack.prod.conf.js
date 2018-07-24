@@ -6,9 +6,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const baseWebpackConfig = require('../webpack.base.conf')
 const utils = require('../utils')
 const config = require('../../config')
-const baseWebpackConfig = require('../webpack.base.conf')
+const version = require('../../package.json').version
 
 const env = require('../../config/prod.env')
 const webpackConfig = merge(baseWebpackConfig, {
@@ -30,7 +31,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': env,
+      __VERSION__: JSON.stringify(version)
     }),
     new UglifyJsPlugin({
       uglifyOptions: {

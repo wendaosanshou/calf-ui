@@ -79,10 +79,15 @@ module.exports = {
     entry: {
       app: path.resolve(__dirname, '../example/main.js')
     },
-    assetsPublicPath:
-      'http://tg.feidee.net/cardniu-credit-front/pages/calf-ui/example/',
+    assetsPublicPath: 'http://fe.cardniu.work/calf-ui/example/',
     assetsRoot: path.resolve(__dirname, '../docs/example'),
     assetsSubDirectory: '',
-    productionSourceMap: false
+    productionSourceMap: false,
+    ftp: {
+      host: '172.22.145.137',
+      username: 'testknpub',
+      password: '4DYCr34fVhzM',
+      path: '/usr/local/www/calf-ui'
+    }
   }
 }
