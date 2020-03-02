@@ -28,6 +28,3 @@ npm run deploy-demo
 
 基于`develop`分支，新建一个`feature/xxx`分支，在当前分支上进行改动，所有改动完成之后合并到`develop`分支
 
-## 如何反馈问题
-
-直接提 issues：[http://git.sui.work/cardniu-fe/calf-ui/issues](http://git.sui.work/cardniu-fe/calf-ui/issues)
