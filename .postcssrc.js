@@ -5,7 +5,7 @@ module.exports = {
   plugins: {
     'postcss-import': {},
     'postcss-url': {},
-    precss: {},
+    'precss': {},
     'postcss-pxtorem': {
       rootValue: 37.5,
       selectorBlackList: ['no-rem'],
@@ -37,7 +37,6 @@ module.exports = {
         'max-width'
       ]
     },
-    // to edit target browsers: use "browserslist" field in package.json
     autoprefixer: {}
   }
 }
