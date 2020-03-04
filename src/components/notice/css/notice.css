@@ -1,0 +1,93 @@
+@import '../../../common/style/variable.css';
+@import '../../../common/style/mixin.css';
+@import '../../../common/style/animation.css';
+
+.calf-notice {
+  @include flex(row, flex-start, center);
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 16px;
+  &.calf-notice-info {
+    color: $notice-info-color;
+    background: $notice-info-bgc;
+    .calf-notice-content {
+      color: $notice-info-color;
+    }
+  }
+  &.calf-notice-warning {
+    color: $notice-warning-color;
+    background: $notice-warning-bgc;
+    .calf-notice-content {
+      color: $notice-warning-color;
+    }
+  }
+  &.calf-notice-error {
+    color: $notice-error-color;
+    background: $notice-error-bgc;
+    .calf-notice-content {
+      color: $notice-error-color;
+    }
+  }
+  .calf-icon-broadcast {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    &.icon-broadcast-info {
+      background: url('~/common/icon/calfic-notice-gray.png');
+      background-size: 100% 100%;
+    }
+    &.icon-broadcast-warning {
+      background: url('~/common/icon/calfic-notice-orange.png');
+      background-size: 100% 100%;
+    }
+    &.icon-broadcast-error {
+      background: url('~/common/icon/calfic-notice-red.png');
+      background-size: 100% 100%;
+    }
+  }
+  .calf-notice-content {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 0;
+  }
+  .calf-icon-close,
+  .calf-icon-arrow {
+    @include flex(row, center, center);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    &:after {
+      width: 12px;
+      height: 12px;
+      content: '';
+    }
+    &.icon-close-info:after {
+      background: url('~/common/icon/calfic-close-gray.png');
+      background-size: 100% 100%;
+    }
+    &.icon-close-warning:after {
+      background: url('~/common/icon/calfic-close-orange.png');
+      background-size: 100% 100%;
+    }
+    &.icon-close-error:after {
+      background: url('~/common/icon/calfic-close-red.png');
+      background-size: 100% 100%;
+    }
+    &.icon-arrow-info:after {
+      background: url('~/common/icon/calfic-right-gray.png');
+      background-size: 100% 100%;
+    }
+    &.icon-arrow-warning:after {
+      background: url('~/common/icon/calfic-right-orange.png');
+      background-size: 100% 100%;
+    }
+    &.icon-arrow-error:after {
+      background: url('~/common/icon/calfic-right-red.png');
+      background-size: 100% 100%;
+    }
+  }
+}
