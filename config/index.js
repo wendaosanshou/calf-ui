@@ -1,86 +1,64 @@
 'use strict'
-// Template version: 1.3.1
-// see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
 
+// 获取根目录下路径
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   dev: {
-    // Paths
+    // 路径
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    // 代理配置
     proxyTable: {},
-
-    // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    // dev-server配置
+    host: 'localhost',
+    port: 8080,
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
-    // Use Eslint Loader?
-    // If true, your code will be linted during bundling and
-    // linting errors and warnings will be shown in the console.
+    poll: false,
+    // 使用eslint
     useEslint: true,
-    // If true, eslint errors and warnings will also be shown in the error overlay
-    // in the browser.
+    // 使用eslint异常时的浏览器遮罩
     showEslintErrorsInOverlay: false,
-
-    /**
-     * Source Maps
-     */
-
-    // https://webpack.js.org/configuration/devtool/#development
+    // Source Maps
     devtool: 'cheap-module-eval-source-map',
-
-    // If you have problems debugging vue-files in devtools,
-    // set this to false - it *may* help
-    // https://vue-loader.vuejs.org/en/options.html#cachebusting
+    // 使用cache-loader
     cacheBusting: true,
-
+    // 开启css的source-map
     cssSourceMap: true
   },
 
   build: {
-    // Template for index.html
-    index: path.resolve(__dirname, '../lib/index.html'),
-
-    // Paths
-    assetsRoot: path.resolve(__dirname, '../lib'),
+    // 路径配置
+    index: resolve('lib/index.html'),
+    assetsRoot: resolve('lib'),
     assetsSubDirectory: '',
     assetsPublicPath: '/',
-
-    /**
-     * Source Maps
-     */
-
+    // 是否开启sourceMap
     productionSourceMap: false,
-    // https://webpack.js.org/configuration/devtool/#production
+    // sourceMap类型
     devtool: 'source-map',
-
-    // Gzip off by default as many popular static hosts such as
-    // Surge or Netlify already gzip all static assets for you.
-    // Before setting to `true`, make sure to:
-    // npm install --save-dev compression-webpack-plugin
+    // 是个开启gzip
     productionGzip: false,
+    // gzip的文件类型
     productionGzipExtensions: ['js', 'css'],
-
-    // Run the build command with an extra argument to
-    // View the bundle analyzer report after build finishes:
-    // `npm run build --report`
-    // Set to `true` or `false` to always turn it on or off
+    // bundle分析的端口
     bundleAnalyzerReport: process.env.npm_config_report
   },
 
   demoBuild: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../example/index.html'),
+    index: resolve('example/index.html'),
     entry: {
-      app: path.resolve(__dirname, '../example/main.js')
+      app: resolve('example/main.js')
     },
-    assetsPublicPath: 'http://fe.cardniu.work/calf-ui/example/',
-    assetsRoot: path.resolve(__dirname, '../docs/example'),
+    assetsPublicPath: '',
+    assetsRoot: resolve('docs/example'),
     assetsSubDirectory: '',
     productionSourceMap: false,
     ftp: {

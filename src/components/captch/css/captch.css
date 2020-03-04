@@ -1,0 +1,76 @@
+@import "../../../common/style/variable.css";
+@import "../../../common/style/animation.css";
+
+$verify-body-padding-top: 20px;
+$captch-body-padding-top: 18px;
+$captch-content-padding-top: 28px;
+$captch-loading-width: 34px;
+$captch-loading-margin-left: -17px;
+$captch-loading-top: 77px;
+
+.calf-captch {
+  width: 100%;
+  height: auto;
+  border-radius: $captch-radius;
+  background: $color-bg-white;
+  .captch-title {
+    width: 100%;
+    height: $captch-title-width;
+    line-height: $captch-title-width;
+    font-size: $fontsize-large;
+    color: $color-grey-dark-ss;
+    text-align: center;
+    border-radius: $captch-radius;
+    border-bottom: $captch-title-border;
+  }
+  .captch-body {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.calf-captch-verify .captch-body .captch-header {
+  padding-top: $verify-body-padding-top;
+}
+
+.calf-captch-password .captch-body .captch-header {
+  padding-top: $captch-body-padding-top;
+}
+
+.captch-body {
+  .captch-content {
+    box-sizing: border-box;
+    width: 100%;
+    height: $captch-content-height;
+    padding-top: $captch-content-padding-top;
+    .captch-loading {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      .icon-loading {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: $captch-loading-top;
+        margin-left: $captch-loading-margin-left;
+        width: $captch-loading-width;
+        height: $captch-loading-width;
+        background: url("~/common/icon/calfic-loading-grey.png");
+        background-size: 100% 100%;
+      }
+    }
+    .captch-result {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: $captch-title-width;
+      line-height: $captch-title-width;
+      font-size: $fontsize-small;
+      color: $color-bg-white;
+      text-align: center;
+      background: $color-red-warn;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import '../../../common/style/variable.css';
+@import '../../../common/style/mixin.css';
+
+.captch-input {
+  .captch-title-wrap {
+    width: 100%;
+    height: auto;
+    .captch-input-title {
+      width: 100%;
+      height: auto;
+      font-size: $fontsize-medium;
+      color: $captch-header-color;
+      text-align: center;
+      line-height: $lineheight-small-s;
+      margin-bottom: $captch-header-margin-bottom;
+    }
+  }
+
+  .captch-input-desc {
+    font-size: $fontsize-small;
+    color: $color-grey;
+    text-align: center;
+    line-height: $lineheight-small-s;
+  }
+  .captch-repeat {
+    font-size: $fontsize-small;
+    color: $captch-header-color-orange;
+    text-align: center;
+    line-height: $lineheight-small-s;
+  }
+  .captch-input-list {
+    @include flex(row, center, flex-start);
+    &.is-verify-fail .captch-input-item {
+      color: $color-red-warn;
+    }
+    .captch-input-item {
+      width: $captch-input-item-width;
+      height: $captch-input-item-height;
+      font-size: $captch-input-item-fontsize;
+      color: $color-grey-dark-ss;
+      text-align: center;
+      border-bottom: 1px solid $color-grey;
+      margin-left: $captch-input-item-margin;
+      &.current {
+        border-bottom: 1px solid $color-grey-dark-s;
+      }
+    }
+  }
+  .captch-forget {
+    width: 100%;
+    height: $lineheight-small-s;
+    font-size: $fontsize-small;
+    color: $color-blur-link;
+    margin-top: $captch-forget-margin;
+    text-align: center;
+    line-height: $lineheight-small-s;
+  }
+}
