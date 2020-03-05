@@ -7,7 +7,7 @@ const utils = require('./utils').default;
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // const HOST = process.env.HOST
 // const PORT = process.env.PORT && Number(process.env.PORT)
@@ -43,6 +43,7 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
+        exclude: /node_modules/,
         loader: 'vue-loader'
       },
       {
@@ -52,8 +53,11 @@ module.exports = {
       },
       {
         test: /\.(post)?css$/, // 匹配css或postcss格式的文件
+        exclude: /node_modules/,
         use: [
-          'vue-style-loader',
+          process.env.NODE_ENV !== 'production'
+            ? 'vue-style-loader'
+            : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -68,6 +72,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
+        exclude: /node_modules/,
         use: [
           'vue-style-loader',
           {
@@ -82,6 +87,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'url-loader',
