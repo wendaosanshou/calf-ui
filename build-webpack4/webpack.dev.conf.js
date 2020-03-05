@@ -38,9 +38,6 @@ const webpackConfig = {
     stats: 'errors-only' // 去除多余的打印日志
   },
   plugins: [
-    // new MiniCssExtractPlugin({
-    //   filename: 'style.css'
-    // }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: utils.resolve('./example/index.html'),
