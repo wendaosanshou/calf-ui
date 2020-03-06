@@ -13,9 +13,9 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
-    "build-demo": "node build/example/build.js",
-    "build-lib": "node build/build.js",
-    "deploy-demo": "node build/deploy.js"
+    "build:demo": "node build/example/build.js",
+    "build:lib": "node build/build.js",
+    "deploy:demo": "node build/deploy.js"
   },
   "dependencies": {
     "vue": "^2.5.2",

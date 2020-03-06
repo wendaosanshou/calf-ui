@@ -79,7 +79,7 @@ module.exports = {
     entry: {
       app: path.resolve(__dirname, '../example/main.js')
     },
-    assetsPublicPath: 'http://fe.cardniu.work/calf-ui/example/',
+    assetsPublicPath: 'http://123.206.17.49/docs/example/',
     assetsRoot: path.resolve(__dirname, '../docs/example'),
     assetsSubDirectory: '',
     productionSourceMap: false,

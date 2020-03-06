@@ -1,30 +1,24 @@
 # calf-ui
 
-> A mobile ui lib implement by Vue
+> 一个基于vue.js的金融级移动端ui组件库，包含部分业务的业务组件和基础组件
 
-## 构建步骤
+## 链接
 
-```bash
-# 安装依赖
-npm install
+[文档](http://123.206.17.49/docs/#/)
 
-# 运行example
-npm run dev
+[例子](http://123.206.17.49/docs/example/#/)
 
-# 运行文档
-npm run doc
+## 安装
 
-# 编译组件库，生成lib文件夹
-npm run build-lib
-
-# 编译demo项目
-npm run build-demo
-
-# 部署demo项目
-npm run deploy-demo
+```shell
+npm install cube-ui --save
 ```
 
-## 如何参与`calf-ui`组件库开发
+## 用法
 
-基于`develop`分支，新建一个`feature/xxx`分支，在当前分支上进行改动，所有改动完成之后合并到`develop`分支
+```js
+import Vue from 'vue'
+import Calf from 'calf-ui'
 
+Vue.use(Calf)
+```

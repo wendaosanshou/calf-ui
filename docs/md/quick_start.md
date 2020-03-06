@@ -1,23 +1,16 @@
 ### 环境
 
-> `calf-ui`为卡牛内部基于`vue`的`ui`库，需要使用内网的`cnpm`环境
-
-安装 cnpm 环境
-
-```shell
-npm install cnpm -g   # 全局安装cnpm
-cnpm get registry   # 获取当前注册源
-cnpm config set registry http://cnpm-registry.cardniu.work # 修改成内部注册源地址
-cnpm get registry  # 确认修改是否成功
-cnpm install calf-ui --save   # 安装依赖
-```
+> `calf-ui`是一个基于vue.js的移动端的ui组件库
 
 #### npm 安装
 
 > 使用 npm 快速安装依赖包
 
 ```shell
-cnpm install @cardniu/calf-ui  --save
+# 可以使用cnpm来安装
+cnpm install calf-ui
+# 或者使用yarn来安装
+yarn add calf-ui
 ```
 
 calf-ui 搭配 webpack 3+ 支持后编译和普通编译 2 种构建方式（默认使用后编译），使用前都需要修改应用的依赖和配置。
@@ -35,7 +28,7 @@ calf-ui 搭配 webpack 3+ 支持后编译和普通编译 2 种构建方式（默
 
 ```javascript
 alias: {
-  'calf-ui': '@cardniu/calf-ui/lib'
+  'calf-ui': 'calf-ui/lib'
 }
 ```
 
