@@ -84,10 +84,10 @@ module.exports = {
     assetsSubDirectory: '',
     productionSourceMap: false,
     ftp: {
-      host: '172.22.145.137',
-      username: 'testknpub',
-      password: '4DYCr34fVhzM',
-      path: '/usr/local/www/calf-ui'
+      host: '',
+      username: '',
+      password: '',
+      path: ''
     }
   }
 }
