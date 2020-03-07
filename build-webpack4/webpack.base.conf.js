@@ -33,7 +33,7 @@ module.exports = {
   entry: {},
   output: {},
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.css'],
     alias: {
       '@example': utils.resolve('example'),
       'calf-ui': 'calf-ui/lib'
@@ -53,7 +53,7 @@ module.exports = {
       },
       {
         test: /\.(post)?css$/, // 匹配css或postcss格式的文件
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: [
           process.env.NODE_ENV !== 'production'
             ? 'vue-style-loader'

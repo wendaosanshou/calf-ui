@@ -51,13 +51,13 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   },
 
-  demoBuild: {
+  example: {
     env: require('./prod.env'),
     index: resolve('example/index.html'),
     entry: {
       app: resolve('example/main.js')
     },
-    assetsPublicPath: '',
+    assetsPublicPath: 'http://123.206.17.49/docs/example/',
     assetsRoot: resolve('docs/example'),
     assetsSubDirectory: '',
     productionSourceMap: false,

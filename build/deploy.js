@@ -1,5 +1,5 @@
 var ora = require('ora')
-var ftp = require('../config').demoBuild.ftp
+var ftp = require('../config').example.ftp
 var client = require('scp2')
 var path = require('path')
 

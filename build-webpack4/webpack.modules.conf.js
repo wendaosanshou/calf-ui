@@ -1,5 +1,6 @@
 'use strict';
-// const path = require('path');
+const path = require('path')
+const fs = require('fs')
 const utils = require('./utils').default;
 const config = require('../config');
 const merge = require('webpack-merge');
@@ -7,31 +8,37 @@ const baseWebpackConfig = require('./webpack.base.conf');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// console.log('processs', process.env.NODE_ENV);
-
-const entry = {
-  calf: utils.resolve('./src/index.js')
-  // calf: utils.resolve('./src/test.js')
-};
+// 获取module文件夹的入口js文件
+function getModulesEntry () {
+  var modules = {}
+  var cPath = path.join(__dirname, '../src/modules')
+  var files = fs.readdirSync(cPath)
+  if (files) {
+    files.forEach(function(name) {
+      var modulesPath = path.join(cPath, name)
+      if (fs.statSync(modulesPath).isDirectory()) {
+        modules[name] = modulesPath
+      }
+    })
+  }
+  return modules
+}
 
 const webpackConfig = merge(baseWebpackConfig, {
-  entry: entry,
+  entry: getModulesEntry(),
   mode: 'production',
   devtool: false,
   output: {
     path: config.build.assetsRoot, // 静态资源目录
-    filename: 'index.js',
+    filename: '[name]/index.js',
     library: 'calf',
-    libraryTarget: 'umd'
+    libraryTarget: 'commonjs2'
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css'
+      filename: '[name]/style.css'
     }),
-    new CleanWebpackPlugin(),
     new OptimizeCSSAssetsPlugin()
   ]
 });
