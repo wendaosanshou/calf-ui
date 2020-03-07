@@ -47,7 +47,7 @@ function install(Vue) {
 
 const calf = {
   /* eslint-disable no-undef */
-  // version: __VERSION__,
+  version: __VERSION__,
   install
 }
 

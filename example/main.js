@@ -9,46 +9,47 @@ import './static/flexible/flexible'
 
 // 本地开发环境引入
 // import '../src/style.css'
-// import Calf from '../src/index'
-// Vue.use(Calf)
+import Calf from '../src/index'
+console.log('version', Calf.version)
+Vue.use(Calf)
 
 // 按需引入
-import {
-  Button,
-  Captch,
-  Popup,
-  Dialog,
-  Loading,
-  ListPicker,
-  CascadePicker,
-  DatePicker,
-  Notice,
-  Picker,
-  Progress,
-  PullRefresh,
-  Tab,
-  Textarea,
-  Toast,
-  Switch
-} from 'calf-ui'
+// import {
+//   Button,
+//   Captch,
+//   Popup,
+//   Dialog,
+//   Loading,
+//   ListPicker,
+//   CascadePicker,
+//   DatePicker,
+//   Notice,
+//   Picker,
+//   Progress,
+//   PullRefresh,
+//   Tab,
+//   Textarea,
+//   Toast,
+//   Switch
+// } from 'calf-ui'
 
 
-Vue.use(Button)
-Vue.use(Captch)
-Vue.use(Popup)
-Vue.use(ListPicker)
-Vue.use(Progress)
-Vue.use(Textarea)
-Vue.use(Notice)
-Vue.use(Switch)
-Vue.use(PullRefresh)
-Vue.use(Tab)
-Vue.use(Loading)
-Vue.use(Toast)
-Vue.use(Picker)
-Vue.use(CascadePicker)
-Vue.use(DatePicker)
-Vue.use(Dialog)
+// Vue.use(Button)
+// Vue.use(Captch)
+// Vue.use(Popup)
+// Vue.use(ListPicker)
+// Vue.use(Progress)
+// Vue.use(Textarea)
+// Vue.use(Notice)
+// Vue.use(Switch)
+// Vue.use(PullRefresh)
+// Vue.use(Tab)
+// Vue.use(Loading)
+// Vue.use(Toast)
+// Vue.use(Picker)
+// Vue.use(CascadePicker)
+// Vue.use(DatePicker)
+// Vue.use(Dialog)
 
 /* eslint-disable no-unused-vars */
 Vue.use(VueRouter)

@@ -1,8 +1,10 @@
 'use strict';
 const utils = require('./utils').default;
 const config = require('../config');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
+const version = require('../package.json').version;
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -29,6 +31,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     libraryTarget: 'umd'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __VERSION__: JSON.stringify(version)
+    }),
     new MiniCssExtractPlugin({
       filename: 'style.css'
     }),
