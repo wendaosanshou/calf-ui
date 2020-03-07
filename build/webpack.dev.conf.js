@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const portfinder = require('portfinder');
 const baseWebpackConfig = require('./webpack.base.conf');
-const version = require('../package.json').version;
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
@@ -13,12 +12,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const entry = {
   app: utils.resolve('./example/main.js')
 };
-
-// const output = {
-//   publicPath: '', // js引用路径或者CDN地址
-//   path: utils.resolve('dist'), // 打包文件的输出目录
-//   filename: 'bundle.js'
-// };
 
 const webpackConfig = {
   entry: entry,
@@ -35,9 +28,6 @@ const webpackConfig = {
     hotOnly: true
   },
   plugins: [
-    new webpack.DefinePlugin({
-      __VERSION__: JSON.stringify(version)
-    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: utils.resolve('./example/index.html'),

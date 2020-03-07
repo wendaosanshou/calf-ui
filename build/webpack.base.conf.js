@@ -1,30 +1,7 @@
 'use strict'
 const utils = require('./utils').default;
-// const config = require('../config')
-// const webpack = require('webpack')
-// const merge = require('webpack-merge')
-// const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-// const HOST = process.env.HOST
-// const PORT = process.env.PORT && Number(process.env.PORT)
-// const isProd = process.env.NODE_ENV === 'production'
-
-
-// var entry = {
-//   // app: resolve('./build-webpack4/webpack-test/main.js'),
-//   app: utils.resolve('./example/main.js')
-//   // app: resolve('./src/index.js')
-// }
-
-// var output = {
-//   publicPath: '', // js引用路径或者CDN地址
-//   path: utils.resolve('dist'), // 打包文件的输出目录
-//   filename: 'bundle.js'
-// }
 
 // 过滤node_modules部分且防止导入的vue单文件组件里的script标签被排除
 var jsExclude = file => /node_modules/.test(file) && !/\.vue\.js/.test(file)
@@ -53,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.(post)?css$/, // 匹配css或postcss格式的文件
-        // exclude: /node_modules/,
+        include: /src|calf-ui/,
         use: [
           process.env.NODE_ENV !== 'production'
             ? 'vue-style-loader'
@@ -72,7 +49,6 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        exclude: /node_modules/,
         use: [
           'vue-style-loader',
           {
@@ -104,9 +80,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // new MiniCssExtractPlugin({
-    //   filename: 'style.css'
-    // }),
     new VueLoaderPlugin()
   ]
 }

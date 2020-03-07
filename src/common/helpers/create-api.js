@@ -6,7 +6,6 @@ export default function createAPI(Vue, Component, events, single) {
   const name = Component.name
   const pureName = name.replace(/^calf-/i, '')
   const createName = `$${camelize(`create-${pureName}`)}`
-  console.log(createName)
   Vue.prototype[createName] = api.create
   Component.$create = api.create
   return api

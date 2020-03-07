@@ -4,11 +4,11 @@ const config = require('../config');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const version = require('../package.json').version;
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const entry = {
   calf: utils.resolve('./src/index.js')
@@ -30,10 +30,22 @@ const webpackConfig = merge(baseWebpackConfig, {
     library: 'calf',
     libraryTarget: 'umd'
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            warnings: false,
+            drop_console: true,
+            drop_debugger: true,
+            pure_funcs: ['console.log']
+          }
+        }
+      })
+    ]
+  },
   plugins: [
-    new webpack.DefinePlugin({
-      __VERSION__: JSON.stringify(version)
-    }),
     new MiniCssExtractPlugin({
       filename: 'style.css'
     }),
