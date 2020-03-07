@@ -35,7 +35,8 @@ const webpackConfig = {
     port: config.dev.port,
     hot: true,
     overlay: config.dev.overlay,
-    stats: 'errors-only' // 去除多余的打印日志
+    stats: 'errors-only',
+    hotOnly: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -45,7 +46,8 @@ const webpackConfig = {
       minify: {
         collapseWhitespace: true
       }
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
 

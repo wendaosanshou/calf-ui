@@ -8,26 +8,11 @@ import './static/flexible/flexible_css'
 import './static/flexible/flexible'
 
 // 本地开发环境引入
+// import '../src/style.css'
 // import Calf from '../src/index'
 // Vue.use(Calf)
 
-// import '../lib/style.css'
-// import Calf from '../lib/index'
-// Vue.use(Calf)
-// import'calf-ui/lib/style.css'
-// import calf from 'calf-ui/lib/index'
-// import 'calf-ui/lib/style.css'
-// import calf from 'calf-ui'
-// Vue.use(calf)
-// console.log(calf)
-
-// 全局引入
-// import 'calf-ui/style.css'
-// import Calf from 'calf-ui'
-// Vue.use(Calf)
-
 // 按需引入
-// import 'calf-ui/style.css'
 import {
   Button,
   Captch,

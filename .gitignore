@@ -1,5 +1,6 @@
 node_modules/
 lib/
+docs/example/*
 npm-debug.log
 .idea/
 .vscode/

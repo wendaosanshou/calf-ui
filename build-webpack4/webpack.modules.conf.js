@@ -29,6 +29,13 @@ const webpackConfig = merge(baseWebpackConfig, {
   entry: getModulesEntry(),
   mode: 'production',
   devtool: false,
+  stats: {
+    children: false,
+    entrypoints: false,
+    builtAt: false,
+    modules: false,
+    warnings: false
+  },
   output: {
     path: config.build.assetsRoot, // 静态资源目录
     filename: '[name]/index.js',

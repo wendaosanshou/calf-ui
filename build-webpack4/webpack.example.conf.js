@@ -4,7 +4,7 @@ const config = require('../config');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -12,12 +12,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpackConfig = merge(baseWebpackConfig, {
   entry: config.example.entry,
   mode: 'production',
-  devtool: false,
-  output: {
-    path: config.example.assetsRoot, // 静态资源目录
-    publicPath: config.example.assetsPublicPath,
-    filename: 'index.js'
+  stats: {
+    children: false,
+    entrypoints: false,
+    builtAt: false,
+    modules: false,
+    warnings: false
   },
+  output: {
+    path: config.example.assetsRoot,
+    publicPath: config.example.assetsPublicPath,
+    filename: '[name].[hash].js'
+  },
+  // optimization: {},
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'style.css'
@@ -26,14 +33,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     new OptimizeCSSAssetsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'example/index.html',
-      inject: true,
+      template: utils.resolve('./example/index.html'),
+      chunks: ['app'],
       minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-      },
-      chunksSortMode: 'dependency'
+        collapseWhitespace: true
+      }
     })
   ]
 });
