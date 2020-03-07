@@ -87,18 +87,19 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name]-[hash:5].min.[ext]',
-              limit: 20000,
-              publicPath: 'static/',
-              outputPath: 'static/'
-            }
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: '[name]_[hash].[ext]',
+            outputPath: 'images/',
+            limit: 10240
           }
-        ]
+        } 
+      }, {
+        test: /\.(eot|ttf|svg)$/,
+        use: {
+          loader: 'file-loader'
+        } 
       }
     ]
   },
