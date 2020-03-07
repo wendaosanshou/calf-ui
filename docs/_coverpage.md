@@ -2,5 +2,5 @@
 
 # calf-ui 前端 UI 组件库
 
-[git.sui.work](http://git.sui.work/data-loan/kaniu-fe)
+[github](https://github.com/wendaosanshou/calf-ui)
 [Get Started](/md/tutorial.md)

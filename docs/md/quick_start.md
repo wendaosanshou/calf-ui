@@ -31,20 +31,12 @@ calf-ui 搭配 webpack 3+ 支持后编译和普通编译 2 种构建方式（默
 
 ### 使用
 
-> 使用`calf-ui`，需要先配置`webpack`的`alias`
-
-```javascript
-alias: {
-  'calf-ui': '@cardniu/calf-ui/lib'
-}
-```
-
 **全部引入**
-一般在入口文件中：
+一般可在入口文件中全局引用：
 
 ```javascript
 import Vue from 'vue'
-import 'calf-ui/style.css'
+import 'calf-ui/lib/style.css'
 import Calf from 'calf-ui'
 Vue.use(Calf)
 ```
@@ -53,31 +45,32 @@ Vue.use(Calf)
 
 ```javascript
 import Vue from 'vue'
-import 'calf-ui/button/style.css'
-import Button from 'calf-ui/button'
+import { Button } from 'calf-ui'
 Vue.use(Button)
 ```
 
 所有的可按需引入的组件以及模块：
 
 ```javascript
-import 'calf-ui/style.css'
-import Button from 'calf-ui/button'
-import Captch from 'calf-ui/captch'
-import Popup from 'calf-ui/popup'
-import Dialog from 'calf-ui/dialog'
-import Loading from 'calf-ui/loading'
-import ListPicker from 'calf-ui/list-picker'
-import CascadePicker from 'calf-ui/cascade-picker'
-import DatePicker from 'calf-ui/date-picker'
-import Notice from 'calf-ui/notice'
-import Picker from 'calf-ui/picker'
-import Progress from 'calf-ui/progress'
-import PullRefresh from 'calf-ui/pull-refresh'
-import Tab from 'calf-ui/tab'
-import Textarea from 'calf-ui/textarea'
-import Toast from 'calf-ui/toast'
-import Switch from 'calf-ui/switch'
+import {
+  Button,
+  Captch,
+  Popup,
+  Dialog,
+  Loading,
+  ListPicker,
+  CascadePicker,
+  DatePicker,
+  Notice,
+  Picker,
+  Progress,
+  PullRefresh,
+  Tab,
+  Textarea,
+  Toast,
+  Switch
+} from 'calf-ui'
+
 
 Vue.use(Button)
 Vue.use(Captch)

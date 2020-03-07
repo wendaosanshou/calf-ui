@@ -1,92 +1,112 @@
 'use strict'
-const path = require('path')
-const utils = require('./utils')
-const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+const utils = require('./utils').default;
+// const config = require('../config')
+// const webpack = require('webpack')
+// const merge = require('webpack-merge')
+// const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function resolve(dir) {
-  return path.join(__dirname, '..', dir)
-}
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const allSource = [
-  resolve('src'),
-  resolve('example'),
-  resolve('test'),
-  resolve('document')
-]
+// const HOST = process.env.HOST
+// const PORT = process.env.PORT && Number(process.env.PORT)
+// const isProd = process.env.NODE_ENV === 'production'
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('example'), resolve('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
+
+// var entry = {
+//   // app: resolve('./build-webpack4/webpack-test/main.js'),
+//   app: utils.resolve('./example/main.js')
+//   // app: resolve('./src/index.js')
+// }
+
+// var output = {
+//   publicPath: '', // js引用路径或者CDN地址
+//   path: utils.resolve('dist'), // 打包文件的输出目录
+//   filename: 'bundle.js'
+// }
+
+// 过滤node_modules部分且防止导入的vue单文件组件里的script标签被排除
+var jsExclude = file => /node_modules/.test(file) && !/\.vue\.js/.test(file)
 
 module.exports = {
-  context: path.resolve(__dirname, '../'),
   entry: {},
   output: {},
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.css'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
-      '@example': resolve('example'),
-      'calf-ui': '@cardniu/calf-ui/lib'
+      '@example': utils.resolve('example'),
+      'calf-ui': 'calf-ui/lib'
     }
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
+        exclude: /node_modules/,
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: allSource
+        exclude: jsExclude
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
+        test: /\.(post)?css$/, // 匹配css或postcss格式的文件
+        // exclude: /node_modules/,
+        use: [
+          process.env.NODE_ENV !== 'production'
+            ? 'vue-style-loader'
+            : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              alias: {
+                '~': utils.resolve('./src')
+              }
+            }
+          },
+          'postcss-loader'
+        ]
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]_[hash:base64:8]'
+            }
+          },
+          'less-loader'
+        ]
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
+        test: /\.(png|jpg|jpeg|gif)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: '[name]_[hash].[ext]',
+            outputPath: 'images/',
+            limit: 10240
+          }
+        } 
+      }, {
+        test: /\.(eot|ttf|svg)$/,
+        use: {
+          loader: 'file-loader'
+        } 
       }
     ]
   },
-  node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
-    setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty'
-  }
+  plugins: [
+    // new MiniCssExtractPlugin({
+    //   filename: 'style.css'
+    // }),
+    new VueLoaderPlugin()
+  ]
 }

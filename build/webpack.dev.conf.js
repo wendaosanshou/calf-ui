@@ -1,118 +1,75 @@
-'use strict'
-const utils = require('./utils')
-const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
-const path = require('path')
-const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const portfinder = require('portfinder')
-var version = require('../package.json').version
+'use strict';
+const utils = require('./utils').default;
+const config = require('../config');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const portfinder = require('portfinder');
+const baseWebpackConfig = require('./webpack.base.conf');
+const version = require('../package.json').version;
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT && Number(process.env.PORT)
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
-var entry = {
-  app: './example/main.js'
-}
-// add hot-reload related code to entry chunks
-// Object.keys(entry).forEach(function (name) {
-//   entry[name] = ['./build/dev-client'].concat(entry[name])
-// })
+const entry = {
+  app: utils.resolve('./example/main.js')
+};
 
-const devWebpackConfig = merge(baseWebpackConfig, {
+// const output = {
+//   publicPath: '', // js引用路径或者CDN地址
+//   path: utils.resolve('dist'), // 打包文件的输出目录
+//   filename: 'bundle.js'
+// };
+
+const webpackConfig = {
   entry: entry,
-  module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap,
-      usePostCSS: true
-    })
-  },
-  // cheap-module-eval-source-map is faster for development
+  output: {},
+  mode: 'development',
   devtool: config.dev.devtool,
-
-  // these devServer options should be customized in /config/index.js
   devServer: {
-    clientLogLevel: 'warning',
-    historyApiFallback: {
-      rewrites: [
-        {
-          from: /.*/,
-          to: path.posix.join(config.dev.assetsPublicPath, 'index.html')
-        }
-      ]
-    },
+    contentBase: config.example.assetsRoot,
+    host: config.dev.host,
+    port: config.dev.port,
     hot: true,
-    contentBase: false, // since we use CopyWebpackPlugin.
-    compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false,
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
-    quiet: true, // necessary for FriendlyErrorsPlugin
-    watchOptions: {
-      poll: config.dev.poll
-    }
+    overlay: config.dev.overlay,
+    stats: 'errors-only',
+    hotOnly: true
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env'),
       __VERSION__: JSON.stringify(version)
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin(),
-    // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'example/index.html',
-      inject: true
-    })
-    // copy custom static assets
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.resolve(__dirname, '../static'),
-    //     to: config.dev.assetsSubDirectory,
-    //     ignore: ['.*']
-    //   }
-    // ])
+      template: utils.resolve('./example/index.html'),
+      chunks: ['app'],
+      minify: {
+        collapseWhitespace: true
+      }
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
-})
+};
+
+let devWebpackConfig = merge(baseWebpackConfig, webpackConfig);
 
 module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.dev.port
+  portfinder.basePort = process.env.PORT || config.dev.port;
   portfinder.getPort((err, port) => {
     if (err) {
-      reject(err)
+      reject(error);
     } else {
-      // publish the new Port, necessary for e2e tests
-      process.env.PORT = port
-      // add port to devServer config
-      devWebpackConfig.devServer.port = port
-
-      // Add FriendlyErrorsPlugin
+      // 更新端口
+      devWebpackConfig.devServer.port = port;
+      // 新增链接地址打印
       devWebpackConfig.plugins.push(
         new FriendlyErrorsPlugin({
           compilationSuccessInfo: {
-            messages: [
-              `Your application is running here: http://${
-                devWebpackConfig.devServer.host
-              }:${port}`
-            ]
+            messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`]
           },
-          onErrors: config.dev.notifyOnErrors
-            ? utils.createNotifierCallback()
-            : undefined
+          onErrors: utils.createNotifierCallback()
         })
-      )
-
-      resolve(devWebpackConfig)
+      );
+      resolve(devWebpackConfig);
     }
-  })
-})
+  });
+});
