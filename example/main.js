@@ -8,11 +8,11 @@ import './static/flexible/flexible_css'
 import './static/flexible/flexible'
 
 // 本地开发环境引入
-import 'calf-ui/lib/style.css'
-import Calf from 'calf-ui'
+// import 'calf-ui/lib/style.css'
+// import Calf from 'calf-ui'
 
 // const version = require(Calf).default
-// import Calf from '../src/index'
+import Calf from '../src/index'
 Vue.use(Calf)
 
 // 按需引入

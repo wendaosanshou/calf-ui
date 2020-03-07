@@ -1,6 +1,6 @@
-@import '../../../common/style/variable.css';
-@import '../../../common/style/mixin.css';
-@import '../../../common/style/animation.css';
+@import '../common/style/variable.css';
+@import '../common/style/mixin.css';
+@import '../common/style/animation.css';
 
 .calf-picker {
   width: 100%;

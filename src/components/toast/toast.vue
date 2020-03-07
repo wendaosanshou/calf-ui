@@ -81,29 +81,4 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
-@import '../../common/style/variable.css';
-@import '../../common/style/animation.css';
-@import '../../common/style/mixin.css';
-@import '../../common/style/calf-icon.css';
-
-.calf-toast {
-  box-sizing: border-box;
-  @include flex(column, flex-start, center);
-  width: auto;
-  max-width: 270px;
-  height: auto;
-  font-size: $toast-fontsize;
-  color: $toast-color;
-  padding: 8px 16px;
-  line-height: $toast-lineheight;
-  text-align: center;
-  background: $toast-bgc;
-  border-radius: $toast-radius;
-  .calf-toast-icon {
-    width: 28px;
-    height: 28px;
-    margin-bottom: 8px;
-  }
-}
-</style>
+<style lang="postcss" src="../../style/toast.css"></style>

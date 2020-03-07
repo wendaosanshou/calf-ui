@@ -1,5 +1,5 @@
-@import '../../../common/style/animation.css';
-@import '../../../common/style/variable.css';
+@import '../common/style/animation.css';
+@import '../common/style/variable.css';
 
 .calf-popup {
   z-index: 10000;

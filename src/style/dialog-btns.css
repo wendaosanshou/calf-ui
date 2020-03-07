@@ -1,5 +1,5 @@
-@import '../../../common/style/variable.css';
-@import '../../../common/style/mixin.css';
+@import '../common/style/variable.css';
+@import '../common/style/mixin.css';
 
 .calf-btns-default {
   @include flex(row, flex-start, center);
