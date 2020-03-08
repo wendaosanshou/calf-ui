@@ -8,7 +8,7 @@
 
 ##### 例子
 
-示例体验：http://fe.cardniu.work/calf-ui/example/#/
+示例体验：http://123.206.17.49/docs/example//#/
 
 ##### 使用
 

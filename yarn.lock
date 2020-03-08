@@ -2450,6 +2450,16 @@ calf-ui@^1.1.5:
     vue "^2.5.2"
     vue-router "^3.0.1"
 
+calf-ui@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/calf-ui/-/calf-ui-1.1.6.tgz#d459ae9937784871eb28aa1debc364d7c07d0469"
+  integrity sha512-mSMmsBzRM5uMGj0j6J+KAgTNb9PrdTb6Ib5jjg9VQWC43lEQjXAJXd5XJrgtBSgtgFEJV2NLTc6QqGKknQaL9A==
+  dependencies:
+    better-scroll "^1.15.2"
+    calf-ui "^1.1.5"
+    vue "^2.5.2"
+    vue-router "^3.0.1"
+
 caller-callsite@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/caller-callsite/-/caller-callsite-2.0.0.tgz#847e0fce0a223750a9a027c54b33731ad3154134"
