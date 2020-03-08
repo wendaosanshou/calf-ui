@@ -21,7 +21,7 @@
         content: '';
         width: 12px;
         height: 12px;
-        background: url('~/common/icon/calfic-close-gray.png');
+        background: url('../common/icon/calfic-close-gray.png');
         background-size: 100% 100%;
       }
     }

@@ -56,7 +56,7 @@ $captch-loading-top: 77px;
         margin-left: $captch-loading-margin-left;
         width: $captch-loading-width;
         height: $captch-loading-width;
-        background: url("~/common/icon/calfic-loading-grey.png");
+        background: url("../common/icon/calfic-loading-grey.png");
         background-size: 100% 100%;
       }
     }
