@@ -22,6 +22,8 @@ Vue.use(Button)
 
 示例体验：http://123.206.17.49/docs/example//#/
 
+![二维码](https://raw.githubusercontent.com/wendaosanshou/calf-ui/master/docs/assets/example-qrcode.png)
+
 ##### 使用
 
 1.按钮提供 【/灰色/白底镂空/橙色】对应 3 种场景 分为 禁止 正常失效；

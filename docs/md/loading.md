@@ -15,6 +15,8 @@ Vue.component(Loading)
 
 示例体验：http://123.206.17.49/docs/example//#/
 
+![二维码](https://raw.githubusercontent.com/wendaosanshou/calf-ui/master/docs/assets/example-qrcode.png)
+
 ##### 使用
 
 1.默认样式

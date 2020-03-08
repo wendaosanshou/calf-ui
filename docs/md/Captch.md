@@ -15,6 +15,8 @@ Vue.component(Captch.name, Captch)
 
 示例体验：http://123.206.17.49/docs/example//#/
 
+![二维码](https://raw.githubusercontent.com/wendaosanshou/calf-ui/master/docs/assets/example-qrcode.png)
+
 ##### 使用
 
 通过调用 this.$createCaptch()方法传入对应的参数，提供取消 onCancel 函数、监听变化 onChange 函数、确认 onConfirm 函数、校验成功 onSuccess 函数、校验失败 onFail 函数、重新获取 onRepeat 函数回调 通过 show()方法显示

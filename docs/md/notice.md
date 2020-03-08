@@ -15,6 +15,8 @@ Vue.component(Notice.name, Notice)
 
 示例体验：http://123.206.17.49/docs/example//#/
 
+![二维码](https://raw.githubusercontent.com/wendaosanshou/calf-ui/master/docs/assets/example-qrcode.png)
+
 ##### 使用
 
 基本使用提供消息，警告，错误提示，同时可以定义左侧侧图标显示，右侧关闭，箭头图标的显示，组合使用

@@ -22,6 +22,8 @@ Vue.use(Dialog)
 
 示例体验：http://123.206.17.49/docs/example//#/
 
+![二维码](https://raw.githubusercontent.com/wendaosanshou/calf-ui/master/docs/assets/example-qrcode.png)
+
 ##### 使用
 
 1.对话框提供 【默认/次要】两种形式的对话框；

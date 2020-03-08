@@ -55,14 +55,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        use: {
+        use: [{
           loader: 'url-loader',
           options: {
+            esModule: false,
             name: '[name]_[hash].[ext]',
-            outputPath: 'images/',
             limit: 10240
           }
-        } 
+        }]
       }, {
         test: /\.(eot|ttf|svg)$/,
         use: {

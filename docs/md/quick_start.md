@@ -1,57 +1,80 @@
 ### 环境
 
-> `calf-ui`为卡牛内部基于`vue`的`ui`库，需要使用内网的`cnpm`环境
+> `calf-ui`是一个基于`vue`的移动端`ui`组件库
 
 安装 cnpm 环境
 
 ```shell
-npm install cnpm -g   # 全局安装cnpm
-cnpm get registry   # 获取当前注册源
-cnpm config set registry http://cnpm-registry.cardniu.work # 修改成内部注册源地址
-cnpm get registry  # 确认修改是否成功
-cnpm install calf-ui --save   # 安装依赖
+yarn add calf-ui -S   # 安装依赖
 ```
 
-#### npm 安装
+### 用法
 
-> 使用 npm 快速安装依赖包
+#### 配置webpack
 
+> 如果是自己搭建的vue项目，直接配置webpack.config.js；如果是vue-cli生成的项目，配置vue.config.js
+
+#### 配置webpack的resolve和alias
+
+```js
+// webpack.conf.js
+resolve: {
+  extensions: ['.js', '.vue', '.css'],
+  alias: {
+    'calf-ui': 'calf-ui/lib'
+  }
+}
+```
+
+#### 配置vue.config.js
+
+```js
+// vue.config.js
+chainWebpack: (config) => {
+  config.resolve.alias.set('calf-ui', 'calf-ui/lib')
+  config.resolve.extensions.add('.css')
+}
+```
+
+### 配置`babel-plugin-import`
+
+可以使用`babel-plugin-import`让`calf-ui`组件库支持按需引入
+
+1、安装`babel-plugin-import`
 ```shell
-cnpm install @cardniu/calf-ui  --save
+yarn add babel-plugin-import -S
 ```
 
-calf-ui 搭配 webpack 3+ 支持后编译和普通编译 2 种构建方式（默认使用后编译），使用前都需要修改应用的依赖和配置。
+2、添加`babel-plugin-import`的配置
 
-#### CDN 引入
-
-```html
-<script src="https://xxx.com/xxx.js"></script>
-<link rel="stylesheet" href="https://xxx.com/xxx.min.css">
+```js
+// .babelrc
+"plugins": [
+  [
+    "import",
+    {
+      "libraryName": "calf-ui",
+      "libraryDirectory": "lib",
+      "style": true
+    }
+  ]
+]
 ```
 
-### 使用
 
-**全部引入**
-一般可在入口文件中全局引用：
-
-```javascript
+### 全局引入
+```js
 import Vue from 'vue'
 import 'calf-ui/lib/style.css'
 import Calf from 'calf-ui'
+
 Vue.use(Calf)
 ```
 
-**按需引入**
-
-```javascript
+### 按需引入
+```js
 import Vue from 'vue'
-import { Button } from 'calf-ui'
-Vue.use(Button)
-```
 
-所有的可按需引入的组件以及模块：
-
-```javascript
 import {
   Button,
   Captch,
@@ -89,10 +112,6 @@ Vue.use(CascadePicker)
 Vue.use(DatePicker)
 Vue.use(Dialog)
 ```
-
-> 注意： 按需引入的话，是不会打包基础样式部分的，所以在使用的时候需要引入 style 模块。
-
-> 我们推荐直接全局引入
 
 ### api 调用
 

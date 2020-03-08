@@ -15,6 +15,8 @@ Vue.component(Tab)
 
 示例体验：http://123.206.17.49/docs/example//#/
 
+![二维码](https://raw.githubusercontent.com/wendaosanshou/calf-ui/master/docs/assets/example-qrcode.png)
+
 ##### 使用
 
 1.tab 栏个数动态配置栏目切换、配置数组数据生成对应 tab 个数

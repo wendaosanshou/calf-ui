@@ -1,6 +1,5 @@
 - 概览
 
-<!-- - [前言](md/tutorial.md) -->
 - [快速上手](md/quick_start.md)
 
 - 组件
