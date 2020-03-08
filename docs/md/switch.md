@@ -12,8 +12,7 @@ import Calf from 'calf-ui'
 Vue.use(Calf)
 
 // 局部引入
-import 'calf-ui/switch/style.css'
-import Switch from 'calf-ui/switch'
+import { Switch } from 'calf-ui/switch'
 Vue.use(Switch)
 ```
 

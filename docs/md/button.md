@@ -13,8 +13,7 @@ import Calf from 'calf-ui'
 Vue.use(Calf)
 
 // 局部引入
-import 'calf-ui/button/style.css'
-import Button from 'calf-ui/button'
+import { Button } from 'calf-ui/button/style.css'
 Vue.use(Button)
 ```
 

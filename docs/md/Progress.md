@@ -8,7 +8,7 @@
 
 ```javascript
 import { Progress } from 'calf-ui'
-Vue.component(Progress.name, Progress)
+Vue.use(Progress)
 ```
 
 ##### 例子

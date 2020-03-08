@@ -13,8 +13,7 @@ import Calf from 'calf-ui'
 Vue.use(Calf)
 
 // 局部引入
-import 'calf-ui/pull-refresh/style.css'
-import PullRefresh from 'calf-ui/pull-refresh'
+import { PullRefresh } from 'calf-ui/pull-refresh'
 Vue.use(PullRefresh)
 ```
 

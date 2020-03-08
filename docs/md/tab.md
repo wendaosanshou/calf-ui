@@ -8,7 +8,7 @@
 
 ```javascript
 import { Tab } from 'calf-ui'
-Vue.component(Tab)
+Vue.use(Tab)
 ```
 
 ##### 例子

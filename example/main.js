@@ -8,13 +8,13 @@ import './static/flexible/flexible_css'
 import './static/flexible/flexible'
 
 // node_modules全局引入
-// import 'calf-ui/lib/style.css'
-// import Calf from 'calf-ui/lib'
-// Vue.use(Calf)
+import 'calf-ui/lib/style.css'
+import Calf from 'calf-ui/lib'
+Vue.use(Calf)
 
 // 本地全局引入
-import Calf from '../src/index'
-Vue.use(Calf)
+// import Calf from '../src/index'
+// Vue.use(Calf)
 
 // 按需引入
 // import {

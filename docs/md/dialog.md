@@ -13,8 +13,7 @@ import Calf from 'calf-ui'
 Vue.use(Calf)
 
 // 局部引入
-import 'calf-ui/dialog/style.css'
-import Dialog from 'calf-ui/dialog'
+import { Dialog } from 'calf-ui/dialog'
 Vue.use(Dialog)
 ```
 
