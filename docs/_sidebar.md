@@ -1,4 +1,5 @@
 - 概览
+- [简介](md/tutorial.md)
 - [快速上手](md/quick_start.md)
 
 - 组件
