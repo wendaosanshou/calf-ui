@@ -14,7 +14,23 @@ demo二维码：
 
 ## 用法
 
-### 安装
+## 用法一
+
+### 使用`calf-cli`创建项目
+
+```shell
+npm install calf-cli -g
+# 或者
+yarn global add calf-cli
+# 创建项目
+calf init <my-project>
+```
+
+创建时选择`vue (include calf-ui)`即可
+
+## 用法二
+
+### 现有项目安装
 
 ```shell
 yarn add calf-ui -S
