@@ -10,7 +10,7 @@ demo地址：[http://123.206.17.49/docs/example/](http://123.206.17.49/docs/exam
 
 demo二维码：
 
-![二维码](https://raw.githubusercontent.com/wendaosanshou/calf-ui/master/docs/assets/example-qrcode.png)
+![二维码](http://123.206.17.49/docs/assets/example-qrcode.png)
 
 ## 用法
 
