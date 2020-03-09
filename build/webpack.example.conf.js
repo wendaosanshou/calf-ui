@@ -22,12 +22,16 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.example.assetsRoot,
     publicPath: config.example.assetsPublicPath,
-    filename: '[name].[hash].js'
+    filename: '[name].[chunkhash:8].js'
   },
-  // optimization: {},
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css'
+      filename: 'style.[chunkhash:8].css'
     }),
     new CleanWebpackPlugin(),
     new OptimizeCSSAssetsPlugin(),
