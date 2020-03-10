@@ -18,7 +18,8 @@
     "build:module": "cross-env NODE_ENV=production webpack --config build/webpack.modules.conf.js",
     "build:lib": "cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js",
     "build:example": "cross-env NODE_ENV=production webpack --config build/webpack.example.conf.js",
-    "deploy:example": "node build/deploy.js"
+    "deploy:example": "node build/deploy.js",
+    "build:analyze": "cross-env BUILD_ENV=bundleAnalyzer npm run build:lib"
   },
   "dependencies": {
     "better-scroll": "^1.15.2",

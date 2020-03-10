@@ -9,10 +9,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const entry = {
   calf: utils.resolve('./src/index.js')
 };
+
+const isBundleAnalyzer = process.env.BUILD_ENV === 'bundleAnalyzer'
+
+console.log(process.env.BUILD_ENV)
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: entry,
@@ -53,5 +58,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     new OptimizeCSSAssetsPlugin()
   ]
 });
+
+
+if (isBundleAnalyzer) {
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+}
 
 module.exports = webpackConfig;

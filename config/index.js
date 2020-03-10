@@ -47,8 +47,8 @@ module.exports = {
     productionGzip: false,
     // gzip的文件类型
     productionGzipExtensions: ['js', 'css'],
-    // bundle分析的端口
-    bundleAnalyzerReport: process.env.npm_config_report
+    // bundle分析的开关
+    bundleAnalyzer: true
   },
 
   example: {

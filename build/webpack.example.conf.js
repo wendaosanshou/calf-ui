@@ -13,7 +13,7 @@ const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 
 let webpackConfig = merge(baseWebpackConfig, {
   entry: config.example.entry,
-  mode: 'development',
+  mode: 'production',
   stats: {
     children: false,
     entrypoints: false,
