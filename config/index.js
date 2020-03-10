@@ -61,6 +61,8 @@ module.exports = {
     assetsRoot: resolve('docs/example'),
     assetsSubDirectory: '',
     productionSourceMap: false,
+    bundleAnalyzer: false,
+    speedMeasure: true,
     ftp: {
       host: '',
       username: '',

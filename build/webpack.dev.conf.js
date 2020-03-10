@@ -59,6 +59,7 @@ module.exports = new Promise((resolve, reject) => {
           onErrors: utils.createNotifierCallback()
         })
       );
+      
       resolve(devWebpackConfig);
     }
   });
