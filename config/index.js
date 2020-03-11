@@ -62,7 +62,7 @@ module.exports = {
     assetsSubDirectory: '',
     productionSourceMap: false,
     bundleAnalyzer: false,
-    speedMeasure: true,
+    speedMeasure: false,
     ftp: {
       host: '',
       username: '',

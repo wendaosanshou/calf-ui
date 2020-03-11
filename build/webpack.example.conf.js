@@ -24,7 +24,7 @@ let webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.example.assetsRoot,
     publicPath: config.example.assetsPublicPath,
-    filename: '[name].[chunkhash:8].js'
+    filename: '[name].[contenthash:8].js'
   },
   optimization: {
     splitChunks: {
@@ -38,9 +38,13 @@ let webpackConfig = merge(baseWebpackConfig, {
           priority: 1,
         },
         vendor: {
-          test: /node_modules/,
+          test: /[\\/]node_modules[\\/]/,
           chunks: "initial",
-          name: "vendor",
+          name: 'vendor',
+          // name(module) {
+          //   const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+          //   return `${packageName.replace('@', '')}`;
+          // },
           priority: 10,
           enforce: true
         }
