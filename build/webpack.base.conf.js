@@ -2,9 +2,10 @@
 const utils = require('./utils').default;
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const eslintFriendlyFormatter = require('eslint-friendly-formatter')
 
 // 过滤node_modules部分且防止导入的vue单文件组件里的script标签被排除
-var jsExclude = file => /node_modules/.test(file) && !/\.vue\.js/.test(file)
+const jsExclude = file => /node_modules/.test(file) && !/\.vue\.js/.test(file)
 
 module.exports = {
   entry: {},
@@ -18,6 +19,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        exclude: /node_modules/,
+        options: {
+          formatter: eslintFriendlyFormatter,
+          emitWarning: false
+        }
+      },
       {
         test: /\.vue$/,
         exclude: /node_modules/,
