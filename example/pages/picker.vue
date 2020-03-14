@@ -12,8 +12,9 @@
 </template>
 
 <script>
-import { cascadeData } from '../data/cascade.js';
+import cascadeData from '../data/cascade';
 import { provinceList, cityList, areaList } from '../data/area';
+/* eslint-disable object-curly-newline */
 import { data1, data2, data3, data4 } from '../data/picker';
 
 const asyncProvinceList = provinceList.slice();
@@ -21,6 +22,7 @@ const asyncCityList = JSON.parse(JSON.stringify(cityList));
 const asyncAreaList = JSON.parse(JSON.stringify(areaList));
 
 const addressData = provinceList;
+/* eslint-disable no-param-reassign */
 addressData.forEach(province => {
   province.children = cityList[province.value];
   province.children.forEach(city => {
@@ -39,7 +41,7 @@ export default {
     return {
       selectListIndex: 1,
       pickerVisible: false,
-      data1: data1
+      data1
     };
   },
   props: {},
@@ -108,7 +110,7 @@ export default {
     },
     selectListCancel() {
       this.$createDialog({
-        content: `picker cancel`
+        content: 'picker cancel'
       }).show();
     },
     asyncChangeHandle(i, newIndex) {
@@ -141,6 +143,7 @@ export default {
     },
     selectHandle(selectedVal, selectedIndex, selectedText) {
       this.$createDialog({
+        /* eslint-disable max-len */
         content: `Selected Item: <br/>  value: ${selectedVal.join(', ')} <br/>  index: ${selectedIndex.join(', ')} <br/>  text: ${selectedText.join(' ')}`
       }).show();
     },

@@ -5,7 +5,7 @@ function findIndex(ary, fn) {
   /* istanbul ignore next */
   let index = -1
   /* istanbul ignore next */
-  ary.some(function(item, i, ary) {
+  ary.some(function (item, i, ary) {
     const ret = fn.call(this, item, i, ary)
     if (ret) {
       index = i
@@ -17,7 +17,7 @@ function findIndex(ary, fn) {
 }
 
 function deepAssign(to, from) {
-  for (let key in from) {
+  for (const key in from) {
     if (!to[key] || typeof to[key] !== 'object') {
       to[key] = from[key]
     } else {
@@ -42,9 +42,8 @@ function toLocaleDateString(timestamp, locale) {
 
   if (locale === 'zh') {
     return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`
-  } else {
-    return date.toDateString()
   }
+  return date.toDateString()
 }
 
 const typesReset = {
@@ -85,7 +84,7 @@ function resetTypeValue(obj, key, defVal) {
 
 function parallel(tasks, cb) {
   let doneCount = 0
-  let results = []
+  const results = []
   const tasksLen = tasks.length
   if (!tasksLen) {
     return cb(results)
@@ -121,14 +120,14 @@ function debounce(func, wait, immediate, initValue) {
   let timeout
   let result = initValue
 
-  const later = function(context, args) {
+  const later = function (context, args) {
     timeout = null
     if (args) {
       result = func.apply(context, args)
     }
   }
 
-  const debounced = function(...args) {
+  const debounced = function (...args) {
     if (timeout) {
       clearTimeout(timeout)
     }
@@ -147,7 +146,7 @@ function debounce(func, wait, immediate, initValue) {
     return result
   }
 
-  debounced.cancel = function() {
+  debounced.cancel = function () {
     clearTimeout(timeout)
     timeout = null
   }
@@ -158,7 +157,7 @@ function debounce(func, wait, immediate, initValue) {
 function throttle(fn, delay, mustRunDelay = 0) {
   let timer = null
   let tStart
-  return function() {
+  return function () {
     const context = this
     const args = arguments
     const tCurr = +new Date()
@@ -170,7 +169,7 @@ function throttle(fn, delay, mustRunDelay = 0) {
       fn.apply(context, args)
       tStart = tCurr
     } else {
-      timer = setTimeout(function() {
+      timer = setTimeout(() => {
         fn.apply(context, args)
       }, delay)
     }

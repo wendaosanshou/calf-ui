@@ -9,24 +9,20 @@ const rules = {
     }
     return val !== '' && val !== undefined && val !== null
   },
-  type: (val, type) => {
-    return !types[type] || types[type](val)
-  },
+  type: (val, type) => !types[type] || types[type](val),
   min: (val, min, type) => {
     type = type || (typeof val)
     if (type === 'number' || type === 'date') {
       return Number(val) >= min
-    } else {
-      return val.length >= min
     }
+    return val.length >= min
   },
   max: (val, max, type) => {
     type = type || (typeof val)
     if (type === 'number' || type === 'date') {
       return Number(val) <= max
-    } else {
-      return val.length <= max
     }
+    return val.length <= max
   },
   len: (val, len, type) => {
     type = type || (typeof val)
@@ -36,15 +32,9 @@ const rules = {
     }
     return target.length === len
   },
-  notWhitespace: (val, config, type) => {
-    return !/^\s+$/.test(val)
-  },
-  pattern: (val, pattern, type) => {
-    return pattern.test(val)
-  },
-  custom: (val, custom, type) => {
-    return custom(val)
-  }
+  notWhitespace: (val, config, type) => !/^\s+$/.test(val),
+  pattern: (val, pattern, type) => pattern.test(val),
+  custom: (val, custom, type) => custom(val)
 }
 
 const addRule = createAddAPI(rules)

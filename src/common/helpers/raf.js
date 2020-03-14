@@ -10,16 +10,16 @@ export const requestAnimationFrame = (() => {
   if (!inBrowser) {
     return noop
   }
-  return window.requestAnimationFrame ||
+  return window.requestAnimationFrame
     /* istanbul ignore next */
-    window.webkitRequestAnimationFrame ||
+    || window.webkitRequestAnimationFrame
     /* istanbul ignore next */
-    window.mozRequestAnimationFrame ||
+    || window.mozRequestAnimationFrame
     /* istanbul ignore next */
-    window.oRequestAnimationFrame ||
+    || window.oRequestAnimationFrame
     // if all else fails, use setTimeout
     /* istanbul ignore next */
-    function (callback) {
+    || function (callback) {
       return window.setTimeout(callback, (callback.interval || DEFAULT_INTERVAL) / 2) // make interval as precise as possible.
     }
 })()
@@ -29,15 +29,15 @@ export const cancelAnimationFrame = (() => {
   if (!inBrowser) {
     return noop
   }
-  return window.cancelAnimationFrame ||
+  return window.cancelAnimationFrame
     /* istanbul ignore next */
-    window.webkitCancelAnimationFrame ||
+    || window.webkitCancelAnimationFrame
     /* istanbul ignore next */
-    window.mozCancelAnimationFrame ||
+    || window.mozCancelAnimationFrame
     /* istanbul ignore next */
-    window.oCancelAnimationFrame ||
+    || window.oCancelAnimationFrame
     /* istanbul ignore next */
-    function (id) {
+    || function (id) {
       window.clearTimeout(id)
     }
 })()

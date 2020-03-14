@@ -1,4 +1,4 @@
-export const cascadeData = [
+const cascadeData = [
   {
     value: 'Fruit',
     text: 'Fruit',
@@ -196,3 +196,5 @@ export const cascadeData = [
     ]
   }
 ]
+
+export default cascadeData

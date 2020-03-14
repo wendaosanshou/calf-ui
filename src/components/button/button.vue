@@ -47,8 +47,9 @@ export default {
   },
   computed: {
     iconTarget() {
-      let icons = ['loading', 'success']
+      const icons = ['loading', 'success']
       if (icons.indexOf(this.icon) > -1) {
+        // eslint-disable-next-line
         return require(`../../common/icon/calfic-button-${this.icon}.png`)
       }
       return ''

@@ -65,6 +65,7 @@ export default {
     _pickerChange(i, newIndex) {
       if (newIndex !== this.pickerSelectedIndex[i]) {
         this.pickerSelectedIndex.splice(i, 1, newIndex)
+        /* eslint-disable no-unused-expressions */
         this.async
           ? (this.pending = i !== this.pickerData.length - 1)
           : this._updatePickerData(i + 1)
@@ -76,7 +77,7 @@ export default {
       let i = 0
       while (data) {
         if (i >= fromColumn) {
-          let columnData = []
+          const columnData = []
           data.forEach(item => {
             columnData.push({
               value: item[this.valueKey],
@@ -85,12 +86,12 @@ export default {
           })
           this.pickerData[i] = columnData
           /* refillColumn could only be called after show() */
-          this.pickerSelectedIndex[i] =
-            fromColumn === 0
-              ? this.pickerSelectedIndex[i] < data.length
-                ? this.pickerSelectedIndex[i] || 0
-                : 0
-              : this.$refs.picker.refillColumn(i, columnData)
+          // eslint-disable-next-line
+          this.pickerSelectedIndex[i] = fromColumn === 0
+            ? this.pickerSelectedIndex[i] < data.length
+              ? this.pickerSelectedIndex[i] || 0
+              : 0
+            : this.$refs.picker.refillColumn(i, columnData)
         }
         data = data.length ? data[this.pickerSelectedIndex[i]].children : null
 

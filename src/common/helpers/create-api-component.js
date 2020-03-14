@@ -1,3 +1,4 @@
+/* eslint-disable */
 import instantiateComponent from './instantiate-component'
 import parseRenderData from './parse-render-data'
 
@@ -57,7 +58,7 @@ export default function createAPIComponent(
       const instance = component.$parent
       const originRemove = component.remove
 
-      component.remove = function() {
+      component.remove = function () {
         if (instance.__calf__destroyed) {
           return
         }
@@ -70,12 +71,12 @@ export default function createAPIComponent(
         }
       }
       const originShow = component.show
-      component.show = function() {
+      component.show = function () {
         originShow && originShow.call(this)
         return this
       }
       const originHide = component.hide
-      component.hide = function() {
+      component.hide = function () {
         originHide && originHide.call(this)
         return this
       }
@@ -102,7 +103,7 @@ export default function createAPIComponent(
       // to get Vue options
       // store router i18n ...
       const options = {
-        single: single
+        single
       }
       if (isInVueInstance) {
         options.parent = ownerInstance
@@ -111,7 +112,7 @@ export default function createAPIComponent(
       const component = api.open(renderData, renderFn, options)
       if (component.__calf__parent !== ownerInstance) {
         component.__calf__parent = ownerInstance
-        const beforeDestroy = function() {
+        const beforeDestroy = function () {
           cancelWatchProps()
           if (component.__calf__parent === ownerInstance) {
             component.remove()
@@ -119,13 +120,13 @@ export default function createAPIComponent(
           ownerInstance.$off('hook:beforeDestroy', beforeDestroy)
           component.__calf__parent = null
         }
-        isInVueInstance &&
-          ownerInstance.$on('hook:beforeDestroy', beforeDestroy)
+        isInVueInstance
+          && ownerInstance.$on('hook:beforeDestroy', beforeDestroy)
       }
       return component
 
       function processProps() {
-        const $props = renderData.props.$props
+        const { $props } = renderData.props
         if ($props) {
           delete renderData.props.$props
 
@@ -144,14 +145,14 @@ export default function createAPIComponent(
           })
           if (isInVueInstance) {
             ownerInstance.__createAPI_watcher = ownerInstance.$watch(
-              function() {
+              () => {
                 const props = {}
                 watchKeys.forEach((key, i) => {
                   props[key] = ownerInstance[watchPropKeys[i]]
                 })
                 return props
               },
-              function(newProps) {
+              (newProps) => {
                 component && component.$updateProps(newProps)
               }
             )
@@ -160,7 +161,7 @@ export default function createAPIComponent(
       }
 
       function processEvents() {
-        const $events = renderData.props.$events
+        const { $events } = renderData.props
         if ($events) {
           delete renderData.props.$events
 
@@ -184,3 +185,4 @@ export default function createAPIComponent(
   }
   return api
 }
+/* eslint-enable */

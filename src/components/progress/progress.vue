@@ -1,32 +1,23 @@
 <template>
- <div class="calf-progress">
-  <progress-line
-    :current="current"
-    :steps="steps"
-    v-if="isLine" />
-  <progress-lable
-    :current="current"
-    :steps="steps"
-    :isFinish="isFinish"
-    v-else-if="isLable"/>
-  <progress-default
-    :current="current"
-    :steps="steps"
-    v-else/>
- </div>
+  <div class="calf-progress">
+    <progress-line :current="current" :steps="steps" v-if="isLine" />
+    <progress-lable :current="current" :steps="steps" :isFinish="isFinish" v-else-if="isLable" />
+    <progress-default :current="current" :steps="steps" v-else />
+  </div>
 </template>
 
 <script>
-import ProgressDefault from './progress-default'
-import ProgressLine from './progress-line'
-import ProgressLable from './progress-label'
-const COMPONENT_NAME = 'calf-progress'
+import ProgressDefault from './progress-default.vue';
+import ProgressLine from './progress-line.vue';
+import ProgressLable from './progress-label.vue';
 
-const EVENT_CHANGE = 'on-change'
+const COMPONENT_NAME = 'calf-progress';
+
+const EVENT_CHANGE = 'on-change';
 export default {
   name: COMPONENT_NAME,
   data() {
-    return {}
+    return {};
   },
   props: {
     type: {
@@ -40,7 +31,7 @@ export default {
     steps: {
       type: Array,
       default() {
-        return ['']
+        return [''];
       }
     },
     isFinish: {
@@ -50,10 +41,10 @@ export default {
   },
   computed: {
     isLine() {
-      return this.type === 'line'
+      return this.type === 'line';
     },
     isLable() {
-      return this.type === 'label'
+      return this.type === 'label';
     }
   },
   watch: {},
@@ -64,7 +55,7 @@ export default {
     ProgressLable
   },
   mounted() {}
-}
+};
 </script>
 
 <style lang="postcss"></style>

@@ -14,25 +14,26 @@
 </template>
 
 <script>
+/* eslint-disable import/no-cycle */
 import routes from '../router/routes'
+
 export default {
   data() {
     return {}
   },
   computed: {
     routesMenu() {
-      let routesMenu = routes
+      const routesMenu = routes
         .filter(item => {
-          let hasWord =
-            item.path.match(/[a-zA-Z]/) &&
-            item.path.match(/[a-zA-Z]/).length > 0
+          const hasWord = item.path.match(/[a-zA-Z]/)
+            && item.path.match(/[a-zA-Z]/).length > 0
           return hasWord
         })
         .map(item => {
-          let name = this.getFilterName(item.path)
+          const name = this.getFilterName(item.path)
           return {
             path: item.path,
-            name: name
+            name
           }
         })
       return routesMenu
@@ -40,9 +41,7 @@ export default {
   },
   methods: {
     getFilterName(path) {
-      let name = path.replace(/^([^\w])([\w])(.*)$/g, function(word, a, b, c) {
-        return b + c
-      })
+      const name = path.replace(/^([^\w])([\w])(.*)$/g, (word, a, b, c) => b + c)
       return name
     },
     handleRoute(item) {

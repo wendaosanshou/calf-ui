@@ -25,9 +25,10 @@ export default {
   props: {
     tabs: {
       type: Array,
-      default: []
+      default: () => []
     },
     selectTab: {
+      /* eslint-disable vue/require-prop-type-constructor */
       type: String | Number,
       default: 0
     },
@@ -42,12 +43,12 @@ export default {
   },
   methods: {
     getLinePosition() {
-      let theItemWidth = this.$refs.tabList.querySelector('.calf-tab-item')
+      const theItemWidth = this.$refs.tabList.querySelector('.calf-tab-item')
         .clientWidth
-      let theLineWidth = this.$refs.line.clientWidth
-      let prevTabWidth = this.selectTabIndex * theItemWidth
-      this.linePositionLeft = `${prevTabWidth +
-        (theItemWidth - theLineWidth) / 2}px`
+      const theLineWidth = this.$refs.line.clientWidth
+      const prevTabWidth = this.selectTabIndex * theItemWidth
+      this.linePositionLeft = `${prevTabWidth
+        + (theItemWidth - theLineWidth) / 2}px`
     },
     handleClick(item, index, event) {
       this.selectTabIndex = index

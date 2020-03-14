@@ -14,7 +14,7 @@
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
-import CalfPopup from '../popup/popup'
+import CalfPopup from '../popup/popup.vue'
 
 const COMPONENT_NAME = 'calf-toast'
 const EVENT_MASK_CLICK = 'mask-click'

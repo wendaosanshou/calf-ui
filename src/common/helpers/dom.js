@@ -1,7 +1,7 @@
 import { inBrowser } from './env'
 
 export function hasClass(el, className) {
-  const reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
+  const reg = new RegExp(`(^|\\s)${className}(\\s|$)`)
   return reg.test(el.className)
 }
 
@@ -22,7 +22,7 @@ export function removeClass(el, className) {
     return
   }
 
-  const reg = new RegExp('(^|\\s)' + className + '(\\s|$)', 'g')
+  const reg = new RegExp(`(^|\\s)${className}(\\s|$)`, 'g')
   el.className = el.className.replace(reg, ' ')
 }
 
@@ -40,13 +40,13 @@ export function getRect(el) {
   }
 }
 
-let vendor = (() => {
+const vendor = (() => {
   /* istanbul ignore if */
   if (!inBrowser) {
     return false
   }
-  let elementStyle = document.createElement('div').style
-  let transformNames = {
+  const elementStyle = document.createElement('div').style
+  const transformNames = {
     standard: 'transform',
     webkit: 'webkitTransform',
     Moz: 'MozTransform',
@@ -54,7 +54,7 @@ let vendor = (() => {
     ms: 'msTransform'
   }
 
-  for (let key in transformNames) {
+  for (const key in transformNames) {
     if (elementStyle[transformNames[key]] !== undefined) {
       return key
     }

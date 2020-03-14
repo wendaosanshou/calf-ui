@@ -28,8 +28,8 @@
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
-import CalfPopup from '../popup/popup'
-import DialogBtns from './dialog-btns'
+import CalfPopup from '../popup/popup.vue'
+import DialogBtns from './dialog-btns.vue'
 
 const COMPONENT_NAME = 'calf-dialog'
 const EVENT_CONFIRM = 'confirm'
@@ -77,7 +77,7 @@ export default {
       return this.title && this.title.length > 0
     },
     rootClass() {
-      let allRootClass = [`calf-dialog-${this.type}`]
+      const allRootClass = [`calf-dialog-${this.type}`]
       if (this.hasTitle) {
         allRootClass.push('has-title')
       }

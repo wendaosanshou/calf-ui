@@ -1,6 +1,7 @@
 /build/
 /config/
 /example/static/
+/src/common/
 /dist/
 /*.js
 /test/unit/coverage/

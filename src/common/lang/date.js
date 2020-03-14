@@ -15,12 +15,11 @@ function formatType(type, format, value, regExpAttributes) {
   }
 
   if (new RegExp(regExpMap[type], regExpAttributes).test(format)) {
-    const replaceStr =
-      type === 'year'
-        ? value.toString().substr(4 - RegExp.$1.length)
-        : RegExp.$1.length === 1
-          ? value
-          : pad(value)
+    const replaceStr = type === 'year'
+      ? value.toString().substr(4 - RegExp.$1.length)
+      : RegExp.$1.length === 1
+        ? value
+        : pad(value)
     format = format.replace(RegExp.$1, replaceStr)
   }
 
@@ -28,7 +27,7 @@ function formatType(type, format, value, regExpAttributes) {
 }
 
 function pad(value) {
-  return ('00' + value).substr(('' + value).length)
+  return (`00${value}`).substr((`${value}`).length)
 }
 
 function formatDate(date, format, regExpAttributes) {
@@ -54,7 +53,7 @@ function getZeroStamp(date) {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
-  return +new Date(year + '/' + month + '/' + day + ' 00:00:00')
+  return +new Date(`${year}/${month}/${day} 00:00:00`)
 }
 
 function getDayDiff(date1, date2) {
@@ -71,11 +70,8 @@ function computeNatureMaxDay(month, year) {
   let natureMaxDay = 30
   if ([1, 3, 5, 7, 8, 10, 12].indexOf(month) > -1) {
     natureMaxDay = 31
-  } else {
-    if (month === 2) {
-      natureMaxDay =
-        !year || (!(year % 400) || (!(year % 4) && year % 100)) ? 29 : 28
-    }
+  } else if (month === 2) {
+    natureMaxDay = !year || (!(year % 400) || (!(year % 4) && year % 100)) ? 29 : 28
   }
 
   return natureMaxDay

@@ -5,7 +5,7 @@ import addDatePicker from './api'
 import addCascadePicker from '../cascade-picker/api'
 import addPicker from '../picker/api'
 
-DatePicker.install = function(Vue) {
+DatePicker.install = function (Vue) {
   Vue.component(Picker.name, Picker)
   Vue.component(CascadePicker.name, CascadePicker)
   Vue.component(DatePicker.name, DatePicker)

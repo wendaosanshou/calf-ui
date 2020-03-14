@@ -41,12 +41,13 @@ const defCancelBtn = {
 }
 
 const mergeBtn = (btn, defBtn) => {
+  let _btn = btn
   if (typeof btn === 'string') {
-    btn = {
+    _btn = {
       text: btn
     }
   }
-  return Object.assign({}, defBtn, btn)
+  return { ...defBtn, ..._btn }
 }
 export default {
   name: 'base-btns',

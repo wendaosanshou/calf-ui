@@ -49,7 +49,7 @@ export default {
   mixins: [visibilityMixin, basicPickerMixin, pickerMixin],
   data() {
     return {
-      pickerSelectedIndex: [],
+      // pickerSelectedIndex: [],
       pickerSelectedVal: [],
       pickerSelectedText: [],
       pickerData: this.data.slice(),
@@ -59,7 +59,7 @@ export default {
   props: {
     data: {
       type: Array,
-      default: []
+      default: () => []
     },
     pending: {
       type: Boolean,
@@ -90,7 +90,7 @@ export default {
       const selectedValLength = this.pickerSelectedVal.length
 
       for (let i = 0; i < dataLength; i++) {
-        let index = this.wheels[i].getSelectedIndex()
+        const index = this.wheels[i].getSelectedIndex()
         this.pickerSelectedIndex[i] = index
 
         let value = null
@@ -115,12 +115,14 @@ export default {
       if (!this.wheels || this.dirty) {
         this.$nextTick(() => {
           this.wheels = this.wheels || []
-          let wheelWrapper = this.$refs.wheelWrapper
+          const { wheelWrapper } = this.$refs
           for (let i = 0; i < this.pickerData.length; i++) {
             this.createWheel(wheelWrapper, i).enable()
             this.wheels[i].wheelTo(this.pickerSelectedIndex[i])
           }
-          this.dirty && this.destroyExtraWheels()
+          if (this.dirty) {
+            this.destroyExtraWheels()
+          }
           this.dirty = false
         })
       } else {
@@ -132,7 +134,7 @@ export default {
     },
     createWheel(wheelWrapper, i) {
       if (!this.wheels[i]) {
-        const wheel = (this.wheels[i] = new BScroll(wheelWrapper.children[i], {
+        const wheel = new BScroll(wheelWrapper.children[i], {
           wheel: {
             selectedIndex: this.pickerSelectedIndex[i] || 0,
             wheelWrapperClass: 'calf-picker-list',
@@ -140,9 +142,10 @@ export default {
           },
           swipeTime: this.swipeTime,
           observeDOM: false
-        }))
+        })
+        this.wheels[i] = wheel
         wheel.on('scrollEnd', () => {
-          let selectedIndex = wheel.getSelectedIndex()
+          const selectedIndex = wheel.getSelectedIndex()
           this.$emit(EVENT_CHANGE, i, selectedIndex)
         })
       } else {
@@ -155,7 +158,7 @@ export default {
       this.pickerData = data.slice()
       if (this.isVisible) {
         this.$nextTick(() => {
-          const wheelWrapper = this.$refs.wheelWrapper
+          const { wheelWrapper } = this.$refs
           this.pickerData.forEach((item, i) => {
             this.createWheel(wheelWrapper, i)
             this.wheels[i].wheelTo(this.pickerSelectedIndex[i])
@@ -176,9 +179,7 @@ export default {
       }
     },
     canConfirm() {
-      return this.wheels.every(wheel => {
-        return !wheel.isInTransition
-      })
+      return this.wheels.every(wheel => !wheel.isInTransition)
     },
     initPickerSelected() {
       this.pickerSelectedVal = []
@@ -190,7 +191,7 @@ export default {
       }
     },
     refill(datas) {
-      let ret = []
+      const ret = []
       if (!datas.length) {
         return ret
       }
@@ -200,18 +201,18 @@ export default {
       return ret
     },
     refillColumn(index, data) {
-      const wheelWrapper = this.$refs.wheelWrapper
-      let scroll = wheelWrapper.children[index].querySelector(
+      const { wheelWrapper } = this.$refs
+      const scroll = wheelWrapper.children[index].querySelector(
         '.calf-picker-wraper'
       )
       let wheel = this.wheels ? this.wheels[index] : false
       let dist = 0
       if (scroll && wheel) {
-        let oldData = this.pickerData[index]
+        const oldData = this.pickerData[index]
         this.$set(this.pickerData, index, data)
-        let selectedIndex = wheel.getSelectedIndex()
+        const selectedIndex = wheel.getSelectedIndex()
         if (oldData.length) {
-          let oldValue = oldData[selectedIndex][this.valueKey]
+          const oldValue = oldData[selectedIndex][this.valueKey]
           for (let i = 0; i < data.length; i++) {
             if (data[i][this.valueKey] === oldValue) {
               dist = i

@@ -60,6 +60,17 @@ const DEFAULT_FORMAT = {
   second: 'ss'
 }
 
+function dateToArray(date) {
+  return [
+    date.getFullYear(),
+    date.getMonth() + 1,
+    date.getDate(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds()
+  ]
+}
+
 export default {
   name: COMPONENT_NAME,
   mixins: [visibilityMixin, popupMixin, pickerMixin],
@@ -101,7 +112,7 @@ export default {
   },
   computed: {
     formatConfig() {
-      const formatConfig = Object.assign({}, DEFAULT_FORMAT)
+      const formatConfig = { ...DEFAULT_FORMAT }
       deepAssign(formatConfig, this.format)
 
       return formatConfig
@@ -130,25 +141,25 @@ export default {
     minArray() {
       return this.min instanceof Date
         ? dateToArray(this.min).slice(
-            this.startIndex,
-            this.startIndex + this.columnCount
-          )
+          this.startIndex,
+          this.startIndex + this.columnCount
+        )
         : this.min
     },
     maxArray() {
       return this.max instanceof Date
         ? dateToArray(this.max).slice(
-            this.startIndex,
-            this.startIndex + this.columnCount
-          )
+          this.startIndex,
+          this.startIndex + this.columnCount
+        )
         : this.max
     },
     valueArray() {
       return this.value instanceof Date
         ? dateToArray(this.value).slice(
-            this.startIndex,
-            this.startIndex + this.columnCount
-          )
+          this.startIndex,
+          this.startIndex + this.columnCount
+        )
         : this.value
     },
     data() {
@@ -160,13 +171,11 @@ export default {
     },
     selectedIndex() {
       const selectedIndex = []
-      let data = this.data
+      let { data } = this
       let index
 
       for (let i = 0; i < this.columnCount && i < 6 - this.startIndex; i++) {
-        index = findIndex(data, item => {
-          return this.valueArray[i] && item.value === this.valueArray[i]
-        })
+        index = findIndex(data, item => this.valueArray[i] && item.value === this.valueArray[i])
         selectedIndex[i] = index !== -1 ? index : 0
         data = data[selectedIndex[i]].children
       }
@@ -190,58 +199,57 @@ export default {
       this.$emit(EVENT_CHANGE, i, newIndex)
     },
     _generateData(i, count, item) {
+      /* eslint-disable no-param-reassign */
       if (count === 0) {
-        const min =
-          i === 0
-            ? this.minArray[0]
-            : Math.max(
-                this.minArray[0],
-                NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMin
-              )
-        const max =
-          i === 0
-            ? this.maxArray[0]
-            : Math.min(
-                this.maxArray[0],
-                NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMax
-              )
-        item.push.apply(item, this._range(TYPE_LIST[i], min, max, true, true))
-      } else {
-        if (i < 3 || item.isMin || item.isMax) {
-          const natureMax =
-            i === 2
-              ? computeNatureMaxDay(item.value, item.year)
-              : NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMax
-          const min = item.isMin
-            ? Math.max(
-                this.minArray[count],
-                NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMin
-              )
-            : NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMin
-          const max = item.isMax
-            ? Math.min(this.maxArray[count], natureMax)
-            : natureMax
-
-          const storageYear =
-            i === 1 &&
-            this.startIndex === 0 &&
-            this.columnCount >= 3 &&
-            item.value
-          item.children = this._range(
-            TYPE_LIST[i],
-            min,
-            max,
-            item.isMin,
-            item.isMax,
-            storageYear
+        const min = i === 0
+          ? this.minArray[0]
+          : Math.max(
+            this.minArray[0],
+            NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMin
           )
-        } else {
-          item.children = this.natureRangeCache[TYPE_LIST[i]]
-        }
+        const max = i === 0
+          ? this.maxArray[0]
+          : Math.min(
+            this.maxArray[0],
+            NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMax
+          )
+          /* eslint-disable prefer-spread */
+        item.push.apply(item, this._range(TYPE_LIST[i], min, max, true, true))
+      } else if (i < 3 || item.isMin || item.isMax) {
+        const natureMax = i === 2
+          ? computeNatureMaxDay(item.value, item.year)
+          : NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMax
+        const min = item.isMin
+          ? Math.max(
+            this.minArray[count],
+            NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMin
+          )
+          : NATURE_BOUNDARY_MAP[TYPE_LIST[i]].natureMin
+        const max = item.isMax
+          ? Math.min(this.maxArray[count], natureMax)
+          : natureMax
+
+        const storageYear = i === 1
+            && this.startIndex === 0
+            && this.columnCount >= 3
+            && item.value
+        item.children = this._range(
+          TYPE_LIST[i],
+          min,
+          max,
+          item.isMin,
+          item.isMax,
+          storageYear
+        )
+      } else {
+        item.children = this.natureRangeCache[TYPE_LIST[i]]
       }
       if (count < this.columnCount - 1 && i < 5) {
-        ;(item.children || item).forEach(subItem => {
-          !subItem.children && this._generateData(i + 1, count + 1, subItem)
+        /* eslint-disable consistent-return */
+        (item.children || item).forEach(subItem => {
+          if (!subItem.children) {
+            return this._generateData(i + 1, count + 1, subItem)
+          }
         })
       }
     },
@@ -289,16 +297,5 @@ export default {
       return arr
     }
   }
-}
-
-function dateToArray(date) {
-  return [
-    date.getFullYear(),
-    date.getMonth() + 1,
-    date.getDate(),
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds()
-  ]
 }
 </script>

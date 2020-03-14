@@ -13,6 +13,7 @@
 
 <script type="text/ecmascript-6">
 import visibilityMixin from '../../common/mixins/visibility'
+
 const COMPONENT_NAME = 'calf-popup'
 const EVENT_MASK_CLICK = 'mask-click'
 

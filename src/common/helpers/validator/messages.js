@@ -9,25 +9,24 @@ const messages = {
   en: English
 }
 
-function findMessage (key, config, type, val) {
+function findMessage(key, config, type, val) {
   const target = messages[language][key]
   if (!target) {
     return ''
   }
   if (typeof target === 'string') {
     return target
-  } else {
-    if (!target[type]) {
-      type = Array.isArray(val) ? 'array' : typeof val
-    }
-    return typeof target[type] === 'function' ? target[type](config) : target[type]
   }
+  if (!target[type]) {
+    type = Array.isArray(val) ? 'array' : typeof val
+  }
+  return typeof target[type] === 'function' ? target[type](config) : target[type]
 }
 
 const addMessageZh = createAddAPI(messages.zh)
 const addMessageEn = createAddAPI(messages.en)
 
-function addMessage (...rest) {
+function addMessage(...rest) {
   if (language === 'zh') {
     addMessageZh(...rest)
   } else {
@@ -35,7 +34,7 @@ function addMessage (...rest) {
   }
 }
 
-function setLanguage (lang) {
+function setLanguage(lang) {
   language = lang
 }
 

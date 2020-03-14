@@ -35,8 +35,8 @@
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
-import CalfPopup from '../popup/popup'
-import CaptchInput from './captch-input'
+import CalfPopup from '../popup/popup.vue'
+import CaptchInput from './captch-input.vue'
 import CaptchPanel from './captch-panel.vue'
 
 const COMPONENT_NAME = 'calf-captch'
@@ -86,9 +86,7 @@ export default {
     },
     confirmCaptch: {
       type: Function,
-      default: () => {
-        return Promise.resolve()
-      }
+      default: () => Promise.resolve()
     },
     verifyFailMessage: {
       type: String,
@@ -111,9 +109,9 @@ export default {
     currentIndex() {
       let currentIndex = 0
       this.codes.forEach((code, index) => {
-        let prev = this.codes[index - 1]
-        let hasCompletePrev = this.allCodes.indexOf(prev) > -1
-        let hasCompleteCurrent = this.allCodes.indexOf(code) > -1
+        const prev = this.codes[index - 1]
+        const hasCompletePrev = this.allCodes.indexOf(prev) > -1
+        const hasCompleteCurrent = this.allCodes.indexOf(code) > -1
         if (index === 0 && !hasCompleteCurrent) {
           currentIndex = index
         } else if (hasCompletePrev && !hasCompleteCurrent) {
@@ -143,9 +141,7 @@ export default {
   },
   methods: {
     handleClear() {
-      this.codes = this.codes.map(item => {
-        return ''
-      })
+      this.codes = this.codes.map(item => '')
     },
     onRepeat() {
       this.$emit(EVENT_REPEAT_SENT)

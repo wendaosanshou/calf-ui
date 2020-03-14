@@ -1,4 +1,4 @@
-const data1 = [
+export const data1 = [
   {
     text: '剧毒',
     value: '剧毒'
@@ -61,7 +61,7 @@ const data1 = [
   }
 ]
 
-const data2 = [
+export const data2 = [
   {
     text: '输出',
     value: '输出'
@@ -96,7 +96,7 @@ const data2 = [
   }
 ]
 
-const data3 = [
+export const data3 = [
   {
     text: '梅肯',
     value: '梅肯'
@@ -123,7 +123,7 @@ const data3 = [
   }
 ]
 
-const data4 = [
+export const data4 = [
   {
     text: '顺丰',
     value: '顺丰'
@@ -137,5 +137,3 @@ const data4 = [
     value: '圆通'
   }
 ]
-
-export { data1, data2, data3, data4 }

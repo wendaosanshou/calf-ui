@@ -1,6 +1,6 @@
 import Notice from '../../components/notice/notice.vue'
 
-Notice.install = function(Vue) {
+Notice.install = function (Vue) {
   Vue.component(Notice.name, Notice)
 }
 

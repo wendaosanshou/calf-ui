@@ -19,7 +19,14 @@ module.exports = {
     'comma-dangle': 'off',
     'arrow-parens': 'off',
     'no-console': 'off',
-    'no-restricted-globals': ["history"],
-    'quote-props': 'off'
+    'no-restricted-globals': 'off',
+    'quote-props': 'off',
+    'func-names': 'off',
+    'no-underscore-dangle': 'off',
+    'no-unused-vars': 'off',
+    'no-bitwise': 'off',
+    'no-plusplus': 'off',
+    'import/no-dynamic-require': 'off',
+    'max-len': ["error", { "code": 150 }]
   }
 };

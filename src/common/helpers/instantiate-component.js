@@ -15,7 +15,7 @@ export default function instantiateComponent(Vue, Component, data, renderFn, opt
       }
 
       // {...renderData}: fix #128, caused by vue modified the parameter in the version of 2.5.14+, which related to vue issue #7294.
-      return createElement(Component, {...renderData}, children || [])
+      return createElement(Component, { ...renderData }, children || [])
     },
     methods: {
       init() {

@@ -27,7 +27,8 @@
 </template>
 
 <script type="text/babel">
-import { throttle } from '../../common/helpers/util.js'
+/* eslint-disable */
+import { throttle } from '../../common/helpers/util'
 import { TOP_DEFAULT_CONFIG, BOTTOM_DEFAULT_CONFIG } from './config'
 
 const COMPONENT_NAME = 'calf-pull-refresh'
@@ -78,15 +79,11 @@ export default {
     },
     topConfig: {
       type: Object,
-      default: () => {
-        return {}
-      }
+      default: () => ({})
     },
     bottomConfig: {
       type: Object,
-      default: () => {
-        return {}
-      }
+      default: () => ({})
     }
   },
   data() {
@@ -110,11 +107,11 @@ export default {
     }
   },
   computed: {
-    _topConfig: function() {
-      return Object.assign({}, TOP_DEFAULT_CONFIG, this.topConfig)
+    _topConfig() {
+      return { ...TOP_DEFAULT_CONFIG, ...this.topConfig }
     },
-    _bottomConfig: function() {
-      return Object.assign({}, BOTTOM_DEFAULT_CONFIG, this.bottomConfig)
+    _bottomConfig() {
+      return { ...BOTTOM_DEFAULT_CONFIG, ...this.bottomConfig }
     },
     iconClass() {
       return this.state ? `icon-${this.state}` : ''
@@ -159,16 +156,14 @@ export default {
       this.state = `loaded-${loadState}`
       let loadedStayTime
       if (this.direction === 'down') {
-        this.topText =
-          loadState === 'done'
-            ? this._topConfig.doneText
-            : this._topConfig.failText
+        this.topText = loadState === 'done'
+          ? this._topConfig.doneText
+          : this._topConfig.failText
         loadedStayTime = this._topConfig.loadedStayTime
       } else {
-        this.bottomText =
-          loadState === 'done'
-            ? this._bottomConfig.doneText
-            : this._bottomConfig.failText
+        this.bottomText = loadState === 'done'
+          ? this._bottomConfig.doneText
+          : this._bottomConfig.failText
         loadedStayTime = this._bottomConfig.loadedStayTime
       }
       setTimeout(() => {
@@ -190,8 +185,8 @@ export default {
 
     checkBottomReached() {
       return (
-        this.scrollEl.scrollTop + this.scrollEl.offsetHeight + 1 >=
-        this.scrollEl.scrollHeight
+        this.scrollEl.scrollTop + this.scrollEl.offsetHeight + 1
+        >= this.scrollEl.scrollHeight
       )
     },
 
@@ -204,14 +199,13 @@ export default {
 
     handleTouchMove(event) {
       this.currentY = event.touches[0].clientY
-      this.distance =
-        (this.currentY - this.startY) / this.distanceIndex + this.beforeDiff
+      this.distance = (this.currentY - this.startY) / this.distanceIndex + this.beforeDiff
       this.direction = this.distance > 0 ? 'down' : 'up'
 
       if (
-        this.startScrollTop === 0 &&
-        this.direction === 'down' &&
-        this.isTopBounce
+        this.startScrollTop === 0
+        && this.direction === 'down'
+        && this.isTopBounce
       ) {
         event.preventDefault()
         event.stopPropagation()
@@ -223,22 +217,22 @@ export default {
         if (typeof this.topLoadMethod !== 'function') return
 
         if (
-          this.distance < this._topConfig.triggerDistance &&
-          this.state !== 'pull' &&
-          this.state !== 'loading'
+          this.distance < this._topConfig.triggerDistance
+          && this.state !== 'pull'
+          && this.state !== 'loading'
         ) {
           this.actionPull()
         } else if (
-          this.distance >= this._topConfig.triggerDistance &&
-          this.state !== 'trigger' &&
-          this.state !== 'loading'
+          this.distance >= this._topConfig.triggerDistance
+          && this.state !== 'trigger'
+          && this.state !== 'loading'
         ) {
           this.actionTrigger()
         }
       } else if (
-        this.bottomReached &&
-        this.direction === 'up' &&
-        this.isBottomBounce
+        this.bottomReached
+        && this.direction === 'up'
+        && this.isBottomBounce
       ) {
         event.preventDefault()
         event.stopPropagation()
@@ -250,15 +244,15 @@ export default {
         if (typeof this.bottomLoadMethod !== 'function') return
 
         if (
-          Math.abs(this.distance) < this._bottomConfig.triggerDistance &&
-          this.state !== 'pull' &&
-          this.state !== 'loading'
+          Math.abs(this.distance) < this._bottomConfig.triggerDistance
+          && this.state !== 'pull'
+          && this.state !== 'loading'
         ) {
           this.actionPull()
         } else if (
-          Math.abs(this.distance) >= this._bottomConfig.triggerDistance &&
-          this.state !== 'trigger' &&
-          this.state !== 'loading'
+          Math.abs(this.distance) >= this._bottomConfig.triggerDistance
+          && this.state !== 'trigger'
+          && this.state !== 'loading'
         ) {
           this.actionTrigger()
         }
@@ -291,7 +285,7 @@ export default {
     },
 
     throttleEmit(delay, mustRunDelay = 0, eventName) {
-      const throttleMethod = function() {
+      const throttleMethod = function () {
         const args = [...arguments]
         args.unshift(eventName)
         this.$emit.apply(this, args)
@@ -324,6 +318,7 @@ export default {
     this.init()
   }
 }
+/* eslint-enable */
 </script>
 
 <style lang="postcss" src="../../style/pull-refresh.css"></style>

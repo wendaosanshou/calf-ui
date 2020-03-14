@@ -18,6 +18,7 @@
 
 <script>
 import visibilityMixin from '../../common/mixins/visibility'
+
 const COMPONENT_NAME = 'calf-loading'
 const EVENT_CLOSE = 'close'
 
@@ -29,8 +30,8 @@ export default {
   },
   props: {
     text: {
-       type: String,
-       default: ''
+      type: String,
+      default: ''
     },
     bg: {
       type: String,
