@@ -9,8 +9,8 @@
   "license": "ISC",
   "scripts": {
     "dev": "webpack-dev-server --env development --config build/webpack.dev.conf.js",
-    "doc": "docsify serve docs",
     "start": "npm run dev",
+    "doc": "docsify serve docs",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit example",
@@ -19,8 +19,8 @@
     "build:module": "cross-env NODE_ENV=production webpack --config build/webpack.modules.conf.js",
     "build:lib": "cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js",
     "build:example": "cross-env NODE_ENV=production webpack --config build/webpack.example.conf.js",
-    "deploy:example": "node build/deploy.js",
-    "build:analyze": "cross-env BUILD_ENV=bundleAnalyzer npm run build:lib"
+    "build:analyze": "cross-env BUILD_ENV=bundleAnalyzer npm run build:lib",
+    "deploy:example": "node build/deploy.js"
   },
   "dependencies": {
     "better-scroll": "^1.15.2",
@@ -46,7 +46,6 @@
     "docsify": "^4.10.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.1",
