@@ -42,7 +42,7 @@ module.exports = {
     // 是否开启sourceMap
     productionSourceMap: false,
     // sourceMap类型
-    devtool: 'source-map',
+    devtool: 'cheap-module-source-map',
     // 是个开启gzip
     productionGzip: false,
     // gzip的文件类型
@@ -60,6 +60,7 @@ module.exports = {
     assetsPublicPath: 'http://123.206.17.49/docs/example/',
     assetsRoot: resolve('docs/example'),
     assetsSubDirectory: '',
+    devtool: 'cheap-module-source-map',
     productionSourceMap: false,
     bundleAnalyzer: false,
     speedMeasure: false,
